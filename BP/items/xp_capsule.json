@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:xp_capsule",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.tools"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "経験値カプセル\n§7使うと経験値100を得る · しゃがんで使うとまとめて使う"
+      },
+      "minecraft:icon": "xp_capsule",
+      "minecraft:max_stack_size": 64,
+      "minecraft:glint": true,
+      "minecraft:use_modifiers": {
+        "use_duration": 0.1,
+        "movement_modifier": 1.0
+      },
+      "orbital_foundry:xp_capsule": {}
+    }
+  }
+}

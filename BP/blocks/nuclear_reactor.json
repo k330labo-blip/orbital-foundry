@@ -1,0 +1,604 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:nuclear_reactor",
+      "menu_category": {
+        "category": "construction"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      },
+      "states": {
+        "orbital_foundry:visual_phase": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:active": [
+          false,
+          true
+        ],
+        "orbital_foundry:heat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.liquid_nuclear_reactor",
+        "bone_visibility": {
+          "cycle_0": "q.block_state('orbital_foundry:visual_phase') == 0",
+          "cycle_1": "q.block_state('orbital_foundry:visual_phase') == 1",
+          "cycle_2": "q.block_state('orbital_foundry:visual_phase') == 2",
+          "cycle_3": "q.block_state('orbital_foundry:visual_phase') == 3"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_reactor_shell_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "iron": {
+          "texture": "of_reactor_shell_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "brass": {
+          "texture": "of_workshop_brass",
+          "render_method": "opaque"
+        },
+        "copper": {
+          "texture": "of_workshop_copper",
+          "render_method": "opaque"
+        },
+        "steel": {
+          "texture": "of_reactor_plate_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "panel": {
+          "texture": "of_reactor_plate_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "vent": {
+          "texture": "of_reactor_vent_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "hazard": {
+          "texture": "of_workshop_hazard",
+          "render_method": "opaque"
+        },
+        "fire": {
+          "texture": "of_reactor_vent_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "gauge": {
+          "texture": "of_workshop_gauge",
+          "render_method": "opaque"
+        },
+        "screen": {
+          "texture": "of_reactor_core_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "sample": {
+          "texture": "of_workshop_sample",
+          "render_method": "opaque"
+        },
+        "tank": {
+          "texture": "of_reactor_core_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "rubber": {
+          "texture": "of_workshop_rubber",
+          "render_method": "opaque"
+        },
+        "pipes": {
+          "texture": "of_workshop_pipes",
+          "render_method": "opaque"
+        },
+        "base": {
+          "texture": "of_reactor_plate_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        },
+        "coolant": {
+          "texture": "of_reactor_core_0",
+          "render_method": "opaque",
+          "face_dimming": true,
+          "ambient_occlusion": true
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          15,
+          14
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/nuclear_reactor.json",
+      "minecraft:display_name": "原子炉\n§7ウラン燃料で大電力を発電する\n§7石レンガ20+ガラス6で3×3×3に囲うと炉構造が完成",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_shell_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "iron": {
+              "texture": "of_reactor_shell_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "brass": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "copper": {
+              "texture": "of_workshop_copper",
+              "render_method": "opaque"
+            },
+            "steel": {
+              "texture": "of_reactor_plate_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "panel": {
+              "texture": "of_reactor_plate_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "vent": {
+              "texture": "of_reactor_vent_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "hazard": {
+              "texture": "of_workshop_hazard",
+              "render_method": "opaque"
+            },
+            "fire": {
+              "texture": "of_reactor_vent_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "gauge": {
+              "texture": "of_workshop_gauge",
+              "render_method": "opaque"
+            },
+            "screen": {
+              "texture": "of_reactor_core_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "sample": {
+              "texture": "of_workshop_sample",
+              "render_method": "opaque"
+            },
+            "tank": {
+              "texture": "of_reactor_core_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "rubber": {
+              "texture": "of_workshop_rubber",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_reactor_plate_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "coolant": {
+              "texture": "of_reactor_core_0",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_shell_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "iron": {
+              "texture": "of_reactor_shell_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "brass": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "copper": {
+              "texture": "of_workshop_copper",
+              "render_method": "opaque"
+            },
+            "steel": {
+              "texture": "of_reactor_plate_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "panel": {
+              "texture": "of_reactor_plate_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "vent": {
+              "texture": "of_reactor_vent_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "hazard": {
+              "texture": "of_workshop_hazard",
+              "render_method": "opaque"
+            },
+            "fire": {
+              "texture": "of_reactor_vent_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "gauge": {
+              "texture": "of_workshop_gauge",
+              "render_method": "opaque"
+            },
+            "screen": {
+              "texture": "of_reactor_core_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "sample": {
+              "texture": "of_workshop_sample",
+              "render_method": "opaque"
+            },
+            "tank": {
+              "texture": "of_reactor_core_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "rubber": {
+              "texture": "of_workshop_rubber",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_reactor_plate_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            },
+            "coolant": {
+              "texture": "of_reactor_core_1",
+              "render_method": "opaque",
+              "face_dimming": true,
+              "ambient_occlusion": true
+            }
+          },
+          "minecraft:light_emission": 5
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_shell_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "iron": {
+              "texture": "of_reactor_shell_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "brass": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "copper": {
+              "texture": "of_workshop_copper",
+              "render_method": "opaque"
+            },
+            "steel": {
+              "texture": "of_reactor_plate_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "panel": {
+              "texture": "of_reactor_plate_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "vent": {
+              "texture": "of_reactor_vent_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "hazard": {
+              "texture": "of_workshop_hazard",
+              "render_method": "opaque"
+            },
+            "fire": {
+              "texture": "of_reactor_vent_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "gauge": {
+              "texture": "of_workshop_gauge",
+              "render_method": "opaque"
+            },
+            "screen": {
+              "texture": "of_reactor_core_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "sample": {
+              "texture": "of_workshop_sample",
+              "render_method": "opaque"
+            },
+            "tank": {
+              "texture": "of_reactor_core_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "rubber": {
+              "texture": "of_workshop_rubber",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_reactor_plate_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "coolant": {
+              "texture": "of_reactor_core_2",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            }
+          },
+          "minecraft:light_emission": 9
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_shell_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "iron": {
+              "texture": "of_reactor_shell_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "brass": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "copper": {
+              "texture": "of_workshop_copper",
+              "render_method": "opaque"
+            },
+            "steel": {
+              "texture": "of_reactor_plate_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "panel": {
+              "texture": "of_reactor_plate_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "vent": {
+              "texture": "of_reactor_vent_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "hazard": {
+              "texture": "of_workshop_hazard",
+              "render_method": "opaque"
+            },
+            "fire": {
+              "texture": "of_reactor_vent_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "gauge": {
+              "texture": "of_workshop_gauge",
+              "render_method": "opaque"
+            },
+            "screen": {
+              "texture": "of_reactor_core_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "sample": {
+              "texture": "of_workshop_sample",
+              "render_method": "opaque"
+            },
+            "tank": {
+              "texture": "of_reactor_core_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "rubber": {
+              "texture": "of_workshop_rubber",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_reactor_plate_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            },
+            "coolant": {
+              "texture": "of_reactor_core_3",
+              "render_method": "opaque",
+              "face_dimming": false,
+              "ambient_occlusion": false
+            }
+          },
+          "minecraft:light_emission": 13
+        }
+      }
+    ]
+  }
+}

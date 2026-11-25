@@ -1,0 +1,67 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:siege_engine",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_siege",
+        "left_broken": "textures/entity/of_siege_left_broken",
+        "right_broken": "textures/entity/of_siege_right_broken",
+        "both_broken": "textures/entity/of_siege_both_broken",
+        "exposed": "textures/entity/of_siege_exposed"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.siege_engine"
+      },
+      "animations": {
+        "drive": "animation.orbital_foundry.siege.drive",
+        "closed": "animation.orbital_foundry.siege.armor_closed",
+        "open": "animation.orbital_foundry.siege.armor_open",
+        "cl_dead": "animation.orbital_foundry.siege.cool_l_dead",
+        "cr_dead": "animation.orbital_foundry.siege.cool_r_dead",
+        "cl_ok": "animation.orbital_foundry.siege.cool_l_alive",
+        "cr_ok": "animation.orbital_foundry.siege.cool_r_alive",
+        "charge": "animation.orbital_foundry.siege.charge",
+        "armor_state": "controller.animation.orbital_foundry.siege_armor",
+        "closing": "animation.orbital_foundry.siege.armor_closing"
+      },
+      "scripts": {
+        "animate": [
+          "drive",
+          "armor_state",
+          {
+            "cl_dead": "!q.property('orbital_foundry:cool_l')"
+          },
+          {
+            "cr_dead": "!q.property('orbital_foundry:cool_r')"
+          },
+          {
+            "cl_ok": "q.property('orbital_foundry:cool_l')"
+          },
+          {
+            "cr_ok": "q.property('orbital_foundry:cool_r')"
+          },
+          {
+            "charge": "q.property('orbital_foundry:charging')"
+          }
+        ],
+        "scale": "3.0"
+      },
+      "render_controllers": [
+        {
+          "controller.render.orbital_foundry.siege_engine": "!q.property('orbital_foundry:open')"
+        },
+        {
+          "controller.render.orbital_foundry.siege_engine_exposed": "q.property('orbital_foundry:open')"
+        }
+      ],
+      "spawn_egg": {
+        "base_color": "#2b2a30",
+        "overlay_color": "#ff7814"
+      }
+    }
+  }
+}

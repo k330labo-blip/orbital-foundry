@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:foundry_relay",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.materials"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "軌道中継モジュール\n§7軌道工廠の中継モジュール。建設便で軌道へ送る"
+      },
+      "minecraft:icon": "foundry_relay",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

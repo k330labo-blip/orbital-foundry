@@ -1,0 +1,91 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:reactor_window",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "orbital_foundry:heat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 12
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_reactor_window_0",
+          "render_method": "blend"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/reactor_window.json",
+      "minecraft:display_name": "原子炉観測窓\n§7完成した炉構造のガラス。壊すとガラスに戻る",
+      "minecraft:light_dampening": 0,
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_window_0",
+              "render_method": "blend",
+              "face_dimming": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_window_1",
+              "render_method": "blend",
+              "face_dimming": true
+            }
+          },
+          "minecraft:light_emission": 3
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_window_2",
+              "render_method": "blend",
+              "face_dimming": false
+            }
+          },
+          "minecraft:light_emission": 7
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_window_3",
+              "render_method": "blend",
+              "face_dimming": false
+            }
+          },
+          "minecraft:light_emission": 11
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:nickel_ingot",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "ニッケルインゴット\n§7ニッケルのインゴット。合金の素材"
+      },
+      "minecraft:icon": "nickel_ingot",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

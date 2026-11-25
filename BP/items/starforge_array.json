@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:starforge_array",
+      "menu_category": {
+        "category": "equipment",
+        "group": "orbital_foundry:creative.tools"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "星炉四連自律砲モジュール\n§7外骨格一式で使う四連ガトリング\n§7使う=展開/格納 · 長押し=チャージ砲撃\n§7左クリック=HUDの標的をロック\n§7しゃがみ+使う=防護フィールド"
+      },
+      "minecraft:icon": "starforge_array",
+      "minecraft:max_stack_size": 1,
+      "orbital_foundry:starforge_control": {},
+      "minecraft:use_modifiers": {
+        "use_duration": 3600,
+        "movement_modifier": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:fixed_drill",
+      "menu_category": {
+        "category": "construction"
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ],
+        "orbital_foundry:drill_phase": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.fixed_drill",
+        "bone_visibility": {
+          "cycle_0": "q.block_state('orbital_foundry:drill_phase') == 0",
+          "cycle_1": "q.block_state('orbital_foundry:drill_phase') == 1",
+          "cycle_2": "q.block_state('orbital_foundry:drill_phase') == 2",
+          "cycle_3": "q.block_state('orbital_foundry:drill_phase') == 3",
+          "cycle_4": "q.block_state('orbital_foundry:drill_phase') == 4",
+          "cycle_5": "q.block_state('orbital_foundry:drill_phase') == 5"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_gen_back",
+          "render_method": "opaque"
+        },
+        "iron": {
+          "texture": "of_gen_back",
+          "render_method": "opaque"
+        },
+        "brass": {
+          "texture": "of_gen_brass",
+          "render_method": "opaque"
+        },
+        "copper": {
+          "texture": "of_gen_copper",
+          "render_method": "opaque"
+        },
+        "steel": {
+          "texture": "of_drill_steel",
+          "render_method": "opaque"
+        },
+        "slot": {
+          "texture": "of_drill_slot",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          15,
+          14
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/fixed_drill.json",
+      "minecraft:display_name": "固定ドリル\n§7鉱床の上に置くと自動で掘る",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "orbital_foundry:deposit_coal_offset_0"
+    },
+    "places_feature": "orbital_foundry:deposit_coal_outcrop",
+    "iterations": 1,
+    "x": -2,
+    "y": 0,
+    "z": -1
+  }
+}

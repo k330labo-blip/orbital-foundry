@@ -1,0 +1,38 @@
+{
+ "format_version": "1.21.90",
+ "minecraft:recipe_shapeless": {
+  "description": {
+   "identifier": "orbital_foundry:head_tracker"
+  },
+  "tags": [
+   "crafting_table"
+  ],
+  "ingredients": [
+   {
+    "item": "minecraft:wither_skeleton_skull",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:control_board",
+    "count": 2
+   },
+   {
+    "item": "orbital_foundry:guidance_device",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:foundry_relay",
+    "count": 1
+   }
+  ],
+  "unlock": [
+   {
+    "item": "minecraft:wither_skeleton_skull"
+   }
+  ],
+  "result": {
+   "item": "orbital_foundry:head_tracker",
+   "count": 1
+  }
+ }
+}

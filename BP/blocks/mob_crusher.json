@@ -1,0 +1,163 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:mob_crusher",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.machines"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 12
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.mob_crusher",
+        "bone_visibility": {
+          "lit": "q.block_state('orbital_foundry:active')"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_cr_frame",
+          "render_method": "opaque"
+        },
+        "frame": {
+          "texture": "of_cr_frame",
+          "render_method": "opaque",
+          "face_dimming": true
+        },
+        "rollers": {
+          "texture": "of_cr_rollers",
+          "render_method": "opaque",
+          "face_dimming": true
+        },
+        "rollers_lit": {
+          "texture": "of_cr_rollers_lit",
+          "render_method": "opaque",
+          "face_dimming": false
+        },
+        "lamp": {
+          "texture": "of_cr_lamp",
+          "render_method": "opaque",
+          "face_dimming": true
+        },
+        "lamp_lit": {
+          "texture": "of_cr_lamp_lit",
+          "render_method": "opaque",
+          "face_dimming": false
+        },
+        "chute": {
+          "texture": "of_cr_chute",
+          "render_method": "opaque",
+          "face_dimming": true
+        },
+        "emblem": {
+          "texture": "of_cr_emblem",
+          "render_method": "opaque",
+          "face_dimming": true
+        }
+      },
+      "minecraft:display_name": "全自動モブクラッシャー\n§7リンクしたスポナーのモブを倒してドロップと経験値を回収\n§7経験値は100ごとに経験値カプセルになる",
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true",
+        "components": {
+          "minecraft:light_emission": 10
+        }
+      }
+    ]
+  }
+}

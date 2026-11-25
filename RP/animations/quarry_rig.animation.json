@@ -1,0 +1,73 @@
+{
+ "format_version": "1.10.0",
+ "animations": {
+  "animation.orbital_foundry.quarry_head.shaft": {
+   "loop": true,
+   "bones": {
+    "shaft": {
+     "scale": [
+      1,
+      "math.max(0.05, q.property('orbital_foundry:depth'))",
+      1
+     ]
+    },
+    "carriage": {
+     "position": [
+      0,
+      0,
+      0
+     ]
+    },
+    "bit": {
+     "position": [
+      0,
+      "-q.property('orbital_foundry:depth') * 16",
+      0
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.quarry_head.spin": {
+   "loop": true,
+   "bones": {
+    "bit": {
+     "rotation": [
+      0,
+      "q.anim_time * 540 * q.property('orbital_foundry:work_speed')",
+      0
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.quarry_leg.length": {
+   "loop": true,
+   "bones": {
+    "leg": {
+     "scale": [
+      1,
+      "math.max(0.05, q.property('orbital_foundry:length'))",
+      1
+     ]
+    },
+    "foot": {
+     "position": [
+      0,
+      "-q.property('orbital_foundry:length') * 16",
+      0
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.quarry_frame.lamps": {
+   "loop": true,
+   "bones": {
+    "lamps": {
+     "scale": "q.property('orbital_foundry:alert') ? 0 : 1"
+    },
+    "alarm": {
+     "scale": "q.property('orbital_foundry:alert') ? (math.mod(q.anim_time, 0.6) < 0.3 ? 1 : 0) : 0"
+    }
+   }
+  }
+ }
+}

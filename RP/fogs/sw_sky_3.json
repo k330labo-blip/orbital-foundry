@@ -1,0 +1,22 @@
+{
+ "format_version": "1.16.100",
+ "minecraft:fog_settings": {
+  "description": {
+   "identifier": "orbital_foundry:sw_sky_3"
+  },
+  "distance": {
+   "air": {
+    "fog_start": 0.26,
+    "fog_end": 1.0,
+    "fog_color": "#2c0614",
+    "render_distance_type": "render"
+   },
+   "weather": {
+    "fog_start": 0.20800000000000002,
+    "fog_end": 1.0,
+    "fog_color": "#2c0614",
+    "render_distance_type": "render"
+   }
+  }
+ }
+}

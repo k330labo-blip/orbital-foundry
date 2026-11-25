@@ -1,0 +1,26 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.orbital_foundry.rocket.interior": {
+   "loop": true,
+   "bones": {
+    "blink_a": {
+     "scale": "math.mod(q.life_time, 1.0) < 0.5 ? 1 : 0.01"
+    },
+    "blink_b": {
+     "scale": "math.mod(q.life_time + 0.33, 0.8) < 0.4 ? 1 : 0.01"
+    },
+    "blink_c": {
+     "scale": "math.mod(q.life_time * 3, 1.0) < 0.15 ? 0.01 : 1"
+    },
+    "fan": {
+     "rotation": [
+      0,
+      "q.life_time * (q.property('orbital_foundry:engine') ? 900 : 240)",
+      0
+     ]
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,15 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:crude_oil"
+    },
+    "components": {
+      "minecraft:icon": "crude_oil",
+      "minecraft:display_name": {
+        "value": "原油\n§7油井から汲み上げる原油。精製所で燃料や樹脂に"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

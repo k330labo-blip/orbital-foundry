@@ -1,0 +1,280 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.orbital_foundry.overseer_portal.spin": {
+   "loop": true,
+   "bones": {
+    "frame": {
+     "rotation": [
+      0,
+      "q.life_time * 4",
+      0
+     ]
+    },
+    "glow_ring_0": {
+     "rotation": [
+      0,
+      "q.life_time * 10",
+      0
+     ],
+     "scale": [
+      1,
+      "1 + 0.6 * math.sin(q.life_time * 200)",
+      1
+     ]
+    },
+    "glow_ring_1": {
+     "rotation": [
+      0,
+      "q.life_time * -16",
+      0
+     ],
+     "scale": [
+      1,
+      "1 + 0.6 * math.sin(q.life_time * 260)",
+      1
+     ]
+    },
+    "glow_ring_2": {
+     "rotation": [
+      0,
+      "q.life_time * 24",
+      0
+     ],
+     "scale": [
+      1,
+      "1 + 0.6 * math.sin(q.life_time * 320)",
+      1
+     ]
+    },
+    "glow_ring_3": {
+     "rotation": [
+      0,
+      "q.life_time * -34",
+      0
+     ],
+     "scale": [
+      1,
+      "1 + 0.6 * math.sin(q.life_time * 380)",
+      1
+     ]
+    },
+    "glow_vortex": {
+     "rotation": [
+      0,
+      "q.life_time * -70",
+      0
+     ]
+    },
+    "glow_vortex2": {
+     "rotation": [
+      0,
+      "q.life_time * 110",
+      0
+     ]
+    },
+    "glow_core": {
+     "rotation": [
+      0,
+      "q.life_time * 200",
+      0
+     ],
+     "scale": "1 + 0.35 * math.abs(math.sin(q.life_time * 420))"
+    },
+    "glow_arc_0": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 300 + 0)) * 1.4"
+     ]
+    },
+    "glow_arc_1": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 337 + 50)) * 1.4"
+     ]
+    },
+    "glow_arc_2": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 374 + 100)) * 1.4"
+     ]
+    },
+    "glow_arc_3": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 411 + 150)) * 1.4"
+     ]
+    },
+    "glow_arc_4": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 448 + 200)) * 1.4"
+     ]
+    },
+    "glow_arc_5": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 485 + 250)) * 1.4"
+     ]
+    },
+    "glow_arc_6": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 522 + 300)) * 1.4"
+     ]
+    },
+    "glow_arc_7": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 559 + 350)) * 1.4"
+     ]
+    },
+    "glow_arc_8": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 596 + 400)) * 1.4"
+     ]
+    },
+    "glow_arc_9": {
+     "scale": [
+      1,
+      1,
+      "math.max(0, math.sin(q.life_time * 633 + 450)) * 1.4"
+     ]
+    },
+    "horizon": {
+     "rotation": [
+      0,
+      "q.life_time * -12",
+      0
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.overseer_portal.opening": {
+   "loop": "hold_on_last_frame",
+   "animation_length": 5,
+   "bones": {
+    "root": {
+     "scale": {
+      "0.0": [
+       0,
+       1,
+       0
+      ],
+      "0.6": [
+       0.06,
+       1,
+       0.06
+      ],
+      "1.6": [
+       0.3,
+       1,
+       0.3
+      ],
+      "3.4": [
+       0.9,
+       1,
+       0.9
+      ],
+      "4.2": [
+       1.08,
+       1,
+       1.08
+      ],
+      "5.0": [
+       1,
+       1,
+       1
+      ]
+     }
+    },
+    "glow_core": {
+     "scale": {
+      "0.0": [
+       4,
+       4,
+       4
+      ],
+      "1.0": [
+       2,
+       2,
+       2
+      ],
+      "5.0": [
+       1,
+       1,
+       1
+      ]
+     }
+    }
+   }
+  },
+  "animation.orbital_foundry.overseer_portal.open": {
+   "loop": true,
+   "bones": {
+    "root": {
+     "scale": "1 + 0.015 * math.sin(q.life_time * 90)"
+    }
+   }
+  },
+  "animation.orbital_foundry.overseer_portal.closing": {
+   "loop": "hold_on_last_frame",
+   "animation_length": 2.5,
+   "bones": {
+    "root": {
+     "scale": {
+      "0.0": [
+       1,
+       1,
+       1
+      ],
+      "0.5": [
+       1.05,
+       1,
+       1.05
+      ],
+      "2.2": [
+       0.02,
+       1,
+       0.02
+      ],
+      "2.5": [
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "glow_core": {
+     "scale": {
+      "0.0": [
+       1,
+       1,
+       1
+      ],
+      "2.0": [
+       5,
+       5,
+       5
+      ],
+      "2.5": [
+       0,
+       0,
+       0
+      ]
+     }
+    }
+   }
+  }
+ }
+}

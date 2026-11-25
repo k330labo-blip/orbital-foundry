@@ -1,0 +1,2197 @@
+{
+  "namespace": "server_form",
+  "long_form@common_dialogs.main_panel_no_buttons": {
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (not ((#title_text - '§r§r§r') = #title_text)))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "main_screen_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          {
+            "of_form_factory": {
+              "type": "panel",
+              "factory": {
+                "name": "server_form_factory",
+                "control_ids": {
+                  "long_form": "@server_form.of_screen_router"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "of_panel": {
+    "type": "panel",
+    "size": [
+      300,
+      224
+    ],
+    "layer": 3,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((not ((#title_text - '§r§r§r') = #title_text)) and (not (#title_text = '§r§r§r研究所 · 技術ツリー')))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "of_background": {
+          "type": "image",
+          "texture": "textures/ui/of_panel",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 0
+        }
+      },
+      {
+        "of_title": {
+          "type": "label",
+          "text": "#clean_title",
+          "color": [
+            0.22,
+            0.22,
+            0.22
+          ],
+          "shadow": false,
+          "layer": 3,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            8
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text - '§r§r§r')",
+              "target_property_name": "#clean_title"
+            }
+          ]
+        }
+      },
+      {
+        "of_close@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.menu_exit",
+          "$button_text": "×",
+          "size": [
+            18,
+            17
+          ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -4,
+            3
+          ],
+          "layer": 5
+        }
+      },
+      {
+        "of_scroll@common.scrolling_panel": {
+          "size": [
+            "100% - 14px",
+            "100% - 30px"
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            24
+          ],
+          "layer": 3,
+          "$show_background": false,
+          "$scrolling_content": "server_form.of_content",
+          "$scroll_size": [
+            5,
+            "100% - 4px"
+          ],
+          "$scrolling_pane_size": [
+            "100% - 6px",
+            "100%"
+          ],
+          "$scroll_bar_right_padding_size": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#title_text = '§r§r§r実績クエスト'))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "of_tree": {
+          "type": "panel",
+          "size": [
+            188,
+            129
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            31
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text = '§r§r§r実績クエスト')",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "status": {
+                "type": "label",
+                "text": "#form_text",
+                "color": [
+                  0.18,
+                  0.18,
+                  0.18
+                ],
+                "shadow": false,
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [
+                  0,
+                  0
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#form_text"
+                  }
+                ]
+              }
+            },
+            {
+              "edges": {
+                "type": "image",
+                "texture": "textures/ui/of_tree_lines",
+                "size": [
+                  180,
+                  87
+                ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [
+                  0,
+                  31
+                ]
+              }
+            },
+            {
+              "nodes": {
+                "type": "grid",
+                "size": [
+                  180,
+                  64
+                ],
+                "grid_dimensions": [
+                  2,
+                  2
+                ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [
+                  0,
+                  52
+                ],
+                "collection_name": "form_buttons",
+                "grid_item_template": "server_form.of_tree_node",
+                "layer": 4
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "of_content": {
+    "type": "stack_panel",
+    "size": [
+      "100% - 4px",
+      "100%c"
+    ],
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "of_summary": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%c + 6px"
+          ],
+          "controls": [
+            {
+              "of_summary_text": {
+                "type": "label",
+                "text": "#form_text",
+                "size": [
+                  "100% - 6px",
+                  "default"
+                ],
+                "color": [
+                  0.2,
+                  0.2,
+                  0.2
+                ],
+                "shadow": false,
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [
+                  3,
+                  0
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#form_text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "of_actions": {
+          "type": "stack_panel",
+          "size": [
+            "100%",
+            "100%c"
+          ],
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "factory": {
+            "name": "buttons",
+            "control_ids": {
+              "button": "server_form.of_action"
+            }
+          },
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "of_action": {
+    "type": "panel",
+    "size": [
+      "100%",
+      34
+    ],
+    "controls": [
+      {
+        "of_slot": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "size": [
+            20,
+            20
+          ],
+          "layer": 2,
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            1,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#form_button_texture = ''))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "of_icon": {
+                "type": "image",
+                "size": [
+                  16,
+                  16
+                ],
+                "layer": 3,
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons",
+                    "binding_name_override": "#texture"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons",
+                    "binding_name_override": "#texture_file_system"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "of_click@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "$button_text": "#form_button_text",
+          "$button_text_binding_type": "collection",
+          "$button_text_grid_collection_name": "form_buttons",
+          "$button_text_max_size": [
+            "100% - 6px",
+            28
+          ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "size": [
+            "100% - 25px",
+            31
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "of_tree_node": {
+    "type": "panel",
+    "size": [
+      90,
+      32
+    ],
+    "controls": [
+      {
+        "of_slot": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "size": [
+            20,
+            20
+          ],
+          "layer": 2,
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#form_button_texture = ''))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "of_icon": {
+                "type": "image",
+                "size": [
+                  16,
+                  16
+                ],
+                "layer": 3,
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons",
+                    "binding_name_override": "#texture"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons",
+                    "binding_name_override": "#texture_file_system"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "of_click@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "$button_text": "#form_button_text",
+          "$button_text_binding_type": "collection",
+          "$button_text_grid_collection_name": "form_buttons",
+          "$button_text_max_size": [
+            "100% - 6px",
+            20
+          ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "size": [
+            68,
+            25
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "offset": [
+            -1,
+            0
+          ]
+        }
+      }
+    ]
+  },
+  "of_research_panel": {
+    "type": "panel",
+    "size": [
+      300,
+      224
+    ],
+    "layer": 3,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#title_text = '§r§r§r研究所 · 技術ツリー')",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "of_background": {
+          "type": "image",
+          "texture": "textures/ui/of_panel",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 0
+        }
+      },
+      {
+        "of_title": {
+          "type": "label",
+          "text": "#clean_title",
+          "color": [
+            0.22,
+            0.22,
+            0.22
+          ],
+          "shadow": false,
+          "layer": 3,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            8
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text - '§r§r§r')",
+              "target_property_name": "#clean_title"
+            }
+          ]
+        }
+      },
+      {
+        "of_close@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.menu_exit",
+          "$button_text": "×",
+          "size": [
+            18,
+            17
+          ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -4,
+            3
+          ],
+          "layer": 5
+        }
+      },
+      {
+        "summary": {
+          "type": "label",
+          "text": "#form_text",
+          "size": [
+            274,
+            22
+          ],
+          "offset": [
+            12,
+            28
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "color": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "shadow": false,
+          "bindings": [
+            {
+              "binding_name": "#form_text"
+            }
+          ]
+        }
+      },
+      {
+        "graph@common.scrolling_panel": {
+          "size": [
+            278,
+            126
+          ],
+          "offset": [
+            10,
+            55
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 3,
+          "$show_background": false,
+          "$scrolling_content": "server_form.of_technology_canvas",
+          "$scroll_size": [
+            5,
+            "100% - 4px"
+          ],
+          "$scrolling_pane_size": [
+            "100% - 6px",
+            "100%"
+          ]
+        }
+      },
+      {
+        "equipment": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            91,
+            31
+          ],
+          "offset": [
+            10,
+            184
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_plain_action": {
+                "collection_index": 17
+              }
+            }
+          ]
+        }
+      },
+      {
+        "packs": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            76,
+            31
+          ],
+          "offset": [
+            104,
+            184
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_plain_action": {
+                "collection_index": 18
+              }
+            }
+          ]
+        }
+      },
+      {
+        "refresh": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            60,
+            31
+          ],
+          "offset": [
+            183,
+            184
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_plain_action": {
+                "collection_index": 19
+              }
+            }
+          ]
+        }
+      },
+      {
+        "close": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            44,
+            31
+          ],
+          "offset": [
+            246,
+            184
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_plain_action": {
+                "collection_index": 20
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "of_screen_router": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "regular@server_form.of_panel": {}
+      },
+      {
+        "research@server_form.of_research_panel": {}
+      }
+    ]
+  },
+  "of_plain_action": {
+    "type": "panel",
+    "size": [
+      "100%",
+      34
+    ],
+    "controls": [
+      {
+        "of_click@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "$button_text": "#form_button_text",
+          "$button_text_binding_type": "collection",
+          "$button_text_grid_collection_name": "form_buttons",
+          "$button_text_max_size": [
+            "100% - 6px",
+            28
+          ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "size": [
+            "100%",
+            31
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "of_technology_canvas": {
+    "type": "panel",
+    "size": [
+      272,
+      576
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "node0": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            0
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node1": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            48
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node2": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            96
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node3": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            141,
+            96
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node4": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            144
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node5": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            141,
+            192
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node6": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            141,
+            144
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node7": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            192
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 7
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node8": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            240
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 8
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node9": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            141,
+            240
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 9
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node10": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            288
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 10
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node11": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            141,
+            336
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 11
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node12": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            336
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 12
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node13": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            384
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 13
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node14": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            432
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 14
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node15": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            141,
+            480
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 15
+              }
+            }
+          ]
+        }
+      },
+      {
+        "node16": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "collection_name": "form_buttons",
+          "size": [
+            128,
+            36
+          ],
+          "offset": [
+            4,
+            528
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 4,
+          "controls": [
+            {
+              "button@server_form.of_action": {
+                "collection_index": 16
+              }
+            }
+          ]
+        }
+      },
+      {
+        "branch1_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            34
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch2_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            82
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch3_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            9,
+            2
+          ],
+          "offset": [
+            132,
+            113
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch4_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            130
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch5_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            4,
+            2
+          ],
+          "offset": [
+            132,
+            161
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch5_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            50
+          ],
+          "offset": [
+            134,
+            161
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch5_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            7,
+            2
+          ],
+          "offset": [
+            134,
+            209
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch6_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            9,
+            2
+          ],
+          "offset": [
+            132,
+            161
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch7_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            178
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch8_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            226
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch9_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            132,
+            209
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch9_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            50
+          ],
+          "offset": [
+            136,
+            209
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch9_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            5,
+            2
+          ],
+          "offset": [
+            136,
+            257
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch10_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            1,
+            209
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch10_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            96
+          ],
+          "offset": [
+            1,
+            209
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch10_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            1,
+            305
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            8,
+            2
+          ],
+          "offset": [
+            132,
+            305
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            50
+          ],
+          "offset": [
+            138,
+            305
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            3,
+            2
+          ],
+          "offset": [
+            138,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_1": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            4,
+            2
+          ],
+          "offset": [
+            132,
+            257
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_1_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            98
+          ],
+          "offset": [
+            134,
+            257
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_1_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            7,
+            2
+          ],
+          "offset": [
+            134,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_2": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            4,
+            2
+          ],
+          "offset": [
+            266,
+            161
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_2_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            192
+          ],
+          "offset": [
+            266,
+            161
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch11_2_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            4,
+            2
+          ],
+          "offset": [
+            266,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch12_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            322
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch12_1": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            5,
+            257
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch12_1_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            96
+          ],
+          "offset": [
+            5,
+            257
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch12_1_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            5,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch13_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            1,
+            305
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch13_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            96
+          ],
+          "offset": [
+            1,
+            305
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch13_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            1,
+            401
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch14_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            14
+          ],
+          "offset": [
+            67,
+            418
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            8,
+            2
+          ],
+          "offset": [
+            262,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            144
+          ],
+          "offset": [
+            262,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            8,
+            2
+          ],
+          "offset": [
+            262,
+            497
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_1": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            6,
+            2
+          ],
+          "offset": [
+            132,
+            449
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_1_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            50
+          ],
+          "offset": [
+            136,
+            449
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_1_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            5,
+            2
+          ],
+          "offset": [
+            136,
+            497
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_2": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            8,
+            2
+          ],
+          "offset": [
+            132,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_2_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            146
+          ],
+          "offset": [
+            138,
+            353
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch15_2_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            3,
+            2
+          ],
+          "offset": [
+            138,
+            497
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch16_0": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            7,
+            2
+          ],
+          "offset": [
+            134,
+            497
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch16_0_v": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            2,
+            50
+          ],
+          "offset": [
+            134,
+            497
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      },
+      {
+        "branch16_0_h": {
+          "type": "image",
+          "texture": "textures/ui/of_slot",
+          "color": [
+            0.65,
+            0.5,
+            0.22
+          ],
+          "size": [
+            4,
+            2
+          ],
+          "offset": [
+            132,
+            545
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1
+        }
+      }
+    ]
+  }
+}

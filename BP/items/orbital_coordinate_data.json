@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:orbital_coordinate_data",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "軌道座標データ\n§7軌道上の座標データ。宇宙の採取地点を指定する"
+      },
+      "minecraft:icon": "orbital_coordinate_data",
+      "minecraft:max_stack_size": 16
+    }
+  }
+}

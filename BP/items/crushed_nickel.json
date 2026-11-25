@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:crushed_nickel",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.materials"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "粉砕ニッケル鉱\n§7粉砕したニッケル鉱。精錬してニッケルに"
+      },
+      "minecraft:icon": "crushed_nickel",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

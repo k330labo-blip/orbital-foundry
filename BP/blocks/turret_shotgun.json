@@ -1,0 +1,906 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:turret_shotgun",
+      "menu_category": {
+        "category": "construction"
+      },
+      "states": {
+        "orbital_foundry:yaw": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "orbital_foundry:fire": [
+          false,
+          true
+        ],
+        "orbital_foundry:lamp": [
+          0,
+          1,
+          2
+        ]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 8
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.turret_shotgun_0_0",
+        "bone_visibility": {
+          "ammo_0": true,
+          "ammo_1": false,
+          "ammo_2": false
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_workshop_iron",
+          "render_method": "opaque"
+        },
+        "iron": {
+          "texture": "of_workshop_iron",
+          "render_method": "opaque"
+        },
+        "brass": {
+          "texture": "of_workshop_brass",
+          "render_method": "opaque"
+        },
+        "copper": {
+          "texture": "of_workshop_copper",
+          "render_method": "opaque"
+        },
+        "steel": {
+          "texture": "of_workshop_steel",
+          "render_method": "opaque"
+        },
+        "panel": {
+          "texture": "of_workshop_panel",
+          "render_method": "opaque"
+        },
+        "vent": {
+          "texture": "of_workshop_vent",
+          "render_method": "opaque"
+        },
+        "hazard": {
+          "texture": "of_workshop_hazard",
+          "render_method": "opaque"
+        },
+        "gauge": {
+          "texture": "of_workshop_gauge",
+          "render_method": "opaque"
+        },
+        "tank": {
+          "texture": "of_workshop_tank",
+          "render_method": "opaque"
+        },
+        "coolant": {
+          "texture": "of_workshop_coolant",
+          "render_method": "opaque"
+        },
+        "pipes": {
+          "texture": "of_workshop_pipes",
+          "render_method": "opaque"
+        },
+        "base": {
+          "texture": "of_workshop_base",
+          "render_method": "opaque"
+        },
+        "rubber": {
+          "texture": "of_workshop_rubber",
+          "render_method": "opaque"
+        },
+        "cutter": {
+          "texture": "of_cd_cutter",
+          "render_method": "opaque"
+        },
+        "screen": {
+          "texture": "of_cd_screen",
+          "render_method": "opaque"
+        },
+        "lamp_off": {
+          "texture": "of_cd_lamp_off",
+          "render_method": "opaque"
+        },
+        "lamp_run": {
+          "texture": "of_cd_lamp_run",
+          "render_method": "opaque"
+        },
+        "lamp_wait": {
+          "texture": "of_cd_lamp_wait",
+          "render_method": "opaque"
+        },
+        "lamp_done": {
+          "texture": "of_cd_lamp_done",
+          "render_method": "opaque"
+        },
+        "glow": {
+          "texture": "of_turret_shotgun_glow",
+          "render_method": "opaque"
+        },
+        "rail": {
+          "texture": "of_cd_rail",
+          "render_method": "opaque"
+        },
+        "phase": {
+          "texture": "of_cd_phase",
+          "render_method": "opaque"
+        },
+        "void": {
+          "texture": "of_cd_void",
+          "render_method": "opaque"
+        },
+        "radar_0": {
+          "texture": "of_def_radar_0",
+          "render_method": "opaque"
+        },
+        "radar_1": {
+          "texture": "of_def_radar_1",
+          "render_method": "opaque"
+        },
+        "radar_2": {
+          "texture": "of_def_radar_2",
+          "render_method": "opaque"
+        },
+        "radar_3": {
+          "texture": "of_def_radar_3",
+          "render_method": "opaque"
+        },
+        "alarm_off": {
+          "texture": "of_def_alarm_off",
+          "render_method": "opaque"
+        },
+        "alarm_amber": {
+          "texture": "of_def_alarm_amber",
+          "render_method": "opaque"
+        },
+        "alarm_red": {
+          "texture": "of_def_alarm_red",
+          "render_method": "opaque"
+        },
+        "alarm_green": {
+          "texture": "of_def_alarm_green",
+          "render_method": "opaque"
+        },
+        "console": {
+          "texture": "of_def_console",
+          "render_method": "opaque"
+        },
+        "shield": {
+          "texture": "of_def_shield",
+          "render_method": "opaque"
+        },
+        "ammo_0": {
+          "texture": "of_def_ammo_0",
+          "render_method": "opaque"
+        },
+        "ammo_1": {
+          "texture": "of_def_ammo_1",
+          "render_method": "opaque"
+        },
+        "ammo_2": {
+          "texture": "of_def_ammo_2",
+          "render_method": "opaque"
+        },
+        "barrel": {
+          "texture": "of_def_barrel",
+          "render_method": "opaque"
+        },
+        "gear_ring": {
+          "texture": "of_def_gear_ring",
+          "render_method": "opaque"
+        },
+        "accent": {
+          "texture": "of_turret_shotgun_accent",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/turret_shotgun.json",
+      "minecraft:display_name": "ショットガン砲塔\n§7散弾砲塔",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 0 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_0_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 0 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_0_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 0 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_0_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 0 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_0_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 0 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_0_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 1 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_1_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 1 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_1_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 1 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_1_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 1 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_1_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 1 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_1_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 1 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_1_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 2 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_2_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 2 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_2_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 2 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_2_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 2 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_2_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 2 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_2_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 2 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_2_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 3 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_3_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 3 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_3_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 3 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_3_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 3 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_3_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 3 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_3_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 3 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_3_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 4 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_4_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 4 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_4_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 4 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_4_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 4 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_4_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 4 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_4_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 4 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_4_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 5 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_5_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 5 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_5_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 5 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_5_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 5 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_5_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 5 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_5_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 5 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_5_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 6 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_6_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 6 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_6_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 6 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_6_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 6 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_6_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 6 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_6_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 6 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_6_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 7 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_7_0",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 7 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_7_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 7 && q.block_state('orbital_foundry:fire') == 0 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_7_0",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 7 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_7_1",
+            "bone_visibility": {
+              "ammo_0": true,
+              "ammo_1": false,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 7 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_7_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": true,
+              "ammo_2": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:yaw') == 7 && q.block_state('orbital_foundry:fire') == 1 && q.block_state('orbital_foundry:lamp') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.orbital_foundry.turret_shotgun_7_1",
+            "bone_visibility": {
+              "ammo_0": false,
+              "ammo_1": false,
+              "ammo_2": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+import { NS } from "./config.js";
+
+export const GROWER_TIERS = {
+  [`${NS}:grower_mk1`]: { speed: 2, plants: 1, name: "全自動栽培槽 Mk I" },
+  [`${NS}:grower_mk2`]: { speed: 4, plants: 16, name: "全自動栽培槽 Mk II" },
+  [`${NS}:grower_mk3`]: { speed: 8, plants: 64, name: "全自動栽培槽 Mk III" },
+};
+
+export const GROWER_CROPS = {
+  tomato:       { seconds: 120, count: 3, water: 250, name: "トマト", visual: 2 },
+  corn:         { seconds: 180, count: 3, water: 350, name: "トウモロコシ", visual: 3 },
+  edamame:      { seconds: 150, count: 3, water: 250, name: "枝豆", visual: 0 },
+  sweet_potato: { seconds: 240, count: 2, water: 400, name: "サツマイモ", visual: 1 },
+  cabbage:      { seconds: 210, count: 2, water: 350, name: "キャベツ", visual: 0 },
+  onion:        { seconds: 150, count: 3, water: 250, name: "タマネギ", visual: 1 },
+  paprika:      { seconds: 180, count: 2, water: 300, name: "パプリカ", visual: 2 },
+  strawberry:   { seconds: 105, count: 3, water: 200, name: "イチゴ", visual: 2 },
+  wheat: {"seconds": 150, "count": 3, "water": 250, "name": "小麦", "seed": ["minecraft:wheat_seeds"], "visual": 3, "group": "field", "out": ["minecraft:wheat"]},
+  carrot: {"seconds": 135, "count": 3, "water": 250, "name": "ニンジン", "seed": ["minecraft:carrot"], "visual": 1, "group": "field", "out": ["minecraft:carrot"]},
+  potato: {"seconds": 150, "count": 3, "water": 300, "name": "ジャガイモ", "seed": ["minecraft:potato"], "visual": 1, "group": "field", "out": ["minecraft:potato"]},
+  beetroot: {"seconds": 135, "count": 3, "water": 250, "name": "ビートルート", "seed": ["minecraft:beetroot_seeds"], "visual": 1, "group": "field", "out": ["minecraft:beetroot"]},
+  pumpkin: {"seconds": 210, "count": 2, "water": 400, "name": "カボチャ", "seed": ["minecraft:pumpkin_seeds"], "visual": 2, "group": "field", "out": ["minecraft:pumpkin"]},
+  melon: {"seconds": 210, "count": 2, "water": 400, "name": "スイカ", "seed": ["minecraft:melon_seeds"], "visual": 2, "group": "field", "out": ["minecraft:melon_block", "minecraft:melon"]},
+  torchflower: {"seconds": 165, "count": 2, "water": 250, "name": "トーチフラワー", "seed": ["minecraft:torchflower_seeds"], "visual": 6, "group": "field", "out": ["minecraft:torchflower"]},
+  pitcher_plant: {"seconds": 210, "count": 2, "water": 350, "name": "ウツボカズラ", "seed": ["minecraft:pitcher_pod"], "visual": 6, "group": "field", "out": ["minecraft:pitcher_plant"]},
+  sugar_cane: {"seconds": 105, "count": 3, "water": 350, "name": "サトウキビ", "seed": ["minecraft:sugar_cane", "minecraft:reeds"], "visual": 4, "group": "surface", "out": ["minecraft:sugar_cane", "minecraft:reeds"]},
+  bamboo: {"seconds": 90, "count": 4, "water": 250, "name": "竹", "seed": ["minecraft:bamboo"], "visual": 4, "group": "surface", "out": ["minecraft:bamboo"]},
+  cactus: {"seconds": 120, "count": 3, "water": 150, "name": "サボテン", "seed": ["minecraft:cactus"], "visual": 7, "group": "surface", "out": ["minecraft:cactus"]},
+  cactus_flower: {"seconds": 180, "count": 1, "water": 150, "name": "サボテンの花", "seed": ["minecraft:cactus"], "visual": 6, "group": "surface", "out": ["minecraft:cactus_flower"]},
+  cocoa_beans: {"seconds": 150, "count": 3, "water": 250, "name": "カカオ豆", "seed": ["minecraft:cocoa_beans"], "visual": 2, "group": "surface", "out": ["minecraft:cocoa_beans"]},
+  sweet_berries: {"seconds": 120, "count": 3, "water": 250, "name": "スイートベリー", "seed": ["minecraft:sweet_berries"], "visual": 2, "group": "surface", "out": ["minecraft:sweet_berries"]},
+  kelp: {"seconds": 90, "count": 4, "water": 400, "name": "コンブ", "seed": ["minecraft:kelp"], "visual": 4, "group": "surface", "out": ["minecraft:kelp"]},
+  sea_pickle: {"seconds": 135, "count": 3, "water": 400, "name": "シーピクルス", "seed": ["minecraft:sea_pickle"], "visual": 7, "group": "surface", "out": ["minecraft:sea_pickle"]},
+  glow_berries: {"seconds": 135, "count": 3, "water": 300, "name": "グロウベリー", "seed": ["minecraft:glow_berries"], "visual": 2, "group": "special", "out": ["minecraft:glow_berries"]},
+  brown_mushroom: {"seconds": 150, "count": 3, "water": 200, "name": "茶色のキノコ", "seed": ["minecraft:brown_mushroom"], "visual": 5, "group": "special", "out": ["minecraft:brown_mushroom"]},
+  red_mushroom: {"seconds": 150, "count": 3, "water": 200, "name": "赤色のキノコ", "seed": ["minecraft:red_mushroom"], "visual": 5, "group": "special", "out": ["minecraft:red_mushroom"]},
+  nether_wart: {"seconds": 165, "count": 3, "water": 200, "name": "ネザーウォート", "seed": ["minecraft:nether_wart"], "visual": 5, "group": "special", "out": ["minecraft:nether_wart"]},
+  crimson_fungus: {"seconds": 165, "count": 2, "water": 200, "name": "真紅のキノコ", "seed": ["minecraft:crimson_fungus"], "visual": 5, "group": "special", "out": ["minecraft:crimson_fungus"]},
+  warped_fungus: {"seconds": 165, "count": 2, "water": 200, "name": "歪んだキノコ", "seed": ["minecraft:warped_fungus"], "visual": 5, "group": "special", "out": ["minecraft:warped_fungus"]},
+  chorus_fruit: {"seconds": 210, "count": 3, "water": 300, "name": "コーラスフルーツ", "seed": ["minecraft:chorus_flower"], "visual": 7, "group": "special", "out": ["minecraft:chorus_fruit"]},
+};

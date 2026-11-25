@@ -1,0 +1,41 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:onion",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.crop"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "item.orbital_foundry:onion.name"
+      },
+      "minecraft:icon": "onion",
+      "minecraft:max_stack_size": 64,
+      "minecraft:food": {
+        "nutrition": 7,
+        "saturation_modifier": 0.8,
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.35
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_food",
+          "orbital_foundry:vegetable"
+        ]
+      },
+      "minecraft:block_placer": {
+        "block": "orbital_foundry:onion_crop",
+        "use_on": [
+          "minecraft:farmland"
+        ]
+      }
+    }
+  }
+}

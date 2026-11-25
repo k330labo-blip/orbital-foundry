@@ -1,0 +1,271 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:thermal_generator",
+      "menu_category": {
+        "category": "construction"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      },
+      "states": {
+        "orbital_foundry:visual_phase": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:active": [
+          false,
+          true
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.liquid_thermal_generator",
+        "bone_visibility": {
+          "cycle_0": "q.block_state('orbital_foundry:visual_phase') == 0",
+          "cycle_1": "q.block_state('orbital_foundry:visual_phase') == 1",
+          "cycle_2": "q.block_state('orbital_foundry:visual_phase') == 2",
+          "cycle_3": "q.block_state('orbital_foundry:visual_phase') == 3"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_workshop_iron",
+          "render_method": "opaque"
+        },
+        "iron": {
+          "texture": "of_workshop_iron",
+          "render_method": "opaque"
+        },
+        "brass": {
+          "texture": "of_workshop_brass",
+          "render_method": "opaque"
+        },
+        "copper": {
+          "texture": "of_workshop_copper",
+          "render_method": "opaque"
+        },
+        "steel": {
+          "texture": "of_workshop_steel",
+          "render_method": "opaque"
+        },
+        "panel": {
+          "texture": "of_workshop_panel",
+          "render_method": "opaque"
+        },
+        "vent": {
+          "texture": "of_workshop_vent",
+          "render_method": "opaque"
+        },
+        "hazard": {
+          "texture": "of_workshop_hazard",
+          "render_method": "opaque"
+        },
+        "fire": {
+          "texture": "of_workshop_vent",
+          "render_method": "opaque"
+        },
+        "gauge": {
+          "texture": "of_workshop_gauge",
+          "render_method": "opaque"
+        },
+        "screen": {
+          "texture": "of_workshop_vent",
+          "render_method": "opaque"
+        },
+        "sample": {
+          "texture": "of_workshop_sample",
+          "render_method": "opaque"
+        },
+        "tank": {
+          "texture": "of_workshop_tank",
+          "render_method": "opaque"
+        },
+        "rubber": {
+          "texture": "of_workshop_rubber",
+          "render_method": "opaque"
+        },
+        "pipes": {
+          "texture": "of_workshop_pipes",
+          "render_method": "opaque"
+        },
+        "base": {
+          "texture": "of_workshop_base",
+          "render_method": "opaque"
+        },
+        "coolant": {
+          "texture": "of_workshop_coolant",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/thermal_generator.json",
+      "minecraft:display_name": "石油火力発電機\n§7燃料を燃やして発電する火力発電機",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_iron",
+              "render_method": "opaque"
+            },
+            "iron": {
+              "texture": "of_workshop_iron",
+              "render_method": "opaque"
+            },
+            "brass": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "copper": {
+              "texture": "of_workshop_copper",
+              "render_method": "opaque"
+            },
+            "steel": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_workshop_panel",
+              "render_method": "opaque"
+            },
+            "vent": {
+              "texture": "of_workshop_vent",
+              "render_method": "opaque"
+            },
+            "hazard": {
+              "texture": "of_workshop_hazard",
+              "render_method": "opaque"
+            },
+            "fire": {
+              "texture": "of_workshop_fire",
+              "render_method": "opaque"
+            },
+            "gauge": {
+              "texture": "of_workshop_gauge",
+              "render_method": "opaque"
+            },
+            "screen": {
+              "texture": "of_workshop_screen",
+              "render_method": "opaque"
+            },
+            "sample": {
+              "texture": "of_workshop_sample",
+              "render_method": "opaque"
+            },
+            "tank": {
+              "texture": "of_workshop_tank",
+              "render_method": "opaque"
+            },
+            "rubber": {
+              "texture": "of_workshop_rubber",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "coolant": {
+              "texture": "of_workshop_coolant",
+              "render_method": "opaque"
+            }
+          },
+          "minecraft:light_emission": 2
+        }
+      }
+    ]
+  }
+}

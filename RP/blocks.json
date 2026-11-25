@@ -1,0 +1,260 @@
+{
+  "format_version": [
+    1,
+    1,
+    0
+  ],
+  "orbital_foundry:coal_generator": {
+    "textures": "coal_generator",
+    "sound": "stone"
+  },
+  "orbital_foundry:fixed_drill": {
+    "textures": "fixed_drill",
+    "sound": "stone"
+  },
+  "orbital_foundry:crusher": {
+    "textures": "crusher",
+    "sound": "stone"
+  },
+  "orbital_foundry:washer": {
+    "textures": "washer",
+    "sound": "stone"
+  },
+  "orbital_foundry:electric_furnace": {
+    "textures": "electric_furnace",
+    "sound": "stone"
+  },
+  "orbital_foundry:alloy_furnace": {
+    "textures": "alloy_furnace",
+    "sound": "stone"
+  },
+  "orbital_foundry:press": {
+    "textures": "press",
+    "sound": "stone"
+  },
+  "orbital_foundry:wire_mill": {
+    "textures": "wire_mill",
+    "sound": "stone"
+  },
+  "orbital_foundry:assembler": {
+    "textures": "assembler",
+    "sound": "stone"
+  },
+  "orbital_foundry:auto_crafter": {
+    "textures": "auto_crafter",
+    "sound": "stone"
+  },
+  "orbital_foundry:research_terminal": {
+    "textures": "research_terminal",
+    "sound": "stone"
+  },
+  "orbital_foundry:battery": {
+    "textures": "battery",
+    "sound": "stone"
+  },
+  "orbital_foundry:conveyor_1": {
+    "textures": "conveyor_1",
+    "sound": "stone"
+  },
+  "orbital_foundry:launch_pad": {
+    "textures": "launch_pad",
+    "sound": "stone"
+  },
+  "orbital_foundry:landing_pad": {
+    "textures": "landing_pad",
+    "sound": "stone"
+  },
+  "orbital_foundry:sulfur_ore": {
+    "textures": "sulfur_ore",
+    "sound": "stone"
+  },
+  "orbital_foundry:nickel_ore": {
+    "textures": "nickel_ore",
+    "sound": "stone"
+  },
+  "orbital_foundry:bauxite_ore": {
+    "textures": "bauxite_ore",
+    "sound": "stone"
+  },
+  "orbital_foundry:power_cable": {
+    "textures": "power_cable",
+    "sound": "stone"
+  },
+  "orbital_foundry:chunk_destroyer_mk1": {
+    "textures": "chunk_destroyer_mk1",
+    "sound": "metal"
+  },
+  "orbital_foundry:industrial_container_mk1": {
+    "textures": "industrial_container_mk1",
+    "sound": "metal"
+  },
+  "orbital_foundry:industrial_container_mk2": {
+    "textures": "industrial_container_mk2",
+    "sound": "metal"
+  },
+  "orbital_foundry:creative_generator": {
+    "textures": "creative_generator",
+    "sound": "metal"
+  },
+  "orbital_foundry:creative_fluid_source": {
+    "textures": "creative_fluid_source",
+    "sound": "metal"
+  },
+  "orbital_foundry:chunk_destroyer_mk2": {
+    "textures": "chunk_destroyer_mk2",
+    "sound": "metal"
+  },
+  "orbital_foundry:chunk_destroyer_mk3": {
+    "textures": "chunk_destroyer_mk3",
+    "sound": "metal"
+  },
+  "orbital_foundry:orbital_container_mk3": {
+    "textures": "orbital_container_mk3",
+    "sound": "metal"
+  },
+  "orbital_foundry:singularity_container": {
+    "textures": "singularity_container",
+    "sound": "metal"
+  },
+  "orbital_foundry:quarry_marker": {
+    "textures": "quarry_marker",
+    "sound": "metal"
+  },
+  "orbital_foundry:defense_terminal": {
+    "textures": "defense_terminal",
+    "sound": "metal"
+  },
+  "orbital_foundry:turret_mk1": {
+    "textures": "turret_mk1",
+    "sound": "metal"
+  },
+  "orbital_foundry:turret_railgun": {
+    "textures": "turret_railgun",
+    "sound": "metal"
+  },
+  "orbital_foundry:turret_shotgun": {
+    "textures": "turret_shotgun",
+    "sound": "metal"
+  },
+  "orbital_foundry:tomato_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:corn_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:edamame_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:sweet_potato_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:cabbage_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:onion_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:paprika_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:strawberry_crop": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_tomato": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_corn": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_edamame": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_sweet_potato": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_cabbage": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_onion": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_paprika": {
+    "sound": "grass"
+  },
+  "orbital_foundry:wild_strawberry": {
+    "sound": "grass"
+  },
+  "orbital_foundry:orbital_cannon": {
+    "sound": "metal"
+  },
+  "orbital_foundry:conveyor_2": {
+    "textures": "conveyor_2",
+    "sound": "stone"
+  },
+  "orbital_foundry:conveyor_3": {
+    "textures": "conveyor_3",
+    "sound": "stone"
+  },
+  "orbital_foundry:splitter_1": {
+    "sound": "metal"
+  },
+  "orbital_foundry:splitter_2": {
+    "sound": "metal"
+  },
+  "orbital_foundry:splitter_3": {
+    "sound": "metal"
+  },
+  "orbital_foundry:solar_generator": {
+    "textures": "solar_generator",
+    "sound": "metal"
+  },
+  "orbital_foundry:solar_concentrator": {
+    "textures": "solar_concentrator",
+    "sound": "metal"
+  },
+  "orbital_foundry:battery_mk2": {
+    "textures": "battery_mk2",
+    "sound": "stone"
+  },
+  "orbital_foundry:battery_mk3": {
+    "textures": "battery_mk3",
+    "sound": "stone"
+  },
+  "orbital_foundry:ore_beneficiator": {
+    "textures": "ore_beneficiator",
+    "sound": "stone"
+  },
+  "orbital_foundry:head_tracker": {
+    "sound": "metal"
+  },
+  "orbital_foundry:head_star": {
+    "sound": "metal"
+  },
+  "orbital_foundry:head_heavy": {
+    "sound": "metal"
+  },
+  "orbital_foundry:reactor_casing": {
+    "sound": "stone"
+  },
+  "orbital_foundry:reactor_window": {
+    "sound": "glass"
+  },
+  "orbital_foundry:splitter2_1": {
+    "sound": "metal"
+  },
+  "orbital_foundry:splitter2_2": {
+    "sound": "metal"
+  },
+  "orbital_foundry:splitter2_3": {
+    "sound": "metal"
+  },
+  "orbital_foundry:incinerator": {
+    "sound": "metal"
+  },
+  "orbital_foundry:mob_spawner": {
+    "sound": "metal"
+  },
+  "orbital_foundry:mob_crusher": {
+    "sound": "metal"
+  }
+}

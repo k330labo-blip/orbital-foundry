@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:heat_alloy",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "耐熱合金\n§7高温に耐える合金。炉や外骨格の素材"
+      },
+      "minecraft:icon": "heat_alloy",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

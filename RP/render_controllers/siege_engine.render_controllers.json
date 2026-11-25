@@ -1,0 +1,107 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.orbital_foundry.siege_engine": {
+      "arrays": {
+        "textures": {
+          "Array.siege_skins": [
+            "Texture.default",
+            "Texture.left_broken",
+            "Texture.right_broken",
+            "Texture.both_broken"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.siege_skins[(1 - q.property('orbital_foundry:cool_l')) + 2 * (1 - q.property('orbital_foundry:cool_r'))]"
+      ],
+      "part_visibility": [
+        {
+          "cool_l": "q.property('orbital_foundry:cool_l')"
+        },
+        {
+          "cool_l_broken": "!q.property('orbital_foundry:cool_l')"
+        },
+        {
+          "cool_l_fx": "!q.property('orbital_foundry:cool_l')"
+        },
+        {
+          "cool_r": "q.property('orbital_foundry:cool_r')"
+        },
+        {
+          "cool_r_broken": "!q.property('orbital_foundry:cool_r')"
+        },
+        {
+          "cool_r_fx": "!q.property('orbital_foundry:cool_r')"
+        },
+        {
+          "emitter_glow": "q.property('orbital_foundry:charging')"
+        },
+        {
+          "armor_l_open": "0"
+        },
+        {
+          "armor_r_open": "0"
+        },
+        {
+          "alert": "0"
+        }
+      ]
+    },
+    "controller.render.orbital_foundry.siege_engine_exposed": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.exposed"
+      ],
+      "part_visibility": [
+        {
+          "cool_l": "q.property('orbital_foundry:cool_l')"
+        },
+        {
+          "cool_l_broken": "!q.property('orbital_foundry:cool_l')"
+        },
+        {
+          "cool_l_fx": "!q.property('orbital_foundry:cool_l')"
+        },
+        {
+          "cool_r": "q.property('orbital_foundry:cool_r')"
+        },
+        {
+          "cool_r_broken": "!q.property('orbital_foundry:cool_r')"
+        },
+        {
+          "cool_r_fx": "!q.property('orbital_foundry:cool_r')"
+        },
+        {
+          "emitter_glow": "q.property('orbital_foundry:charging')"
+        },
+        {
+          "armor_l_open": "1"
+        },
+        {
+          "armor_r_open": "1"
+        },
+        {
+          "alert": "1"
+        },
+        {
+          "armor_l": "0"
+        },
+        {
+          "armor_r": "0"
+        }
+      ]
+    }
+  }
+}

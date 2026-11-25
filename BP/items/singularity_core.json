@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:singularity_core",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "特異炉心\n§7特異炉心。軌道工廠や最上位装備の素材"
+      },
+      "minecraft:icon": "singularity_core",
+      "minecraft:max_stack_size": 16
+    }
+  }
+}

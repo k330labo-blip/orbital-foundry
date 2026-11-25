@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:overseer",
+      "materials": {
+        "default": "entity_alphatest",
+        "glow": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/overseer"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.overseer"
+      },
+      "animations": {
+        "idle": "animation.orbital_foundry.overseer.idle",
+        "rage": "animation.orbital_foundry.overseer.rage",
+        "roll": "animation.orbital_foundry.overseer.roll",
+        "shutter_closed": "animation.orbital_foundry.overseer.shutter_closed",
+        "shutter_open": "animation.orbital_foundry.overseer.shutter_open",
+        "shutter_close": "animation.orbital_foundry.overseer.shutter_close",
+        "shutter": "controller.animation.orbital_foundry.overseer_shutter",
+        "ring_off": "animation.orbital_foundry.overseer.ring_off",
+        "exposed": "animation.orbital_foundry.overseer.exposed",
+        "dying": "animation.orbital_foundry.overseer.dying"
+      },
+      "scripts": {
+        "scale": "6.0",
+        "animate": [
+          "idle",
+          "rage",
+          "roll",
+          "shutter",
+          {
+            "ring_off": "q.property('orbital_foundry:ring_off')"
+          },
+          {
+            "exposed": "q.property('orbital_foundry:core_open')"
+          },
+          {
+            "dying": "q.property('orbital_foundry:dying')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.orbital_foundry.overseer"
+      ],
+      "spawn_egg": {
+        "base_color": "#16121f",
+        "overlay_color": "#a040ff"
+      }
+    }
+  }
+}

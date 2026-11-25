@@ -1,0 +1,51 @@
+{
+ "format_version": "1.10.0",
+ "particle_effect": {
+  "description": {
+   "identifier": "orbital_foundry:cannon_beam",
+   "basic_render_parameters": {
+    "material": "particles_add",
+    "texture": "textures/particle/of_overseer"
+   }
+  },
+  "components": {
+   "minecraft:emitter_rate_instant": {
+    "num_particles": 2
+   },
+   "minecraft:emitter_lifetime_once": {
+    "active_time": 0.05
+   },
+   "minecraft:emitter_shape_point": {},
+   "minecraft:particle_lifetime_expression": {
+    "max_lifetime": 0.35
+   },
+   "minecraft:particle_appearance_billboard": {
+    "size": [
+     "2.6 * (1 - v.particle_age / v.particle_lifetime) + 0.4",
+     "variable.len"
+    ],
+    "facing_camera_mode": "lookat_y",
+    "uv": {
+     "texture_width": 64,
+     "texture_height": 64,
+     "uv": [
+      0,
+      16
+     ],
+     "uv_size": [
+      16,
+      16
+     ]
+    }
+   },
+   "minecraft:particle_appearance_tinting": {
+    "color": [
+     0.7,
+     0.95,
+     1,
+     1
+    ]
+   }
+  }
+ }
+}

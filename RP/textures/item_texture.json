@@ -1,0 +1,492 @@
+{
+  "resource_pack_name": "orbital_foundry",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "silicon": {
+      "textures": "textures/items/silicon"
+    },
+    "sulfur": {
+      "textures": "textures/items/sulfur"
+    },
+    "raw_nickel": {
+      "textures": "textures/items/raw_nickel"
+    },
+    "nickel_ingot": {
+      "textures": "textures/items/nickel_ingot"
+    },
+    "raw_bauxite": {
+      "textures": "textures/items/raw_bauxite"
+    },
+    "aluminum_plate": {
+      "textures": "textures/items/aluminum_plate"
+    },
+    "heat_alloy": {
+      "textures": "textures/items/heat_alloy"
+    },
+    "steel_ingot": {
+      "textures": "textures/items/steel_ingot"
+    },
+    "steel_plate": {
+      "textures": "textures/items/steel_plate"
+    },
+    "gear": {
+      "textures": "textures/items/gear"
+    },
+    "bearing": {
+      "textures": "textures/items/bearing"
+    },
+    "motor": {
+      "textures": "textures/items/motor"
+    },
+    "copper_wire": {
+      "textures": "textures/items/copper_wire"
+    },
+    "basic_circuit": {
+      "textures": "textures/items/basic_circuit"
+    },
+    "control_board": {
+      "textures": "textures/items/control_board"
+    },
+    "resin": {
+      "textures": "textures/items/resin"
+    },
+    "lubricant": {
+      "textures": "textures/items/lubricant"
+    },
+    "rocket_fuel": {
+      "textures": "textures/items/rocket_fuel"
+    },
+    "drive_component": {
+      "textures": "textures/items/drive_component"
+    },
+    "military_control_core": {
+      "textures": "textures/items/military_control_core"
+    },
+    "orbital_coordinate_data": {
+      "textures": "textures/items/orbital_coordinate_data"
+    },
+    "meteor_iron": {
+      "textures": "textures/items/meteor_iron"
+    },
+    "orbital_crystal": {
+      "textures": "textures/items/orbital_crystal"
+    },
+    "iridium": {
+      "textures": "textures/items/iridium"
+    },
+    "vacuum_ice": {
+      "textures": "textures/items/vacuum_ice"
+    },
+    "phase_stone": {
+      "textures": "textures/items/phase_stone"
+    },
+    "singularity_core": {
+      "textures": "textures/items/singularity_core"
+    },
+    "enhancement_core": {
+      "textures": "textures/items/enhancement_core"
+    },
+    "solar_cell": {
+      "textures": "textures/items/solar_cell"
+    },
+    "rocket_body_section": {
+      "textures": "textures/items/rocket_body_section"
+    },
+    "guidance_device": {
+      "textures": "textures/items/guidance_device"
+    },
+    "activation_core": {
+      "textures": "textures/items/activation_core"
+    },
+    "guide_book": {
+      "textures": "textures/items/guide_book"
+    },
+    "survey_contract": {
+      "textures": "textures/items/survey_contract"
+    },
+    "wrench": {
+      "textures": "textures/items/wrench"
+    },
+    "crushed_iron": {
+      "textures": "textures/items/crushed_iron"
+    },
+    "of_energy_0": {
+      "textures": "textures/items/of_energy_0"
+    },
+    "of_energy_1": {
+      "textures": "textures/items/of_energy_1"
+    },
+    "of_energy_2": {
+      "textures": "textures/items/of_energy_2"
+    },
+    "of_energy_3": {
+      "textures": "textures/items/of_energy_3"
+    },
+    "of_energy_4": {
+      "textures": "textures/items/of_energy_4"
+    },
+    "of_energy_5": {
+      "textures": "textures/items/of_energy_5"
+    },
+    "of_energy_6": {
+      "textures": "textures/items/of_energy_6"
+    },
+    "of_energy_7": {
+      "textures": "textures/items/of_energy_7"
+    },
+    "of_energy_8": {
+      "textures": "textures/items/of_energy_8"
+    },
+    "of_energy_9": {
+      "textures": "textures/items/of_energy_9"
+    },
+    "of_energy_10": {
+      "textures": "textures/items/of_energy_10"
+    },
+    "of_progress_0": {
+      "textures": "textures/items/of_progress_0"
+    },
+    "of_progress_1": {
+      "textures": "textures/items/of_progress_1"
+    },
+    "of_progress_2": {
+      "textures": "textures/items/of_progress_2"
+    },
+    "of_progress_3": {
+      "textures": "textures/items/of_progress_3"
+    },
+    "of_progress_4": {
+      "textures": "textures/items/of_progress_4"
+    },
+    "of_progress_5": {
+      "textures": "textures/items/of_progress_5"
+    },
+    "of_progress_6": {
+      "textures": "textures/items/of_progress_6"
+    },
+    "of_progress_7": {
+      "textures": "textures/items/of_progress_7"
+    },
+    "of_progress_8": {
+      "textures": "textures/items/of_progress_8"
+    },
+    "of_progress_9": {
+      "textures": "textures/items/of_progress_9"
+    },
+    "of_progress_10": {
+      "textures": "textures/items/of_progress_10"
+    },
+    "of_fire_0": {
+      "textures": "textures/items/of_fire_0"
+    },
+    "of_fire_1": {
+      "textures": "textures/items/of_fire_1"
+    },
+    "of_fire_2": {
+      "textures": "textures/items/of_fire_2"
+    },
+    "of_fire_3": {
+      "textures": "textures/items/of_fire_3"
+    },
+    "of_fire_4": {
+      "textures": "textures/items/of_fire_4"
+    },
+    "of_fire_5": {
+      "textures": "textures/items/of_fire_5"
+    },
+    "of_fire_6": {
+      "textures": "textures/items/of_fire_6"
+    },
+    "of_fire_7": {
+      "textures": "textures/items/of_fire_7"
+    },
+    "of_fire_8": {
+      "textures": "textures/items/of_fire_8"
+    },
+    "of_fire_9": {
+      "textures": "textures/items/of_fire_9"
+    },
+    "of_fire_10": {
+      "textures": "textures/items/of_fire_10"
+    },
+    "crude_oil": {
+      "textures": "textures/items/crude_oil"
+    },
+    "refined_fuel": {
+      "textures": "textures/items/refined_fuel"
+    },
+    "of_crusher_0": {
+      "textures": "textures/items/of_crusher_0"
+    },
+    "of_crusher_1": {
+      "textures": "textures/items/of_crusher_1"
+    },
+    "science_mechanical": {
+      "textures": "textures/items/science_mechanical"
+    },
+    "science_automation": {
+      "textures": "textures/items/science_automation"
+    },
+    "science_chemical": {
+      "textures": "textures/items/science_chemical"
+    },
+    "science_aerospace": {
+      "textures": "textures/items/science_aerospace"
+    },
+    "processing_unit": {
+      "textures": "textures/items/processing_unit"
+    },
+    "raw_uranium": {
+      "textures": "textures/items/raw_uranium"
+    },
+    "uranium_ingot": {
+      "textures": "textures/items/uranium_ingot"
+    },
+    "uranium_fuel": {
+      "textures": "textures/items/uranium_fuel"
+    },
+    "depleted_uranium_fuel": {
+      "textures": "textures/items/depleted_uranium_fuel"
+    },
+    "of_fluid_pipe_item": {
+      "textures": "textures/blocks/fluid_pipe"
+    },
+    "industrial_ammo": {
+      "textures": "textures/items/industrial_ammo"
+    },
+    "repair_kit": {
+      "textures": "textures/items/repair_kit"
+    },
+    "railgun_round": {
+      "textures": "textures/items/railgun_round"
+    },
+    "shotgun_shell": {
+      "textures": "textures/items/shotgun_shell"
+    },
+    "steel_helmet": {
+      "textures": "textures/items/steel_helmet"
+    },
+    "steel_chestplate": {
+      "textures": "textures/items/steel_chestplate"
+    },
+    "steel_leggings": {
+      "textures": "textures/items/steel_leggings"
+    },
+    "steel_boots": {
+      "textures": "textures/items/steel_boots"
+    },
+    "siege_control_core": {
+      "textures": "textures/items/siege_control_core"
+    },
+    "parallel_module": {
+      "textures": "textures/items/parallel_module"
+    },
+    "siege_engine_spawn_egg": {
+      "textures": "textures/items/siege_engine_spawn_egg"
+    },
+    "scrapper_spawn_egg": {
+      "textures": "textures/items/scrapper_spawn_egg"
+    },
+    "jammer_spawn_egg": {
+      "textures": "textures/items/jammer_spawn_egg"
+    },
+    "mender_spawn_egg": {
+      "textures": "textures/items/mender_spawn_egg"
+    },
+    "gnawer_spawn_egg": {
+      "textures": "textures/items/gnawer_spawn_egg"
+    },
+    "overseer_spawn_egg": {
+      "textures": "textures/items/overseer_spawn_egg"
+    },
+    "tomato": {
+      "textures": "textures/items/farming/tomato"
+    },
+    "tomato_seeds": {
+      "textures": "textures/items/farming/tomato_seeds"
+    },
+    "corn": {
+      "textures": "textures/items/farming/corn"
+    },
+    "corn_seeds": {
+      "textures": "textures/items/farming/corn_seeds"
+    },
+    "edamame": {
+      "textures": "textures/items/farming/edamame"
+    },
+    "edamame_seeds": {
+      "textures": "textures/items/farming/edamame_seeds"
+    },
+    "sweet_potato": {
+      "textures": "textures/items/farming/sweet_potato"
+    },
+    "cabbage": {
+      "textures": "textures/items/farming/cabbage"
+    },
+    "cabbage_seeds": {
+      "textures": "textures/items/farming/cabbage_seeds"
+    },
+    "onion": {
+      "textures": "textures/items/farming/onion"
+    },
+    "paprika": {
+      "textures": "textures/items/farming/paprika"
+    },
+    "paprika_seeds": {
+      "textures": "textures/items/farming/paprika_seeds"
+    },
+    "strawberry": {
+      "textures": "textures/items/farming/strawberry"
+    },
+    "strawberry_runner": {
+      "textures": "textures/items/farming/strawberry_runner"
+    },
+    "empty_can": {
+      "textures": "textures/items/empty_can"
+    },
+    "canned_ration": {
+      "textures": "textures/items/canned_ration"
+    },
+    "factory_rifle": {
+      "textures": "textures/items/factory_rifle"
+    },
+    "factory_shotgun": {
+      "textures": "textures/items/factory_shotgun"
+    },
+    "orbital_railgun": {
+      "textures": "textures/items/orbital_railgun"
+    },
+    "dense_alloy": {
+      "textures": "textures/items/dense_alloy"
+    },
+    "precision_drive": {
+      "textures": "textures/items/precision_drive"
+    },
+    "extension_tube": {
+      "textures": "textures/items/extension_tube"
+    },
+    "storage_cell": {
+      "textures": "textures/items/storage_cell"
+    },
+    "mod_double_load": {
+      "textures": "textures/items/mod_double_load"
+    },
+    "mod_kill_refill": {
+      "textures": "textures/items/mod_kill_refill"
+    },
+    "mod_pierce": {
+      "textures": "textures/items/mod_pierce"
+    },
+    "mod_quick_charge": {
+      "textures": "textures/items/mod_quick_charge"
+    },
+    "mod_rapid_drive": {
+      "textures": "textures/items/mod_rapid_drive"
+    },
+    "mod_marksman": {
+      "textures": "textures/items/mod_marksman"
+    },
+    "battery_item": {
+      "textures": "textures/blocks/battery"
+    },
+    "battery_mk2_item": {
+      "textures": "textures/blocks/battery_mk2"
+    },
+    "battery_mk3_item": {
+      "textures": "textures/blocks/battery_mk3"
+    },
+    "crushed_copper": {
+      "textures": "textures/items/crushed_copper"
+    },
+    "crushed_gold": {
+      "textures": "textures/items/crushed_gold"
+    },
+    "crushed_nickel": {
+      "textures": "textures/items/crushed_nickel"
+    },
+    "crushed_bauxite": {
+      "textures": "textures/items/crushed_bauxite"
+    },
+    "unprocessed_coal": {
+      "textures": "textures/items/unprocessed_coal"
+    },
+    "unprocessed_redstone": {
+      "textures": "textures/items/unprocessed_redstone"
+    },
+    "unprocessed_lapis": {
+      "textures": "textures/items/unprocessed_lapis"
+    },
+    "unprocessed_quartz": {
+      "textures": "textures/items/unprocessed_quartz"
+    },
+    "unprocessed_sulfur": {
+      "textures": "textures/items/unprocessed_sulfur"
+    },
+    "unprocessed_nether_gold": {
+      "textures": "textures/items/unprocessed_nether_gold"
+    },
+    "unprocessed_diamond": {
+      "textures": "textures/items/unprocessed_diamond"
+    },
+    "unprocessed_emerald": {
+      "textures": "textures/items/unprocessed_emerald"
+    },
+    "crushed_uranium": {
+      "textures": "textures/items/crushed_uranium"
+    },
+    "crushed_ancient_debris": {
+      "textures": "textures/items/crushed_ancient_debris"
+    },
+    "foundry_frame": {
+      "textures": "textures/items/foundry_frame"
+    },
+    "foundry_relay": {
+      "textures": "textures/items/foundry_relay"
+    },
+    "foundry_stabilizer": {
+      "textures": "textures/items/foundry_stabilizer"
+    },
+    "starforge_helmet": {
+      "textures": "textures/items/starforge_helmet"
+    },
+    "starforge_chest": {
+      "textures": "textures/items/starforge_chest"
+    },
+    "starforge_legs": {
+      "textures": "textures/items/starforge_legs"
+    },
+    "starforge_boots": {
+      "textures": "textures/items/starforge_boots"
+    },
+    "starforge_array": {
+      "textures": "textures/items/starforge_array"
+    },
+    "starforge_chip": {
+      "textures": "textures/items/starforge_chip"
+    },
+    "end_star_core": {
+      "textures": "textures/items/end_star_core"
+    },
+    "orbital_strike_designator": {
+      "textures": "textures/items/orbital_strike_designator"
+    },
+    "xp_capsule": {
+      "textures": "textures/items/xp_capsule"
+    },
+    "star_wither_seed": {
+      "textures": "textures/items/star_wither_seed"
+    },
+    "industrial_container_mk1_packed": {
+      "textures": "textures/items/industrial_container_mk1_packed"
+    },
+    "industrial_container_mk2_packed": {
+      "textures": "textures/items/industrial_container_mk2_packed"
+    },
+    "orbital_container_mk3_packed": {
+      "textures": "textures/items/orbital_container_mk3_packed"
+    },
+    "singularity_container_packed": {
+      "textures": "textures/items/singularity_container_packed"
+    }
+  }
+}

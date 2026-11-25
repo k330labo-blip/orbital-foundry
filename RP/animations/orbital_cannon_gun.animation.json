@@ -1,0 +1,161 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.orbital_foundry.orbital_cannon.aim": {
+   "loop": true,
+   "bones": {
+    "barrel": {
+     "rotation": [
+      "q.property('orbital_foundry:tilt')",
+      0,
+      0
+     ]
+    },
+    "glow_cap_l0": {
+     "scale": [
+      1,
+      "q.property('orbital_foundry:charge') > 0 ? 1 : 0.01",
+      1
+     ]
+    },
+    "glow_cap_l1": {
+     "scale": [
+      1,
+      "q.property('orbital_foundry:charge') > 2 ? 1 : 0.01",
+      1
+     ]
+    },
+    "glow_cap_l2": {
+     "scale": [
+      1,
+      "q.property('orbital_foundry:charge') > 4 ? 1 : 0.01",
+      1
+     ]
+    },
+    "glow_cap_r0": {
+     "scale": [
+      1,
+      "q.property('orbital_foundry:charge') > 0 ? 1 : 0.01",
+      1
+     ]
+    },
+    "glow_cap_r1": {
+     "scale": [
+      1,
+      "q.property('orbital_foundry:charge') > 2 ? 1 : 0.01",
+      1
+     ]
+    },
+    "glow_cap_r2": {
+     "scale": [
+      1,
+      "q.property('orbital_foundry:charge') > 4 ? 1 : 0.01",
+      1
+     ]
+    },
+    "glow_coil_0": {
+     "scale": "q.property('orbital_foundry:charge') > 0 ? (1 + 0.04 * math.sin(q.life_time * 600 + 0)) : 0.01"
+    },
+    "glow_coil_1": {
+     "scale": "q.property('orbital_foundry:charge') > 1 ? (1 + 0.04 * math.sin(q.life_time * 600 + 60)) : 0.01"
+    },
+    "glow_coil_2": {
+     "scale": "q.property('orbital_foundry:charge') > 2 ? (1 + 0.04 * math.sin(q.life_time * 600 + 120)) : 0.01"
+    },
+    "glow_coil_3": {
+     "scale": "q.property('orbital_foundry:charge') > 3 ? (1 + 0.04 * math.sin(q.life_time * 600 + 180)) : 0.01"
+    },
+    "glow_coil_4": {
+     "scale": "q.property('orbital_foundry:charge') > 4 ? (1 + 0.04 * math.sin(q.life_time * 600 + 240)) : 0.01"
+    },
+    "glow_coil_5": {
+     "scale": "q.property('orbital_foundry:charge') > 5 ? (1 + 0.04 * math.sin(q.life_time * 600 + 300)) : 0.01"
+    },
+    "glow_prong_0": {
+     "scale": "q.property('orbital_foundry:charge') >= 6 ? (1 + 0.5 * math.abs(math.sin(q.life_time * 900 + 0))) : 0.01"
+    },
+    "glow_prong_1": {
+     "scale": "q.property('orbital_foundry:charge') >= 6 ? (1 + 0.5 * math.abs(math.sin(q.life_time * 900 + 90))) : 0.01"
+    },
+    "glow_prong_2": {
+     "scale": "q.property('orbital_foundry:charge') >= 6 ? (1 + 0.5 * math.abs(math.sin(q.life_time * 900 + 180))) : 0.01"
+    },
+    "glow_prong_3": {
+     "scale": "q.property('orbital_foundry:charge') >= 6 ? (1 + 0.5 * math.abs(math.sin(q.life_time * 900 + 270))) : 0.01"
+    },
+    "glow_muzzle": {
+     "scale": "q.property('orbital_foundry:charge') >= 6 ? 1 : 0.01"
+    }
+   }
+  },
+  "animation.orbital_foundry.orbital_cannon.charge_up": {
+   "loop": true,
+   "bones": {
+    "barrel": {
+     "position": [
+      "math.sin(q.life_time * 3000) * 0.15",
+      0,
+      "math.cos(q.life_time * 2600) * 0.15"
+     ]
+    },
+    "glow_coil_0": {
+     "scale": "1.1 + 0.2 * math.abs(math.sin(q.life_time * 1200 - 0))"
+    },
+    "glow_coil_1": {
+     "scale": "1.1 + 0.2 * math.abs(math.sin(q.life_time * 1200 - 50))"
+    },
+    "glow_coil_2": {
+     "scale": "1.1 + 0.2 * math.abs(math.sin(q.life_time * 1200 - 100))"
+    },
+    "glow_coil_3": {
+     "scale": "1.1 + 0.2 * math.abs(math.sin(q.life_time * 1200 - 150))"
+    },
+    "glow_coil_4": {
+     "scale": "1.1 + 0.2 * math.abs(math.sin(q.life_time * 1200 - 200))"
+    },
+    "glow_coil_5": {
+     "scale": "1.1 + 0.2 * math.abs(math.sin(q.life_time * 1200 - 250))"
+    }
+   }
+  },
+  "animation.orbital_foundry.orbital_cannon.recoil": {
+   "loop": "hold_on_last_frame",
+   "animation_length": 1,
+   "bones": {
+    "barrel": {
+     "position": {
+      "0.0": [
+       0,
+       -6,
+       0
+      ],
+      "0.08": [
+       0,
+       -7,
+       0
+      ],
+      "1.0": [
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "crown": {
+     "scale": {
+      "0.0": [
+       1.4,
+       1,
+       1.4
+      ],
+      "0.5": [
+       1,
+       1,
+       1
+      ]
+     }
+    }
+   }
+  }
+ }
+}

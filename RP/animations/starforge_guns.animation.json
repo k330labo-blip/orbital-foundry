@@ -1,0 +1,275 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.orbital_foundry.starforge_guns.idle": {
+   "loop": true,
+   "bones": {
+    "barrels0": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*50"
+     ]
+    },
+    "glow_muzzle0": {
+     "scale": "0.01"
+    },
+    "glow_heat0": {
+     "scale": "0.01"
+    },
+    "glow_vent0": {
+     "scale": "0.5"
+    },
+    "glow_core0": {
+     "scale": "0.9+0.15*math.sin(q.life_time*400+0)"
+    },
+    "barrels1": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*57"
+     ]
+    },
+    "glow_muzzle1": {
+     "scale": "0.01"
+    },
+    "glow_heat1": {
+     "scale": "0.01"
+    },
+    "glow_vent1": {
+     "scale": "0.5"
+    },
+    "glow_core1": {
+     "scale": "0.9+0.15*math.sin(q.life_time*400+90)"
+    },
+    "barrels2": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*64"
+     ]
+    },
+    "glow_muzzle2": {
+     "scale": "0.01"
+    },
+    "glow_heat2": {
+     "scale": "0.01"
+    },
+    "glow_vent2": {
+     "scale": "0.5"
+    },
+    "glow_core2": {
+     "scale": "0.9+0.15*math.sin(q.life_time*400+180)"
+    },
+    "barrels3": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*71"
+     ]
+    },
+    "glow_muzzle3": {
+     "scale": "0.01"
+    },
+    "glow_heat3": {
+     "scale": "0.01"
+    },
+    "glow_vent3": {
+     "scale": "0.5"
+    },
+    "glow_core3": {
+     "scale": "0.9+0.15*math.sin(q.life_time*400+270)"
+    },
+    "glow_pack": {
+     "scale": "0.95+0.1*math.sin(q.life_time*300)"
+    }
+   }
+  },
+  "animation.orbital_foundry.starforge_guns.fire": {
+   "loop": true,
+   "bones": {
+    "barrels0": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*2600"
+     ],
+     "position": [
+      0,
+      0,
+      "0.6*math.abs(math.sin(q.life_time*1800+0))"
+     ]
+    },
+    "glow_muzzle0": {
+     "scale": "1.2+1.8*math.abs(math.sin(q.life_time*1800+0))"
+    },
+    "glow_vent0": {
+     "scale": "1"
+    },
+    "glow_heat0": {
+     "scale": "0.01+0.7*math.clamp(q.life_time*0.2,0,1)"
+    },
+    "housing0": {
+     "position": [
+      0,
+      0,
+      "0.4*math.abs(math.sin(q.life_time*1800+0))"
+     ]
+    },
+    "barrels1": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*2600"
+     ],
+     "position": [
+      0,
+      0,
+      "0.6*math.abs(math.sin(q.life_time*1800+40))"
+     ]
+    },
+    "glow_muzzle1": {
+     "scale": "1.2+1.8*math.abs(math.sin(q.life_time*1800+40))"
+    },
+    "glow_vent1": {
+     "scale": "1"
+    },
+    "glow_heat1": {
+     "scale": "0.01+0.7*math.clamp(q.life_time*0.2,0,1)"
+    },
+    "housing1": {
+     "position": [
+      0,
+      0,
+      "0.4*math.abs(math.sin(q.life_time*1800+40))"
+     ]
+    },
+    "barrels2": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*2600"
+     ],
+     "position": [
+      0,
+      0,
+      "0.6*math.abs(math.sin(q.life_time*1800+80))"
+     ]
+    },
+    "glow_muzzle2": {
+     "scale": "1.2+1.8*math.abs(math.sin(q.life_time*1800+80))"
+    },
+    "glow_vent2": {
+     "scale": "1"
+    },
+    "glow_heat2": {
+     "scale": "0.01+0.7*math.clamp(q.life_time*0.2,0,1)"
+    },
+    "housing2": {
+     "position": [
+      0,
+      0,
+      "0.4*math.abs(math.sin(q.life_time*1800+80))"
+     ]
+    },
+    "barrels3": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*2600"
+     ],
+     "position": [
+      0,
+      0,
+      "0.6*math.abs(math.sin(q.life_time*1800+120))"
+     ]
+    },
+    "glow_muzzle3": {
+     "scale": "1.2+1.8*math.abs(math.sin(q.life_time*1800+120))"
+    },
+    "glow_vent3": {
+     "scale": "1"
+    },
+    "glow_heat3": {
+     "scale": "0.01+0.7*math.clamp(q.life_time*0.2,0,1)"
+    },
+    "housing3": {
+     "position": [
+      0,
+      0,
+      "0.4*math.abs(math.sin(q.life_time*1800+120))"
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.starforge_guns.cool": {
+   "loop": true,
+   "bones": {
+    "barrels0": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*200"
+     ]
+    },
+    "glow_muzzle0": {
+     "scale": "0.01"
+    },
+    "glow_heat0": {
+     "scale": "math.max(0.01,1-q.life_time*0.33)"
+    },
+    "glow_vent0": {
+     "scale": "1.1+0.3*math.sin(q.life_time*900)"
+    },
+    "barrels1": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*200"
+     ]
+    },
+    "glow_muzzle1": {
+     "scale": "0.01"
+    },
+    "glow_heat1": {
+     "scale": "math.max(0.01,1-q.life_time*0.33)"
+    },
+    "glow_vent1": {
+     "scale": "1.1+0.3*math.sin(q.life_time*900)"
+    },
+    "barrels2": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*200"
+     ]
+    },
+    "glow_muzzle2": {
+     "scale": "0.01"
+    },
+    "glow_heat2": {
+     "scale": "math.max(0.01,1-q.life_time*0.33)"
+    },
+    "glow_vent2": {
+     "scale": "1.1+0.3*math.sin(q.life_time*900)"
+    },
+    "barrels3": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*200"
+     ]
+    },
+    "glow_muzzle3": {
+     "scale": "0.01"
+    },
+    "glow_heat3": {
+     "scale": "math.max(0.01,1-q.life_time*0.33)"
+    },
+    "glow_vent3": {
+     "scale": "1.1+0.3*math.sin(q.life_time*900)"
+    }
+   }
+  }
+ }
+}

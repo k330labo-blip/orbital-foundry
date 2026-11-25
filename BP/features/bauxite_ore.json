@@ -1,0 +1,18 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "orbital_foundry:bauxite_ore_feature"
+    },
+    "count": 7,
+    "replace_rules": [
+      {
+        "places_block": "orbital_foundry:bauxite_ore",
+        "may_replace": [
+          "minecraft:stone",
+          "minecraft:deepslate"
+        ]
+      }
+    ]
+  }
+}

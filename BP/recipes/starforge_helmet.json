@@ -1,0 +1,42 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:starforge_helmet"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "MRM",
+      "OUO",
+      " C "
+    ],
+    "key": {
+      "M": {
+        "item": "orbital_foundry:meteor_iron"
+      },
+      "R": {
+        "item": "orbital_foundry:foundry_relay"
+      },
+      "O": {
+        "item": "orbital_foundry:orbital_crystal"
+      },
+      "U": {
+        "item": "orbital_foundry:processing_unit"
+      },
+      "C": {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    },
+    "unlock": [
+      {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:starforge_helmet",
+      "count": 1
+    }
+  }
+}

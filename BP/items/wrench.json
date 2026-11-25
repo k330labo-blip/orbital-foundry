@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:wrench",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "整備レンチ\n§7機械を開く・設定する整備レンチ\n§7しゃがんで使うと倍速設定。星炉頭部に使うとボス召喚"
+      },
+      "minecraft:icon": "wrench",
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.orbital_foundry.rocket_plot": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.plot[q.property('orbital_foundry:plot_style')]"
+      ],
+      "arrays": {
+        "textures": {
+          "Array.plot": [
+            "Texture.launch",
+            "Texture.land",
+            "Texture.blocked"
+          ]
+        }
+      }
+    }
+  }
+}

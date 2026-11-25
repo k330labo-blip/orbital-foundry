@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:steel_chestplate"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "S S",
+      "SPS",
+      "SSS"
+    ],
+    "key": {
+      "S": {
+        "item": "orbital_foundry:steel_ingot"
+      },
+      "P": {
+        "item": "orbital_foundry:steel_plate"
+      }
+    },
+    "result": {
+      "item": "orbital_foundry:steel_chestplate",
+      "count": 1
+    },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    }
+  }
+}

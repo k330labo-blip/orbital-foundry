@@ -1,0 +1,66 @@
+{
+ "format_version": "1.10.0",
+ "particle_effect": {
+  "description": {
+   "identifier": "orbital_foundry:terminal_shock",
+   "basic_render_parameters": {
+    "material": "particles_blend",
+    "texture": "textures/particle/of_spark"
+   }
+  },
+  "components": {
+   "minecraft:emitter_rate_instant": {
+    "num_particles": 30
+   },
+   "minecraft:emitter_lifetime_once": {
+    "active_time": 0.05
+   },
+   "minecraft:particle_lifetime_expression": {
+    "max_lifetime": "0.4"
+   },
+   "minecraft:particle_initial_speed": "5",
+   "minecraft:particle_motion_dynamic": {
+    "linear_acceleration": [
+     0,
+     0,
+     0
+    ],
+    "linear_drag_coefficient": 5
+   },
+   "minecraft:particle_appearance_billboard": {
+    "size": [
+     "0.12*(1 - v.particle_age / v.particle_lifetime)",
+     "0.12*(1 - v.particle_age / v.particle_lifetime)"
+    ],
+    "facing_camera_mode": "lookat_xyz",
+    "uv": {
+     "texture_width": 8,
+     "texture_height": 8,
+     "uv": [
+      0,
+      0
+     ],
+     "uv_size": [
+      8,
+      8
+     ]
+    }
+   },
+   "minecraft:particle_appearance_tinting": {
+    "color": {
+     "gradient": {
+      "0.0": "#FFFF6040",
+      "1.0": "#00A01010"
+     },
+     "interpolant": "v.particle_age / v.particle_lifetime"
+    }
+   },
+   "minecraft:emitter_shape_disc": {
+    "radius": 0.3,
+    "plane_normal": "y",
+    "surface_only": true,
+    "direction": "outwards"
+   }
+  }
+ }
+}

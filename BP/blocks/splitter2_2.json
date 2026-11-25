@@ -1,0 +1,84 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:splitter2_2",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.logistics"
+      },
+      "states": {
+        "orbital_foundry:splitter_input": [
+          "legacy",
+          "south",
+          "west",
+          "north",
+          "east"
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:display_name": "二又ベルト分配機 Mk II\n§7後ろから入った荷を左右2方向へ均等に振り分ける\n§7置いたときプレイヤーのいる側が入口",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_splitter2_2_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "of_splitter2_2_top",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "of_splitter2_2_side",
+          "render_method": "opaque"
+        }
+      },
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:splitter_input') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:splitter_input') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:splitter_input') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

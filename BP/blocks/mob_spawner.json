@@ -1,0 +1,163 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:mob_spawner",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.machines"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 12
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.mob_spawner",
+        "bone_visibility": {
+          "lit": "q.block_state('orbital_foundry:active')"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_sp_base",
+          "render_method": "blend"
+        },
+        "base": {
+          "texture": "of_sp_base",
+          "render_method": "blend",
+          "face_dimming": true
+        },
+        "pillar": {
+          "texture": "of_sp_pillar",
+          "render_method": "blend",
+          "face_dimming": true
+        },
+        "cage": {
+          "texture": "of_sp_cage",
+          "render_method": "blend",
+          "face_dimming": true
+        },
+        "circle": {
+          "texture": "of_sp_circle",
+          "render_method": "blend",
+          "face_dimming": true
+        },
+        "circle_lit": {
+          "texture": "of_sp_circle_lit",
+          "render_method": "blend",
+          "face_dimming": false
+        },
+        "core": {
+          "texture": "of_sp_core",
+          "render_method": "blend",
+          "face_dimming": false
+        },
+        "panel": {
+          "texture": "of_sp_panel",
+          "render_method": "blend",
+          "face_dimming": true
+        }
+      },
+      "minecraft:display_name": "全自動モブスポナー\n§7電力でモブを召喚 · 種類・数・間隔・上限を設定\n§7しゃがみ+レンチで倍速設定",
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true",
+        "components": {
+          "minecraft:light_emission": 10
+        }
+      }
+    ]
+  }
+}

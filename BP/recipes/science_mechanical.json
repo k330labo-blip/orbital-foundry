@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:science_mechanical"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "GC"
+    ],
+    "key": {
+      "G": {
+        "item": "orbital_foundry:gear"
+      },
+      "C": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    "result": {
+      "item": "orbital_foundry:science_mechanical",
+      "count": 2
+    },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    }
+  }
+}

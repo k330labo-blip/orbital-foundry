@@ -1,0 +1,58 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "軌道工廠 / BP",
+    "description": "OrbitalFoundry_v0.8.321 / Astral Overcoming",
+    "uuid": "5c22c429-55af-4ce8-bd33-5698b4cf388a",
+    "version": [
+      0,
+      8,
+      321
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      100
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "c2582507-9727-43c7-93aa-1bd13e5a95ef",
+      "version": [
+        0,
+        8,
+        321
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "45676948-9d37-47ca-be90-97e8f649fe86",
+      "version": [
+        0,
+        8,
+        321
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "e10fa2e7-f8eb-4775-907e-89c147c1d623",
+      "version": [
+        0,
+        8,
+        321
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.7.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    }
+  ]
+}

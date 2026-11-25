@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:quarry_head",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_quarry_rig"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.quarry_head"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "animations": {
+        "shaft": "animation.orbital_foundry.quarry_head.shaft",
+        "spin": "animation.orbital_foundry.quarry_head.spin"
+      },
+      "scripts": {
+        "animate": [
+          "shaft",
+          {
+            "spin": "q.property('orbital_foundry:working')"
+          }
+        ]
+      }
+    }
+  }
+}

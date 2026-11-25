@@ -1,0 +1,82 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.orbital_foundry.storage_display.spin": {
+      "loop": true,
+      "bones": {
+        "frame": {
+          "rotation": [
+            0,
+            "q.time_stamp * 2",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(q.time_stamp * 4.5) * 0.4",
+            0
+          ]
+        },
+        "icon0": {
+          "rotation": [
+            0,
+            "q.time_stamp * 2",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(q.time_stamp * 4.5) * 0.4",
+            0
+          ]
+        },
+        "icon1": {
+          "rotation": [
+            0,
+            "q.time_stamp * 2",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(q.time_stamp * 4.5) * 0.4",
+            0
+          ]
+        },
+        "icon2": {
+          "rotation": [
+            0,
+            "q.time_stamp * 2",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(q.time_stamp * 4.5) * 0.4",
+            0
+          ]
+        },
+        "icon3": {
+          "rotation": [
+            0,
+            "q.time_stamp * 2",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(q.time_stamp * 4.5) * 0.4",
+            0
+          ]
+        },
+        "single": {
+          "rotation": [
+            0,
+            "q.time_stamp * 2",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(q.time_stamp * 4.5) * 0.4",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

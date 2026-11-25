@@ -1,0 +1,47 @@
+{
+ "format_version": "1.8.0",
+ "render_controllers": {
+  "controller.render.orbital_foundry.starforge_drone": {
+   "geometry": "Geometry.default",
+   "textures": [
+    "Texture.default"
+   ],
+   "materials": [
+    {
+     "*": "Material.default"
+    },
+    {
+     "glow_*": "Material.glow"
+    }
+   ]
+  },
+  "controller.render.orbital_foundry.starforge_guns": {
+   "geometry": "Geometry.guns",
+   "textures": [
+    "Texture.guns"
+   ],
+   "materials": [
+    {
+     "*": "Material.gun"
+    },
+    {
+     "glow_*": "Material.glow"
+    }
+   ]
+  },
+  "controller.render.orbital_foundry.starforge_module": {
+   "geometry": "Geometry.default",
+   "textures": [
+    "Texture.default"
+   ],
+   "materials": [
+    {
+     "*": "Material.default"
+    },
+    {
+     "glow_*": "Material.glow"
+    }
+   ]
+  }
+ }
+}

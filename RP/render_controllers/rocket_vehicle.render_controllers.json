@@ -1,0 +1,85 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.orbital_foundry.rocket_vehicle": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "part_visibility": [
+        {
+          "engine": "q.property('orbital_foundry:phase') >= 1"
+        },
+        {
+          "lower": "q.property('orbital_foundry:phase') >= 2"
+        },
+        {
+          "gear_a": "q.property('orbital_foundry:phase') >= 2"
+        },
+        {
+          "gear_b": "q.property('orbital_foundry:phase') >= 2"
+        },
+        {
+          "upper": "q.property('orbital_foundry:phase') >= 3"
+        },
+        {
+          "gear_c": "q.property('orbital_foundry:phase') >= 3"
+        },
+        {
+          "neck": "q.property('orbital_foundry:phase') >= 4"
+        },
+        {
+          "nose": "q.property('orbital_foundry:phase') >= 5"
+        },
+        {
+          "fuel_1": "q.property('orbital_foundry:phase') >= 2 && q.property('orbital_foundry:fuel') >= 1"
+        },
+        {
+          "guidance_1": "q.property('orbital_foundry:phase') >= 4 && q.property('orbital_foundry:guidance') >= 1"
+        },
+        {
+          "fuel_2": "q.property('orbital_foundry:phase') >= 2 && q.property('orbital_foundry:fuel') >= 2"
+        },
+        {
+          "guidance_2": "q.property('orbital_foundry:phase') >= 4 && q.property('orbital_foundry:guidance') >= 2"
+        },
+        {
+          "fuel_3": "q.property('orbital_foundry:phase') >= 2 && q.property('orbital_foundry:fuel') >= 3"
+        },
+        {
+          "guidance_3": "q.property('orbital_foundry:phase') >= 4 && q.property('orbital_foundry:guidance') >= 3"
+        },
+        {
+          "fuel_4": "q.property('orbital_foundry:phase') >= 2 && q.property('orbital_foundry:fuel') >= 4"
+        },
+        {
+          "guidance_4": "q.property('orbital_foundry:phase') >= 4 && q.property('orbital_foundry:guidance') >= 4"
+        },
+        {
+          "glow": "q.property('orbital_foundry:engine')"
+        }
+      ]
+    },
+    "controller.render.orbital_foundry.rocket_interior": {
+      "geometry": "Geometry.interior",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.interior"
+      ],
+      "part_visibility": [
+        {
+          "*": "q.property('orbital_foundry:phase') >= 2"
+        }
+      ]
+    }
+  }
+}

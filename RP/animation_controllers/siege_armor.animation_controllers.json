@@ -1,0 +1,46 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.orbital_foundry.siege_armor": {
+      "initial_state": "closed",
+      "states": {
+        "closed": {
+          "animations": [
+            "closed"
+          ],
+          "transitions": [
+            {
+              "open": "q.property('orbital_foundry:open') && !q.property('orbital_foundry:closing')"
+            }
+          ]
+        },
+        "open": {
+          "animations": [
+            "open"
+          ],
+          "transitions": [
+            {
+              "closing": "q.property('orbital_foundry:closing')"
+            },
+            {
+              "closed": "!q.property('orbital_foundry:open')"
+            }
+          ]
+        },
+        "closing": {
+          "animations": [
+            "closing"
+          ],
+          "transitions": [
+            {
+              "closed": "!q.property('orbital_foundry:open')"
+            },
+            {
+              "open": "q.property('orbital_foundry:open') && !q.property('orbital_foundry:closing')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

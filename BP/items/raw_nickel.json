@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:raw_nickel",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "粗ニッケル\n§7ニッケル原鉱。粉砕機で処理する"
+      },
+      "minecraft:icon": "raw_nickel",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

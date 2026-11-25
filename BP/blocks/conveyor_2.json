@@ -1,0 +1,261 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:conveyor_2",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.logistics"
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ],
+        "orbital_foundry:belt_direction": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:belt_entry_open": [
+          false,
+          true
+        ],
+        "orbital_foundry:belt_exit_open": [
+          false,
+          true
+        ],
+        "orbital_foundry:belt_shape": [
+          0,
+          1,
+          2
+        ],
+        "orbital_foundry:belt_entry_rise": [
+          0,
+          1,
+          -1
+        ],
+        "orbital_foundry:belt_exit_rise": [
+          0,
+          1,
+          -1
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.conveyor_1",
+        "bone_visibility": {
+          "details_straight": "q.block_state('orbital_foundry:belt_shape') == 0",
+          "straight_entry_flat": "q.block_state('orbital_foundry:belt_shape') == 0 && q.block_state('orbital_foundry:belt_entry_rise') <= 0",
+          "straight_entry_up": "q.block_state('orbital_foundry:belt_shape') == 0 && q.block_state('orbital_foundry:belt_entry_rise') == 1",
+          "straight_exit_flat": "q.block_state('orbital_foundry:belt_shape') == 0 && q.block_state('orbital_foundry:belt_exit_rise') <= 0",
+          "straight_exit_up": "q.block_state('orbital_foundry:belt_shape') == 0 && q.block_state('orbital_foundry:belt_exit_rise') == 1",
+          "details_east": "q.block_state('orbital_foundry:belt_shape') == 1 && q.block_state('orbital_foundry:belt_entry_rise') <= 0 && q.block_state('orbital_foundry:belt_exit_rise') <= 0",
+          "east_entry_flat": "q.block_state('orbital_foundry:belt_shape') == 1 && q.block_state('orbital_foundry:belt_entry_rise') <= 0 && !(q.block_state('orbital_foundry:belt_exit_rise') <= 0)",
+          "east_entry_up": "q.block_state('orbital_foundry:belt_shape') == 1 && q.block_state('orbital_foundry:belt_entry_rise') == 1",
+          "east_exit_flat": "q.block_state('orbital_foundry:belt_shape') == 1 && q.block_state('orbital_foundry:belt_exit_rise') <= 0 && !(q.block_state('orbital_foundry:belt_entry_rise') <= 0)",
+          "east_exit_up": "q.block_state('orbital_foundry:belt_shape') == 1 && q.block_state('orbital_foundry:belt_exit_rise') == 1",
+          "details_west": "q.block_state('orbital_foundry:belt_shape') == 2 && q.block_state('orbital_foundry:belt_entry_rise') <= 0 && q.block_state('orbital_foundry:belt_exit_rise') <= 0",
+          "west_entry_flat": "q.block_state('orbital_foundry:belt_shape') == 2 && q.block_state('orbital_foundry:belt_entry_rise') <= 0 && !(q.block_state('orbital_foundry:belt_exit_rise') <= 0)",
+          "west_entry_up": "q.block_state('orbital_foundry:belt_shape') == 2 && q.block_state('orbital_foundry:belt_entry_rise') == 1",
+          "west_exit_flat": "q.block_state('orbital_foundry:belt_shape') == 2 && q.block_state('orbital_foundry:belt_exit_rise') <= 0 && !(q.block_state('orbital_foundry:belt_entry_rise') <= 0)",
+          "west_exit_up": "q.block_state('orbital_foundry:belt_shape') == 2 && q.block_state('orbital_foundry:belt_exit_rise') == 1",
+          "entry_cap": "q.block_state('orbital_foundry:belt_entry_open') == false && q.block_state('orbital_foundry:belt_shape') == 0",
+          "exit_cap": "q.block_state('orbital_foundry:belt_exit_open') == false",
+          "flat_deck_east": "q.block_state('orbital_foundry:belt_shape') == 1 && q.block_state('orbital_foundry:belt_entry_rise') <= 0 && q.block_state('orbital_foundry:belt_exit_rise') <= 0",
+          "flat_deck_west": "q.block_state('orbital_foundry:belt_shape') == 2 && q.block_state('orbital_foundry:belt_entry_rise') <= 0 && q.block_state('orbital_foundry:belt_exit_rise') <= 0"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_belt2_steel",
+          "render_method": "alpha_test"
+        },
+        "steel": {
+          "texture": "of_belt2_steel",
+          "render_method": "alpha_test"
+        },
+        "brass": {
+          "texture": "of_belt2_brass",
+          "render_method": "alpha_test"
+        },
+        "copper": {
+          "texture": "of_belt2_copper",
+          "render_method": "alpha_test"
+        },
+        "tread": {
+          "texture": "of_belt2_tread",
+          "render_method": "alpha_test"
+        },
+        "gear_brass": {
+          "texture": "of_belt2_gear_brass",
+          "render_method": "alpha_test"
+        },
+        "gear_steel": {
+          "texture": "of_belt2_gear_steel",
+          "render_method": "alpha_test"
+        },
+        "curve_east": {
+          "texture": "of_belt2_curve_east",
+          "render_method": "alpha_test"
+        },
+        "curve_west": {
+          "texture": "of_belt2_curve_west",
+          "render_method": "alpha_test"
+        },
+        "curve_deck_east": {
+          "texture": "of_belt2_curve_deck_east",
+          "render_method": "alpha_test"
+        },
+        "curve_deck_west": {
+          "texture": "of_belt2_curve_deck_west",
+          "render_method": "alpha_test"
+        },
+        "curve_panel": {
+          "texture": "of_belt2_curve_panel",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          8,
+          16
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          8,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/conveyor_2.json",
+      "minecraft:display_name": "ベルト Mk II\n§7ベルト Mk II (Mk I の約2.4倍)",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_belt2_steel",
+              "render_method": "alpha_test"
+            },
+            "steel": {
+              "texture": "of_belt2_steel",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_belt2_brass",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_belt2_copper",
+              "render_method": "alpha_test"
+            },
+            "tread": {
+              "texture": "of_belt2_tread_moving",
+              "render_method": "alpha_test"
+            },
+            "gear_brass": {
+              "texture": "of_belt2_gear_brass_moving",
+              "render_method": "alpha_test"
+            },
+            "gear_steel": {
+              "texture": "of_belt2_gear_steel_moving",
+              "render_method": "alpha_test"
+            },
+            "curve_east": {
+              "texture": "of_belt2_curve_east_moving",
+              "render_method": "alpha_test"
+            },
+            "curve_west": {
+              "texture": "of_belt2_curve_west_moving",
+              "render_method": "alpha_test"
+            },
+            "curve_deck_east": {
+              "texture": "of_belt2_curve_deck_east_moving",
+              "render_method": "alpha_test"
+            },
+            "curve_deck_west": {
+              "texture": "of_belt2_curve_deck_west_moving",
+              "render_method": "alpha_test"
+            },
+            "curve_panel": {
+              "texture": "of_belt2_curve_panel",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:belt_direction') == 0",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:belt_direction') == 1",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:belt_direction') == 2",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:belt_direction') == 3",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:starforge_boots"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "F F",
+      "HCH",
+      "PDP"
+    ],
+    "key": {
+      "F": {
+        "item": "orbital_foundry:foundry_frame"
+      },
+      "H": {
+        "item": "orbital_foundry:heat_alloy"
+      },
+      "P": {
+        "item": "orbital_foundry:phase_stone"
+      },
+      "D": {
+        "item": "orbital_foundry:drive_component"
+      },
+      "C": {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    },
+    "unlock": [
+      {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:starforge_boots",
+      "count": 1
+    }
+  }
+}

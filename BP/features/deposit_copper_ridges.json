@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "orbital_foundry:deposit_copper_ridges"
+    },
+    "features": [
+      "orbital_foundry:deposit_copper_offset_0",
+      "orbital_foundry:deposit_copper_offset_1",
+      "orbital_foundry:deposit_copper_offset_2",
+      "orbital_foundry:deposit_copper_offset_3",
+      "orbital_foundry:deposit_copper_offset_4",
+      "orbital_foundry:deposit_copper_offset_5",
+      "orbital_foundry:deposit_copper_offset_6",
+      "orbital_foundry:deposit_copper_offset_7",
+      "orbital_foundry:deposit_copper_offset_8",
+      "orbital_foundry:deposit_copper_offset_9",
+      "orbital_foundry:deposit_copper_offset_10",
+      "orbital_foundry:deposit_copper_offset_11",
+      "orbital_foundry:deposit_copper_offset_12",
+      "orbital_foundry:deposit_copper_offset_13"
+    ]
+  }
+}

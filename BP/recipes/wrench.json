@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:wrench"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "I  ",
+      " CI",
+      " CI"
+    ],
+    "key": {
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "C": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    "result": {
+      "item": "orbital_foundry:wrench",
+      "count": 1
+    },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    }
+  }
+}

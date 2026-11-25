@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:industrial_container_mk2_packed",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:icon": "industrial_container_mk2_packed",
+      "minecraft:display_name": {
+        "value": "工業コンテナ Mk II（中身入り）\n§7置くと中身ごと元に戻る"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:block_placer": {
+        "block": "orbital_foundry:industrial_container_mk2"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "orbital_foundry:canned_ration"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "orbital_foundry:tomato"
+      },
+      {
+        "item": "orbital_foundry:corn"
+      },
+      {
+        "item": "orbital_foundry:edamame"
+      },
+      {
+        "item": "orbital_foundry:empty_can"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:canned_ration",
+      "count": 1
+    },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    }
+  }
+}

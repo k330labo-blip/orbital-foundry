@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:mender",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_siege"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.mender"
+      },
+      "animations": {
+        "hover": "animation.orbital_foundry.mender.hover",
+        "heal": "animation.orbital_foundry.mender.heal"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "hover": "!q.property('orbital_foundry:charging')"
+          },
+          {
+            "heal": "q.property('orbital_foundry:charging')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#d6dcd6",
+        "overlay_color": "#36d26e"
+      }
+    }
+  }
+}

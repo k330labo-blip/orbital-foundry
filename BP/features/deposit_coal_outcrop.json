@@ -1,0 +1,28 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "orbital_foundry:deposit_coal_outcrop"
+    },
+    "places_block": "orbital_foundry:deposit_coal_outcrop",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:air"
+    ],
+    "may_attach_to": {
+      "bottom": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:stone",
+        "minecraft:gravel",
+        "minecraft:coarse_dirt",
+        "minecraft:sand",
+        "minecraft:snow",
+        "minecraft:podzol",
+        "minecraft:terracotta",
+        "minecraft:calcite"
+      ]
+    }
+  }
+}

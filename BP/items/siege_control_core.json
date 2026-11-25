@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:siege_control_core",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.ammo"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "攻城制御核\n§7攻城機を倒して得る制御核"
+      },
+      "minecraft:icon": "siege_control_core",
+      "minecraft:max_stack_size": 16,
+      "minecraft:glint": true
+    }
+  }
+}

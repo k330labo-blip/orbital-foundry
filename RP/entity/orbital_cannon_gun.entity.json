@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:orbital_cannon_gun",
+      "materials": {
+        "default": "entity_alphatest",
+        "glow": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/orbital_cannon_gun"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.orbital_cannon_gun"
+      },
+      "animations": {
+        "aim": "animation.orbital_foundry.orbital_cannon.aim",
+        "charge_up": "animation.orbital_foundry.orbital_cannon.charge_up",
+        "recoil": "animation.orbital_foundry.orbital_cannon.recoil"
+      },
+      "scripts": {
+        "scale": "1.6",
+        "animate": [
+          "aim",
+          {
+            "charge_up": "q.property('orbital_foundry:stage') == 1 || q.property('orbital_foundry:stage') == 2"
+          },
+          {
+            "recoil": "q.property('orbital_foundry:stage') == 3"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.orbital_foundry.orbital_cannon_gun"
+      ]
+    }
+  }
+}

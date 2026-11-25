@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:science_mechanical",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "機械サイエンスパック\n§7研究用パック。機械の研究に使う"
+      },
+      "minecraft:icon": "science_mechanical",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

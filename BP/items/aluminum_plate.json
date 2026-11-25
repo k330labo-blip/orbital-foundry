@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:aluminum_plate",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "アルミ板\n§7ボーキサイトから作る軽量板。軌道部品の素材"
+      },
+      "minecraft:icon": "aluminum_plate",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

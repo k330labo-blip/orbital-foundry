@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:storage_cell",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.ammo"
+      }
+    },
+    "components": {
+      "minecraft:icon": "storage_cell",
+      "minecraft:max_stack_size": 64,
+      "minecraft:display_name": {
+        "value": "蓄電セル\n§7銃器改造 (容量) に使う蓄電セル"
+      }
+    }
+  }
+}

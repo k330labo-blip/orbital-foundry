@@ -1,0 +1,81 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "orbital_foundry:belt_cargo",
+      "is_summonable": true,
+      "is_spawnable": false,
+      "properties": {
+        "orbital_foundry:cargo_icon": {
+          "type": "int",
+          "range": [
+            0,
+            270
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "orbital_foundry_cargo",
+          "inanimate"
+        ]
+      },
+      "minecraft:inventory": {
+        "inventory_size": 1,
+        "container_type": "inventory",
+        "private": true
+      },
+      "minecraft:persistent": {},
+      "minecraft:collision_box": {
+        "width": 0,
+        "height": 0
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:breathable": {
+        "breathes_air": true,
+        "breathes_water": true,
+        "breathes_lava": true,
+        "breathes_solids": true,
+        "suffocate_time": 0,
+        "total_supply": 15
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "width": 0,
+            "height": 0,
+            "pivot": [
+              0,
+              1000,
+              0
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1674 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:coal_generator",
+      "menu_category": {
+        "category": "construction"
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ],
+        "orbital_foundry:charge_level": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "orbital_foundry:gear_phase": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.coal_generator",
+        "bone_visibility": {
+          "cycle_0": "q.block_state('orbital_foundry:gear_phase') == 0",
+          "cycle_1": "q.block_state('orbital_foundry:gear_phase') == 1",
+          "cycle_2": "q.block_state('orbital_foundry:gear_phase') == 2",
+          "cycle_3": "q.block_state('orbital_foundry:gear_phase') == 3"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_gen_back",
+          "render_method": "alpha_test"
+        },
+        "front": {
+          "texture": "of_gen_front",
+          "render_method": "alpha_test"
+        },
+        "back": {
+          "texture": "of_gen_back",
+          "render_method": "alpha_test"
+        },
+        "right": {
+          "texture": "of_gen_right",
+          "render_method": "alpha_test"
+        },
+        "left": {
+          "texture": "of_gen_left",
+          "render_method": "alpha_test"
+        },
+        "top": {
+          "texture": "of_gen_top",
+          "render_method": "alpha_test"
+        },
+        "bottom": {
+          "texture": "of_gen_bottom",
+          "render_method": "alpha_test"
+        },
+        "copper": {
+          "texture": "of_gen_copper",
+          "render_method": "alpha_test"
+        },
+        "brass": {
+          "texture": "of_gen_brass",
+          "render_method": "alpha_test"
+        },
+        "meter": {
+          "texture": "of_gen_meter_0",
+          "render_method": "alpha_test"
+        },
+        "fire": {
+          "texture": "of_gen_fire",
+          "render_method": "alpha_test"
+        },
+        "gear": {
+          "texture": "of_gen_gear",
+          "render_method": "alpha_test"
+        },
+        "spring": {
+          "texture": "of_gen_spring",
+          "render_method": "alpha_test"
+        },
+        "iron_trim": {
+          "texture": "of_gen_back",
+          "render_method": "alpha_test"
+        },
+        "bolt": {
+          "texture": "of_gen_top",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          15,
+          14
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/coal_generator.json",
+      "minecraft:display_name": "石炭発電機\n§7石炭を燃やして発電する",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_0",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_1",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_2",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_3",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_4",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 5",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_5",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 6",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_6",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 7",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_7",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 8",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_8",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 9",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_9",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == false && q.block_state('orbital_foundry:charge_level') == 10",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_10",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_0",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_1",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_2",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_3",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_4",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 5",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_5",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 6",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_6",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 7",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_7",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 8",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_8",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 9",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_9",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true && q.block_state('orbital_foundry:charge_level') == 10",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "front": {
+              "texture": "of_gen_front",
+              "render_method": "alpha_test"
+            },
+            "back": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "right": {
+              "texture": "of_gen_right",
+              "render_method": "alpha_test"
+            },
+            "left": {
+              "texture": "of_gen_left",
+              "render_method": "alpha_test"
+            },
+            "top": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            },
+            "bottom": {
+              "texture": "of_gen_bottom",
+              "render_method": "alpha_test"
+            },
+            "copper": {
+              "texture": "of_gen_copper",
+              "render_method": "alpha_test"
+            },
+            "brass": {
+              "texture": "of_gen_brass",
+              "render_method": "alpha_test"
+            },
+            "meter": {
+              "texture": "of_gen_meter_10",
+              "render_method": "alpha_test"
+            },
+            "fire": {
+              "texture": "of_gen_fire_running",
+              "render_method": "alpha_test"
+            },
+            "gear": {
+              "texture": "of_gen_gear_running",
+              "render_method": "alpha_test"
+            },
+            "spring": {
+              "texture": "of_gen_spring_running",
+              "render_method": "alpha_test"
+            },
+            "iron_trim": {
+              "texture": "of_gen_back",
+              "render_method": "alpha_test"
+            },
+            "bolt": {
+              "texture": "of_gen_top",
+              "render_method": "alpha_test"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

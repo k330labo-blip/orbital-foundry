@@ -1,0 +1,42 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:starforge_legs"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "FMF",
+      "ICI",
+      "D D"
+    ],
+    "key": {
+      "F": {
+        "item": "orbital_foundry:foundry_frame"
+      },
+      "M": {
+        "item": "orbital_foundry:meteor_iron"
+      },
+      "I": {
+        "item": "orbital_foundry:iridium"
+      },
+      "D": {
+        "item": "orbital_foundry:drive_component"
+      },
+      "C": {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    },
+    "unlock": [
+      {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:starforge_legs",
+      "count": 1
+    }
+  }
+}

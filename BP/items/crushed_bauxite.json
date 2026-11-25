@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:crushed_bauxite",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.materials"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "粉砕ボーキサイト\n§7粉砕したボーキサイト。精錬してアルミに"
+      },
+      "minecraft:icon": "crushed_bauxite",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

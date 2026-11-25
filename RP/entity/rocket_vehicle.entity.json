@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:rocket_vehicle",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_rocket",
+        "interior": "textures/entity/of_rocket_interior"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.rocket_vehicle",
+        "interior": "geometry.orbital_foundry.rocket_interior"
+      },
+      "render_controllers": [
+        "controller.render.orbital_foundry.rocket_vehicle",
+        "controller.render.orbital_foundry.rocket_interior"
+      ],
+      "animations": {
+        "gears": "animation.orbital_foundry.rocket.gears",
+        "interior": "animation.orbital_foundry.rocket.interior"
+      },
+      "scripts": {
+        "animate": [
+          "gears",
+          "interior"
+        ]
+      }
+    }
+  }
+}

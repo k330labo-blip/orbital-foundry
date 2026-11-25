@@ -1,0 +1,39 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "軌道工廠 / RP",
+    "description": "OrbitalFoundry_v0.8.321 / Astral Overcoming",
+    "uuid": "e10fa2e7-f8eb-4775-907e-89c147c1d623",
+    "version": [
+      0,
+      8,
+      321
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      100
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "9bac64c2-7779-4849-b4fc-3636235f4995",
+      "version": [
+        0,
+        8,
+        321
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "5c22c429-55af-4ce8-bd33-5698b4cf388a",
+      "version": [
+        0,
+        8,
+        321
+      ]
+    }
+  ]
+}

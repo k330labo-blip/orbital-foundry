@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:activation_core",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "起動核\n§7オーバーシア戦を始める起動用のコア"
+      },
+      "minecraft:icon": "activation_core",
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

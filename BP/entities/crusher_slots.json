@@ -1,0 +1,137 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "orbital_foundry:crusher_slots",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:inventory": {
+        "inventory_size": 27,
+        "container_type": "container",
+        "private": false,
+        "restrict_to_owner": false
+      },
+      "minecraft:collision_box": {
+        "width": 0,
+        "height": 0
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:persistent": {},
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:type_family": {
+        "family": [
+          "orbital_foundry_slots",
+          "inanimate"
+        ]
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "width": 0.98,
+            "height": 0.98,
+            "pivot": [
+              0,
+              0.49,
+              0
+            ]
+          }
+        ]
+      },
+      "minecraft:breathable": {
+        "breathes_air": true,
+        "breathes_water": true,
+        "breathes_lava": true,
+        "breathes_solids": true,
+        "suffocate_time": 0,
+        "total_supply": 15
+      },
+      "minecraft:fire_immune": {}
+    },
+    "component_groups": {
+      "orbital_foundry:mining_clearance": {
+        "minecraft:custom_hit_test": {
+          "hitboxes": [
+            {
+              "width": 0,
+              "height": 0,
+              "pivot": [
+                0,
+                1000,
+                0
+              ]
+            }
+          ]
+        },
+        "minecraft:collision_box": {
+          "width": 0,
+          "height": 0
+        }
+      },
+      "orbital_foundry:full_clearance": {
+        "minecraft:custom_hit_test": {
+          "hitboxes": [
+            {
+              "width": 0.98,
+              "height": 0.98,
+              "pivot": [
+                0,
+                0.49,
+                0
+              ]
+            }
+          ]
+        },
+        "minecraft:collision_box": {
+          "width": 0.98,
+          "height": 0.98
+        }
+      }
+    },
+    "events": {
+      "orbital_foundry:retract": {
+        "add": {
+          "component_groups": [
+            "orbital_foundry:mining_clearance"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "orbital_foundry:full_clearance"
+          ]
+        }
+      },
+      "orbital_foundry:extend": {
+        "remove": {
+          "component_groups": [
+            "orbital_foundry:mining_clearance"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "orbital_foundry:full_clearance"
+          ]
+        }
+      }
+    }
+  }
+}

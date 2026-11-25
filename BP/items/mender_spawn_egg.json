@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:mender_spawn_egg",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "修理ドローンのスポーンエッグ\n§7このアドオンの敵を出す (防衛戦と同じ中身)"
+      },
+      "minecraft:icon": "mender_spawn_egg",
+      "minecraft:max_stack_size": 64,
+      "minecraft:entity_placer": {
+        "entity": "orbital_foundry:mender"
+      }
+    }
+  }
+}

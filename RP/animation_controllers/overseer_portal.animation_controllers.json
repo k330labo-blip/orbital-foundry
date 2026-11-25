@@ -1,0 +1,38 @@
+{
+ "format_version": "1.10.0",
+ "animation_controllers": {
+  "controller.animation.orbital_foundry.overseer_portal": {
+   "initial_state": "opening",
+   "states": {
+    "opening": {
+     "animations": [
+      "opening"
+     ],
+     "transitions": [
+      {
+       "open": "q.property('orbital_foundry:phase') == 2"
+      },
+      {
+       "closing": "q.property('orbital_foundry:phase') == 3"
+      }
+     ]
+    },
+    "open": {
+     "animations": [
+      "open"
+     ],
+     "transitions": [
+      {
+       "closing": "q.property('orbital_foundry:phase') == 3"
+      }
+     ]
+    },
+    "closing": {
+     "animations": [
+      "closing"
+     ]
+    }
+   }
+  }
+ }
+}

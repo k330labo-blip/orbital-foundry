@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:meteor_iron",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "隕鉄\n§7宇宙で採れる隕鉄"
+      },
+      "minecraft:icon": "meteor_iron",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

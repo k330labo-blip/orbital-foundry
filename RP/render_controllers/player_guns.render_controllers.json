@@ -1,0 +1,24 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.orbital_foundry.held_gun": {
+      "geometry": "Array.of_gun_views[v.of_first_person > 0.5 ? 1 : 0]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "arrays": {
+        "geometries": {
+          "Array.of_gun_views": [
+            "Geometry.default",
+            "Geometry.first_person"
+          ]
+        }
+      }
+    }
+  }
+}

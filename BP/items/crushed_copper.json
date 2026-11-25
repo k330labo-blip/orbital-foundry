@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:crushed_copper",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.materials"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "粉砕銅鉱\n§7粉砕した銅鉱。精錬すると収量が増える"
+      },
+      "minecraft:icon": "crushed_copper",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

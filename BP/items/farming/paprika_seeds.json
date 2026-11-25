@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:paprika_seeds",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.seed"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "item.orbital_foundry:paprika_seeds.name"
+      },
+      "minecraft:icon": "paprika_seeds",
+      "minecraft:max_stack_size": 64,
+      "minecraft:block_placer": {
+        "block": "orbital_foundry:paprika_crop",
+        "use_on": [
+          "minecraft:farmland"
+        ]
+      }
+    }
+  }
+}

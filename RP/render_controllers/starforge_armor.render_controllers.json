@@ -1,0 +1,20 @@
+{
+ "format_version": "1.8.0",
+ "render_controllers": {
+  "controller.render.orbital_foundry.starforge_armor": {
+   "geometry": "Geometry.default",
+   "textures": [
+    "Texture.default",
+    "Texture.enchanted"
+   ],
+   "materials": [
+    {
+     "*": "Material.default"
+    },
+    {
+     "glow_*": "Material.glow"
+    }
+   ]
+  }
+ }
+}

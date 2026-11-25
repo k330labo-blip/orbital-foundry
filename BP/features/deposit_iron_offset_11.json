@@ -1,0 +1,13 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "orbital_foundry:deposit_iron_offset_11"
+    },
+    "places_feature": "orbital_foundry:deposit_iron_outcrop",
+    "iterations": 1,
+    "x": 3,
+    "y": 0,
+    "z": 1
+  }
+}

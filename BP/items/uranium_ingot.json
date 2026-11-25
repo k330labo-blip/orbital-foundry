@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:uranium_ingot",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "ウランインゴット\n§7ウランのインゴット。燃料棒の素材"
+      },
+      "minecraft:icon": "uranium_ingot",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

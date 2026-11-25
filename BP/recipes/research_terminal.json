@@ -1,0 +1,37 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:research_terminal"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "GIG",
+      "IRI",
+      "SSS"
+    ],
+    "key": {
+      "G": {
+        "item": "minecraft:glass"
+      },
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "R": {
+        "item": "minecraft:redstone"
+      },
+      "S": {
+        "item": "minecraft:cobblestone"
+      }
+    },
+    "result": {
+      "item": "orbital_foundry:research_terminal",
+      "count": 1
+    },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    }
+  }
+}

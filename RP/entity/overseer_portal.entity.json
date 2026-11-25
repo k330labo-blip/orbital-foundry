@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:overseer_portal",
+      "materials": {
+        "default": "entity_alphatest",
+        "glow": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/entity/overseer_portal"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.overseer_portal"
+      },
+      "animations": {
+        "spin": "animation.orbital_foundry.overseer_portal.spin",
+        "opening": "animation.orbital_foundry.overseer_portal.opening",
+        "open": "animation.orbital_foundry.overseer_portal.open",
+        "closing": "animation.orbital_foundry.overseer_portal.closing",
+        "state": "controller.animation.orbital_foundry.overseer_portal"
+      },
+      "scripts": {
+        "scale": "7.5",
+        "animate": [
+          "spin",
+          "state"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.orbital_foundry.overseer_portal"
+      ]
+    }
+  }
+}

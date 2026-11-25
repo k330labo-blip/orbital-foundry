@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:crushed_iron",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "粉砕鉄鉱\n§7粉砕した鉄鉱。精錬すると収量が増える"
+      },
+      "minecraft:icon": "crushed_iron",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

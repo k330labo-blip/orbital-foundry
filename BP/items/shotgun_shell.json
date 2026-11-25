@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:shotgun_shell",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "shotgun_shell",
+      "minecraft:max_stack_size": 64,
+      "minecraft:display_name": {
+        "value": "ショットガン弾\n§7工廠ショットガンの弾"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:quarry_bridge",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_quarry_rig"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.quarry_bridge"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

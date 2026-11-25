@@ -1,0 +1,304 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:ore_beneficiator",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.machines"
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ],
+        "orbital_foundry:visual_phase": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.workshop_ore_beneficiator",
+        "bone_visibility": {
+          "cycle_0": "q.block_state('orbital_foundry:visual_phase') == 0",
+          "cycle_1": "q.block_state('orbital_foundry:visual_phase') == 1",
+          "cycle_2": "q.block_state('orbital_foundry:visual_phase') == 2",
+          "cycle_3": "q.block_state('orbital_foundry:visual_phase') == 3"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_workshop_iron",
+          "render_method": "blend"
+        },
+        "base": {
+          "texture": "of_workshop_base",
+          "render_method": "blend"
+        },
+        "hazard": {
+          "texture": "of_workshop_hazard",
+          "render_method": "blend"
+        },
+        "steel": {
+          "texture": "of_workshop_steel",
+          "render_method": "blend"
+        },
+        "copper": {
+          "texture": "of_workshop_copper",
+          "render_method": "blend"
+        },
+        "rubber": {
+          "texture": "of_workshop_rubber",
+          "render_method": "blend"
+        },
+        "pipes": {
+          "texture": "of_workshop_pipes",
+          "render_method": "blend"
+        },
+        "body": {
+          "texture": "ore_beneficiator_body",
+          "render_method": "blend"
+        },
+        "trim": {
+          "texture": "ore_beneficiator_trim",
+          "render_method": "blend"
+        },
+        "dark": {
+          "texture": "ore_beneficiator_dark",
+          "render_method": "blend"
+        },
+        "ore": {
+          "texture": "ore_beneficiator_ore",
+          "render_method": "blend"
+        },
+        "rotor": {
+          "texture": "ore_beneficiator_rotor",
+          "render_method": "blend"
+        },
+        "froth": {
+          "texture": "ore_beneficiator_froth",
+          "render_method": "blend"
+        },
+        "glass": {
+          "texture": "ore_beneficiator_glass",
+          "render_method": "blend"
+        },
+        "liquid": {
+          "texture": "ore_beneficiator_liquid",
+          "render_method": "blend"
+        },
+        "screen": {
+          "texture": "ore_beneficiator_screen",
+          "render_method": "blend"
+        },
+        "strip": {
+          "texture": "ore_beneficiator_strip",
+          "render_method": "blend"
+        },
+        "blink_off": {
+          "texture": "ore_beneficiator_blink",
+          "render_method": "blend"
+        },
+        "blink": {
+          "texture": "ore_beneficiator_blink",
+          "render_method": "blend"
+        },
+        "bar": {
+          "texture": "ore_beneficiator_bar",
+          "render_method": "blend"
+        },
+        "badge": {
+          "texture": "of_ore_badge_x5",
+          "render_method": "blend"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          15,
+          14
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/ore_beneficiator.json",
+      "minecraft:display_name": "高度選鉱機\n§7鉱石を選別して品位を上げる",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:active') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_iron",
+              "render_method": "blend"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "blend"
+            },
+            "hazard": {
+              "texture": "of_workshop_hazard",
+              "render_method": "blend"
+            },
+            "steel": {
+              "texture": "of_workshop_steel",
+              "render_method": "blend"
+            },
+            "copper": {
+              "texture": "of_workshop_copper",
+              "render_method": "blend"
+            },
+            "rubber": {
+              "texture": "of_workshop_rubber",
+              "render_method": "blend"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "blend"
+            },
+            "body": {
+              "texture": "ore_beneficiator_body",
+              "render_method": "blend"
+            },
+            "trim": {
+              "texture": "ore_beneficiator_trim",
+              "render_method": "blend"
+            },
+            "dark": {
+              "texture": "ore_beneficiator_dark",
+              "render_method": "blend"
+            },
+            "ore": {
+              "texture": "ore_beneficiator_ore",
+              "render_method": "blend"
+            },
+            "rotor": {
+              "texture": "ore_beneficiator_rotor",
+              "render_method": "blend"
+            },
+            "froth": {
+              "texture": "ore_beneficiator_froth",
+              "render_method": "blend"
+            },
+            "glass": {
+              "texture": "ore_beneficiator_glass_lit",
+              "render_method": "blend"
+            },
+            "liquid": {
+              "texture": "ore_beneficiator_liquid_lit",
+              "render_method": "blend"
+            },
+            "screen": {
+              "texture": "ore_beneficiator_screen_lit",
+              "render_method": "blend"
+            },
+            "strip": {
+              "texture": "ore_beneficiator_strip_lit",
+              "render_method": "blend"
+            },
+            "blink_off": {
+              "texture": "ore_beneficiator_blink",
+              "render_method": "blend"
+            },
+            "blink": {
+              "texture": "ore_beneficiator_blink_lit",
+              "render_method": "blend"
+            },
+            "bar": {
+              "texture": "ore_beneficiator_bar_lit",
+              "render_method": "blend"
+            },
+            "badge": {
+              "texture": "of_ore_badge_x5",
+              "render_method": "blend"
+            }
+          },
+          "minecraft:light_emission": 6
+        }
+      }
+    ]
+  }
+}

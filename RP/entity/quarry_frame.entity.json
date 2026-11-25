@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:quarry_frame",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_quarry_rig"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.quarry_frame"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "animations": {
+        "lamps": "animation.orbital_foundry.quarry_frame.lamps"
+      },
+      "scripts": {
+        "animate": [
+          "lamps"
+        ]
+      }
+    }
+  }
+}

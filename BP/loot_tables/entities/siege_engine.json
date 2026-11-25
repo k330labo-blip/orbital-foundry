@@ -1,0 +1,33 @@
+{
+ "pools": [
+  {
+   "rolls": 3,
+   "entries": [
+    {
+     "type": "item",
+     "name": "orbital_foundry:steel_plate",
+     "weight": 4,
+     "functions": [
+      {
+       "function": "set_count",
+       "count": {
+        "min": 2,
+        "max": 4
+       }
+      }
+     ]
+    },
+    {
+     "type": "item",
+     "name": "orbital_foundry:motor",
+     "weight": 2
+    },
+    {
+     "type": "item",
+     "name": "orbital_foundry:processing_unit",
+     "weight": 1
+    }
+   ]
+  }
+ ]
+}

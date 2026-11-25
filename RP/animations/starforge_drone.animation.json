@@ -1,0 +1,78 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.orbital_foundry.starforge_drone.idle": {
+   "loop": true,
+   "bones": {
+    "barrels": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*60"
+     ]
+    },
+    "glow_core": {
+     "scale": "0.9+0.15*math.sin(q.life_time*400)"
+    },
+    "glow_vent": {
+     "scale": "0.4+0.07*q.property('orbital_foundry:heat')"
+    },
+    "glow_heat": {
+     "scale": "0.01+0.1*q.property('orbital_foundry:heat')*(q.property('orbital_foundry:heat')>3)"
+    },
+    "glow_muzzle": {
+     "scale": "0.01"
+    },
+    "drum": {
+     "position": [
+      0,
+      "0.15*math.sin(q.life_time*200)",
+      0
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.starforge_drone.fire": {
+   "loop": true,
+   "bones": {
+    "barrels": {
+     "rotation": [
+      0,
+      0,
+      "q.life_time*2400"
+     ],
+     "position": [
+      0,
+      0,
+      "0.8*math.abs(math.sin(q.life_time*1800))"
+     ]
+    },
+    "glow_muzzle": {
+     "scale": "1.2+1.8*math.abs(math.sin(q.life_time*1800))"
+    },
+    "housing": {
+     "position": [
+      0,
+      0,
+      "0.5*math.abs(math.sin(q.life_time*1800))"
+     ]
+    }
+   }
+  },
+  "animation.orbital_foundry.starforge_rig.idle": {
+   "loop": true,
+   "bones": {
+    "glow_rig": {
+     "scale": "0.95+0.1*math.sin(q.life_time*300)"
+    },
+    "pack": {
+     "position": [
+      0,
+      "0.2*math.sin(q.life_time*120)",
+      0
+     ]
+    }
+   }
+  }
+ }
+}

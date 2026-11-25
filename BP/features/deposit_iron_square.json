@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "orbital_foundry:deposit_iron_square"
+    },
+    "structure_name": "orbital_foundry:deposit_iron_square",
+    "facing_direction": "south",
+    "adjustment_radius": 2,
+    "constraints": {
+      "grounded": {},
+      "unburied": {},
+      "block_intersection": {
+        "block_allowlist": [
+          "minecraft:air",
+          "minecraft:stone",
+          "minecraft:grass_block",
+          "minecraft:grass",
+          "minecraft:dirt",
+          "minecraft:gravel",
+          "minecraft:sand",
+          "minecraft:coarse_dirt",
+          "minecraft:podzol",
+          "minecraft:snow_layer"
+        ]
+      }
+    }
+  }
+}

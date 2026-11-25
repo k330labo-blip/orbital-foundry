@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "orbital_foundry:tomato_seeds_from_tomato"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "orbital_foundry:tomato"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:tomato_seeds",
+      "count": 2
+    },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:guidance_device",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "誘導装置\n§7ロケットや追尾装置に使う誘導装置"
+      },
+      "minecraft:icon": "guidance_device",
+      "minecraft:max_stack_size": 4
+    }
+  }
+}

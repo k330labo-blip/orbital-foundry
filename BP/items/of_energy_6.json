@@ -1,0 +1,15 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:of_energy_6"
+    },
+    "components": {
+      "minecraft:icon": "of_energy_6",
+      "minecraft:max_stack_size": 1,
+      "minecraft:display_name": {
+        "value": "機械メーター"
+      }
+    }
+  }
+}

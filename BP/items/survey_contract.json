@@ -1,0 +1,15 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:survey_contract"
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "採取契約書\n§7採取契約書。軌道便の採取先を指定する"
+      },
+      "minecraft:icon": "survey_contract",
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

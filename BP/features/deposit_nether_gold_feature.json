@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "orbital_foundry:deposit_nether_gold_feature"
+    },
+    "places_block": "orbital_foundry:deposit_nether_gold",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:netherrack",
+      "minecraft:blackstone",
+      "minecraft:basalt"
+    ],
+    "may_attach_to": {
+      "top": [
+        "minecraft:air"
+      ]
+    }
+  }
+}

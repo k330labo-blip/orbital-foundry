@@ -1,0 +1,32 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "orbital_foundry:steel_plate",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "orbital_foundry:copper_wire",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "orbital_foundry:bearing",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "orbital_foundry:motor",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

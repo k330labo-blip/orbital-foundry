@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:science_automation",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "自動化サイエンスパック（緑）\n§7研究用パック (緑)。自動化の研究に使う"
+      },
+      "minecraft:icon": "science_automation",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

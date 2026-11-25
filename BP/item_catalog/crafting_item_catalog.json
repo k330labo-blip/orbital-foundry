@@ -1,0 +1,254 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:crafting_items_catalog": {
+    "categories": [
+      {
+        "category_name": "construction",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:coal_generator",
+              "name": "orbital_foundry:creative.power"
+            },
+            "items": [
+              "orbital_foundry:coal_generator",
+              "orbital_foundry:thermal_generator",
+              "orbital_foundry:nuclear_reactor",
+              "orbital_foundry:battery",
+              "orbital_foundry:solar_generator",
+              "orbital_foundry:solar_concentrator"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:crusher",
+              "name": "orbital_foundry:creative.machines"
+            },
+            "items": [
+              "orbital_foundry:crusher",
+              "orbital_foundry:washer",
+              "orbital_foundry:electric_furnace",
+              "orbital_foundry:alloy_furnace",
+              "orbital_foundry:press",
+              "orbital_foundry:wire_mill",
+              "orbital_foundry:assembler",
+              "orbital_foundry:refinery",
+              "orbital_foundry:grower_mk1",
+              "orbital_foundry:grower_mk2",
+              "orbital_foundry:grower_mk3"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:conveyor_1",
+              "name": "orbital_foundry:creative.logistics"
+            },
+            "items": [
+              "orbital_foundry:conveyor_1",
+              "orbital_foundry:power_cable",
+              "orbital_foundry:fluid_pipe",
+              "orbital_foundry:water_pump",
+              "orbital_foundry:oil_pump",
+              "orbital_foundry:fluid_tank"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:industrial_container_mk1",
+              "name": "orbital_foundry:creative.storage"
+            },
+            "items": [
+              "orbital_foundry:industrial_container_mk1",
+              "orbital_foundry:industrial_container_mk2",
+              "orbital_foundry:orbital_container_mk3",
+              "orbital_foundry:singularity_container"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:fixed_drill",
+              "name": "orbital_foundry:creative.mining"
+            },
+            "items": [
+              "orbital_foundry:fixed_drill",
+              "orbital_foundry:quarry_marker",
+              "orbital_foundry:chunk_destroyer_mk1",
+              "orbital_foundry:chunk_destroyer_mk2",
+              "orbital_foundry:chunk_destroyer_mk3"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:research_lab",
+              "name": "orbital_foundry:creative.research"
+            },
+            "items": [
+              "orbital_foundry:research_lab",
+              "orbital_foundry:research_terminal"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:defense_terminal",
+              "name": "orbital_foundry:creative.defense"
+            },
+            "items": [
+              "orbital_foundry:defense_terminal",
+              "orbital_foundry:turret_mk1",
+              "orbital_foundry:turret_shotgun",
+              "orbital_foundry:turret_railgun"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:launch_pad",
+              "name": "orbital_foundry:creative.space"
+            },
+            "items": [
+              "orbital_foundry:launch_pad",
+              "orbital_foundry:landing_pad",
+              "orbital_foundry:orbital_terminal"
+            ]
+          }
+        ]
+      },
+      {
+        "category_name": "nature",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:bauxite_ore",
+              "name": "orbital_foundry:creative.ores"
+            },
+            "items": [
+              "orbital_foundry:bauxite_ore",
+              "orbital_foundry:nickel_ore",
+              "orbital_foundry:sulfur_ore",
+              "orbital_foundry:deposit_iron",
+              "orbital_foundry:deposit_copper",
+              "orbital_foundry:deposit_coal",
+              "orbital_foundry:deposit_gold",
+              "orbital_foundry:deposit_lapis",
+              "orbital_foundry:deposit_redstone",
+              "orbital_foundry:deposit_diamond",
+              "orbital_foundry:deposit_emerald",
+              "orbital_foundry:deposit_quartz",
+              "orbital_foundry:deposit_nether_gold",
+              "orbital_foundry:deposit_ancient_debris",
+              "orbital_foundry:deposit_bauxite",
+              "orbital_foundry:deposit_nickel",
+              "orbital_foundry:deposit_sulfur",
+              "orbital_foundry:deposit_uranium"
+            ]
+          }
+        ]
+      },
+      {
+        "category_name": "equipment",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:guide_book",
+              "name": "orbital_foundry:creative.tools"
+            },
+            "items": [
+              "orbital_foundry:guide_book",
+              "orbital_foundry:wrench"
+            ]
+          }
+        ]
+      },
+      {
+        "category_name": "items",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:industrial_ammo",
+              "name": "orbital_foundry:creative.ammo"
+            },
+            "items": [
+              "orbital_foundry:industrial_ammo",
+              "orbital_foundry:shotgun_shell",
+              "orbital_foundry:railgun_round",
+              "orbital_foundry:repair_kit",
+              "orbital_foundry:military_control_core"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:science_automation",
+              "name": "orbital_foundry:creative.science"
+            },
+            "items": [
+              "orbital_foundry:science_automation",
+              "orbital_foundry:science_mechanical",
+              "orbital_foundry:science_chemical",
+              "orbital_foundry:science_aerospace"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:lubricant",
+              "name": "orbital_foundry:creative.fuels"
+            },
+            "items": [
+              "orbital_foundry:lubricant",
+              "orbital_foundry:uranium_fuel",
+              "orbital_foundry:depleted_uranium_fuel",
+              "orbital_foundry:rocket_fuel"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:rocket_body_section",
+              "name": "orbital_foundry:creative.space_materials"
+            },
+            "items": [
+              "orbital_foundry:rocket_body_section",
+              "orbital_foundry:guidance_device",
+              "orbital_foundry:orbital_coordinate_data",
+              "orbital_foundry:meteor_iron",
+              "orbital_foundry:vacuum_ice",
+              "orbital_foundry:iridium",
+              "orbital_foundry:phase_stone",
+              "orbital_foundry:orbital_crystal",
+              "orbital_foundry:activation_core",
+              "orbital_foundry:enhancement_core",
+              "orbital_foundry:singularity_core"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "orbital_foundry:raw_bauxite",
+              "name": "orbital_foundry:creative.materials"
+            },
+            "items": [
+              "orbital_foundry:raw_bauxite",
+              "orbital_foundry:raw_nickel",
+              "orbital_foundry:raw_uranium",
+              "orbital_foundry:crushed_iron",
+              "orbital_foundry:sulfur",
+              "orbital_foundry:resin",
+              "orbital_foundry:silicon",
+              "orbital_foundry:steel_ingot",
+              "orbital_foundry:steel_plate",
+              "orbital_foundry:aluminum_plate",
+              "orbital_foundry:nickel_ingot",
+              "orbital_foundry:uranium_ingot",
+              "orbital_foundry:copper_wire",
+              "orbital_foundry:gear",
+              "orbital_foundry:bearing",
+              "orbital_foundry:motor",
+              "orbital_foundry:basic_circuit",
+              "orbital_foundry:control_board",
+              "orbital_foundry:drive_component",
+              "orbital_foundry:heat_alloy",
+              "orbital_foundry:processing_unit",
+              "orbital_foundry:solar_cell"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

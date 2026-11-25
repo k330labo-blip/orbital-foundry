@@ -1,0 +1,42 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:starforge_chest"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "F F",
+      "HCH",
+      "ISI"
+    ],
+    "key": {
+      "F": {
+        "item": "orbital_foundry:foundry_frame"
+      },
+      "H": {
+        "item": "orbital_foundry:heat_alloy"
+      },
+      "I": {
+        "item": "orbital_foundry:iridium"
+      },
+      "S": {
+        "item": "orbital_foundry:foundry_stabilizer"
+      },
+      "C": {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    },
+    "unlock": [
+      {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:starforge_chest",
+      "count": 1
+    }
+  }
+}

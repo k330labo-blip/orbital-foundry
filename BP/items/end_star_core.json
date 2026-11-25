@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:end_star_core",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.tools"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "終焉星核\n§7星炉ウィザーの核。作業台に置くと\n§7天蓋執行機構〈アストライア〉になる"
+      },
+      "minecraft:icon": "end_star_core",
+      "minecraft:max_stack_size": 1,
+      "minecraft:glint": true,
+      "minecraft:rarity": "epic"
+    }
+  }
+}

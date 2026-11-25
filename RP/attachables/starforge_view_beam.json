@@ -1,0 +1,41 @@
+{
+ "format_version": "1.10.0",
+ "minecraft:attachable": {
+  "description": {
+   "identifier": "orbital_foundry:starforge_view_beam",
+   "materials": {
+    "default": "entity_alphatest",
+    "glow": "entity_emissive_alpha"
+   },
+   "textures": {
+    "default": "textures/entity/starforge_drone"
+   },
+   "geometry": {
+    "default": "geometry.orbital_foundry.starforge_module"
+   },
+   "animations": {
+    "fp": "animation.orbital_foundry.starforge_module.fp",
+    "tp": "animation.orbital_foundry.starforge_module.tp",
+    "base_hide": "animation.orbital_foundry.starforge_module.base_hide",
+    "beam": "animation.orbital_foundry.starforge_module.beam"
+   },
+   "scripts": {
+    "animate": [
+     {
+      "fp": "c.is_first_person"
+     },
+     "base_hide",
+     {
+      "tp": "!c.is_first_person"
+     },
+     {
+      "beam": "c.is_first_person"
+     }
+    ]
+   },
+   "render_controllers": [
+    "controller.render.orbital_foundry.starforge_module"
+   ]
+  }
+ }
+}

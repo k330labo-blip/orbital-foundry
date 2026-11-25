@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:copper_wire",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "銅線\n§7製線機で作る銅線。回路とケーブルの素材"
+      },
+      "minecraft:icon": "copper_wire",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:science_chemical",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "化学サイエンスパック（青）\n§7研究用パック (青)。化学の研究に使う"
+      },
+      "minecraft:icon": "science_chemical",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

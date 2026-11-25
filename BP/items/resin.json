@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:resin",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "樹脂\n§7原油から作る樹脂"
+      },
+      "minecraft:icon": "resin",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

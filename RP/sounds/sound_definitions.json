@@ -1,0 +1,3315 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "orbital_foundry.forge_fire": {
+      "category": "block",
+      "min_distance": 2,
+      "max_distance": 12,
+      "sounds": [
+        "sounds/orbital_foundry/forge_fire"
+      ]
+    },
+    "orbital_foundry.railgun_fire": {
+      "category": "block",
+      "min_distance": 4,
+      "max_distance": 48,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/railgun_fire",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.turret_fire": {
+      "category": "block",
+      "min_distance": 3,
+      "max_distance": 32,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/turret_fire1",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/orbital_foundry/turret_fire2",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/orbital_foundry/turret_fire3",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.shotgun_fire": {
+      "category": "block",
+      "min_distance": 3,
+      "max_distance": 36,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/shotgun_fire1",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        },
+        {
+          "name": "sounds/orbital_foundry/shotgun_fire2",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.siege_engine": {
+      "category": "hostile",
+      "min_distance": 6,
+      "max_distance": 56,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/siege_engine_loop",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.siege_shockwave": {
+      "category": "hostile",
+      "min_distance": 8,
+      "max_distance": 96,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/siege_shockwave",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.siege_impact": {
+      "category": "hostile",
+      "min_distance": 8,
+      "max_distance": 96,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/siege_impact",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.rocket_assembly": {
+      "category": "block",
+      "min_distance": 3,
+      "max_distance": 28,
+      "sounds": [
+        "sounds/orbital_foundry/rocket_assembly"
+      ]
+    },
+    "orbital_foundry.rocket_ignition": {
+      "category": "block",
+      "min_distance": 3,
+      "max_distance": 56,
+      "sounds": [
+        "sounds/orbital_foundry/rocket_ignition"
+      ]
+    },
+    "orbital_foundry.rocket_liftoff": {
+      "category": "block",
+      "min_distance": 3,
+      "max_distance": 76,
+      "sounds": [
+        "sounds/orbital_foundry/rocket_liftoff"
+      ]
+    },
+    "orbital_foundry.gun_ratchet": {
+      "category": "player",
+      "min_distance": 1,
+      "max_distance": 8,
+      "sounds": [
+        "sounds/orbital_foundry/gun_ratchet1",
+        "sounds/orbital_foundry/gun_ratchet2"
+      ]
+    },
+    "orbital_foundry.gun_steam_release": {
+      "category": "player",
+      "min_distance": 1,
+      "max_distance": 8,
+      "sounds": [
+        "sounds/orbital_foundry/gun_steam_release"
+      ]
+    },
+    "orbital_foundry.gun_latch": {
+      "category": "player",
+      "min_distance": 1,
+      "max_distance": 8,
+      "sounds": [
+        "sounds/orbital_foundry/gun_latch"
+      ]
+    },
+    "orbital_foundry.cannon_aim": {
+      "category": "block",
+      "min_distance": 4,
+      "max_distance": 48,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/cannon_aim",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.cannon_charge": {
+      "category": "block",
+      "min_distance": 4,
+      "max_distance": 56,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/cannon_charge",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.cannon_fire": {
+      "category": "block",
+      "min_distance": 8,
+      "max_distance": 96,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/cannon_fire",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.cannon_thunder": {
+      "category": "weather",
+      "min_distance": 16,
+      "max_distance": 160,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/cannon_thunder",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.cannon_vent": {
+      "category": "block",
+      "min_distance": 4,
+      "max_distance": 40,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/cannon_vent",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.cannon_idle": {
+      "category": "block",
+      "min_distance": 3,
+      "max_distance": 28,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/cannon_idle_loop",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.full": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/full",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f0": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f000",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f1": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f001",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f2": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f002",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f3": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f003",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f4": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f004",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f5": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f005",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f6": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f006",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f7": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f007",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f8": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f008",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f9": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f009",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f10": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f010",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f11": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f011",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f12": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f012",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f13": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f013",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f14": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f014",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f15": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f015",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f16": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f016",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f17": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f017",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f18": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f018",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f19": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f019",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f20": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f020",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f21": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f021",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f22": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f022",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f23": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f023",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f24": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f024",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f25": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f025",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f26": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f026",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f27": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f027",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f28": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f028",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f29": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f029",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f30": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f030",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f31": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f031",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f32": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f032",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f33": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f033",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f34": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f034",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f35": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f035",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f36": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f036",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f37": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f037",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f38": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f038",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f39": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f039",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f40": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f040",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f41": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f041",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f42": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f042",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f43": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f043",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f44": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f044",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f45": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f045",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f46": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f046",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f47": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f047",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f48": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f048",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f49": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f049",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f50": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f050",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f51": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f051",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f52": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f052",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f53": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f053",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f54": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f054",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f55": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f055",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f56": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f056",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f57": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f057",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f58": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f058",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f59": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f059",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f60": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f060",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f61": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f061",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f62": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f062",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f63": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f063",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f64": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f064",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f65": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f065",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f66": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f066",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f67": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f067",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f68": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f068",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f69": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f069",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f70": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f070",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f71": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f071",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f72": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f072",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f73": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f073",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f74": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f074",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f75": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f075",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f76": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f076",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f77": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f077",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f78": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f078",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f79": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f079",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f80": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f080",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f81": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f081",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f82": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f082",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f83": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f083",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f84": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f084",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f85": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f085",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f86": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f086",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f87": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f087",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f88": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f088",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f89": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f089",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f90": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f090",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f91": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f091",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f92": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f092",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f93": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f093",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f94": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f094",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f95": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f095",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f96": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f096",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f97": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f097",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f98": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f098",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f99": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f099",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f100": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f100",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f101": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f101",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f102": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f102",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f103": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f103",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f104": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f104",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f105": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f105",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f106": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f106",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f107": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f107",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f108": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f108",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f109": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f109",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f110": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f110",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f111": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f111",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f112": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f112",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f113": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f113",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f114": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f114",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f115": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f115",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f116": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f116",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f117": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f117",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f118": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f118",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f119": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f119",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f120": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f120",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f121": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f121",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f122": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f122",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f123": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f123",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f124": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f124",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f125": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f125",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f126": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f126",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f127": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f127",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f128": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f128",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f129": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f129",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f130": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f130",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f131": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f131",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f132": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f132",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f133": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f133",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f134": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f134",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f135": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f135",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f136": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f136",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f137": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f137",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f138": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f138",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f139": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f139",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f140": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f140",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f141": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f141",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f142": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f142",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f143": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f143",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f144": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f144",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f145": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f145",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f146": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f146",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f147": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f147",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f148": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f148",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f149": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f149",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f150": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f150",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f151": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f151",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f152": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f152",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f153": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f153",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f154": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f154",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f155": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f155",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f156": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f156",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f157": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f157",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f158": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f158",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f159": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f159",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f160": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f160",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f161": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f161",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f162": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f162",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f163": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f163",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f164": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f164",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f165": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f165",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f166": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f166",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f167": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f167",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f168": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f168",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f169": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f169",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f170": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f170",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f171": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f171",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f172": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f172",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f173": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f173",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f174": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f174",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f175": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f175",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f176": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f176",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f177": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f177",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f178": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f178",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f179": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f179",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f180": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f180",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f181": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f181",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f182": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f182",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f183": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f183",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f184": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f184",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f185": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f185",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f186": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f186",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f187": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f187",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f188": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f188",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f189": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f189",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f190": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f190",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f191": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f191",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f192": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f192",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f193": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f193",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f194": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f194",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f195": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f195",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f196": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f196",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f197": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f197",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f198": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f198",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.f199": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/fine/f199",
+          "is3D": false,
+          "stream": false,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c0": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c00",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c1": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c01",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c2": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c02",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c3": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c03",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c4": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c04",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c5": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c05",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c6": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c06",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c7": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c07",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c8": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c08",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c9": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c09",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c10": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c10",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c11": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c11",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c12": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c12",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c13": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c13",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c14": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c14",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c15": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c15",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c16": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c16",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c17": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c17",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c18": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c18",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    },
+    "orbital_foundry.overseer_bgm.c19": {
+      "category": "music",
+      "min_distance": 512,
+      "max_distance": 1024,
+      "sounds": [
+        {
+          "name": "sounds/orbital_foundry/overseer_bgm/coarse/c19",
+          "is3D": false,
+          "stream": true,
+          "load_on_low_memory": true,
+          "volume": 1
+        }
+      ]
+    }
+  }
+}

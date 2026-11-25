@@ -1,0 +1,38 @@
+{
+ "format_version": "1.21.90",
+ "minecraft:recipe_shapeless": {
+  "description": {
+   "identifier": "orbital_foundry:head_star"
+  },
+  "tags": [
+   "crafting_table"
+  ],
+  "ingredients": [
+   {
+    "item": "minecraft:wither_skeleton_skull",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:singularity_core",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:foundry_stabilizer",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:orbital_crystal",
+    "count": 2
+   }
+  ],
+  "unlock": [
+   {
+    "item": "minecraft:wither_skeleton_skull"
+   }
+  ],
+  "result": {
+   "item": "orbital_foundry:head_star",
+   "count": 1
+  }
+ }
+}

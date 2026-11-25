@@ -1,0 +1,129 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:head_star",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.machines"
+      },
+      "states": {
+        "orbital_foundry:lit": [
+          false,
+          true
+        ]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180
+        }
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 12
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_head_star_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "of_head_star_top",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "of_head_star_top",
+          "render_method": "opaque"
+        },
+        "north": {
+          "texture": "of_head_star_front",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:display_name": "星炉頭部\n§7星炉ウィザーの中央頭部\n§7T字の上段に3つ並べ、整備レンチを使うと召喚",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:lit') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_head_star_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "of_head_star_top",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "of_head_star_top",
+              "render_method": "opaque"
+            },
+            "north": {
+              "texture": "of_head_star_front_lit",
+              "render_method": "opaque"
+            }
+          },
+          "minecraft:light_emission": 12
+        }
+      }
+    ]
+  }
+}

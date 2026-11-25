@@ -1,0 +1,119 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "orbital_foundry:scrapper",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "orbital_foundry_enemy",
+          "monster",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 1000,
+        "max": 1000
+      },
+      "minecraft:persistent": {},
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 0.9
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "can_open_doors": false,
+        "can_break_doors": false,
+        "can_path_over_lava": true,
+        "can_walk_in_lava": true
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:knockback_resistance": {
+        "value": 0.4
+      },
+      "minecraft:attack": {
+        "damage": 10
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "within_radius": 64,
+        "reselect_targets": true,
+        "must_see": false,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 8,
+            "must_see": true
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "orbital_foundry_objective"
+            },
+            "max_dist": 64,
+            "must_see": false
+          }
+        ],
+        "scan_interval": 10
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 3,
+        "speed_multiplier": 1.1,
+        "track_target": true,
+        "cooldown_time": 2
+      },
+      "minecraft:behavior.move_to_block": {
+        "priority": 4,
+        "search_range": 64,
+        "search_height": 16,
+        "goal_radius": 1.4,
+        "speed_multiplier": 1.0,
+        "target_blocks": [
+          "orbital_foundry:defense_terminal"
+        ],
+        "tick_interval": 10
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/scrapper.json"
+      },
+      "minecraft:follow_range": {
+        "value": 64,
+        "max": 64
+      },
+      "minecraft:experience_reward": {
+        "on_death": "5"
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "lava",
+          "deals_damage": "no"
+        }
+      }
+    },
+    "component_groups": {},
+    "events": {}
+  }
+}

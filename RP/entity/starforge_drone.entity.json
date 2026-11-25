@@ -1,0 +1,33 @@
+{
+ "format_version": "1.10.0",
+ "minecraft:client_entity": {
+  "description": {
+   "identifier": "orbital_foundry:starforge_drone",
+   "materials": {
+    "default": "entity_alphatest",
+    "glow": "entity_emissive_alpha"
+   },
+   "textures": {
+    "default": "textures/entity/starforge_drone"
+   },
+   "geometry": {
+    "default": "geometry.orbital_foundry.starforge_drone"
+   },
+   "animations": {
+    "idle": "animation.orbital_foundry.starforge_drone.idle",
+    "fire": "animation.orbital_foundry.starforge_drone.fire"
+   },
+   "scripts": {
+    "animate": [
+     "idle",
+     {
+      "fire": "q.property('orbital_foundry:fire')==1"
+     }
+    ]
+   },
+   "render_controllers": [
+    "controller.render.orbital_foundry.starforge_drone"
+   ]
+  }
+ }
+}

@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:rocket_plot",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "launch": "textures/entity/of_rocket_plot_launch",
+        "land": "textures/entity/of_rocket_plot_land",
+        "blocked": "textures/entity/of_rocket_plot_blocked"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.rocket_plot"
+      },
+      "render_controllers": [
+        "controller.render.orbital_foundry.rocket_plot"
+      ]
+    }
+  }
+}

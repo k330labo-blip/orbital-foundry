@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:bearing",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "軸受\n§7回転部品。駆動部品やモーターの素材"
+      },
+      "minecraft:icon": "bearing",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

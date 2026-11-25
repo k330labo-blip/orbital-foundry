@@ -1,0 +1,15 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:refined_fuel"
+    },
+    "components": {
+      "minecraft:icon": "refined_fuel",
+      "minecraft:display_name": {
+        "value": "精製燃料\n§7精製燃料。発電機やロケットの燃料"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

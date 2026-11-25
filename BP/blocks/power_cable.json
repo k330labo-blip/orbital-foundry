@@ -1,0 +1,163 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:power_cable",
+      "menu_category": {
+        "category": "construction"
+      },
+      "states": {
+        "orbital_foundry:cable_n": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:cable_e": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:cable_s": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:cable_w": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "orbital_foundry:cable_u": [
+          false,
+          true
+        ],
+        "orbital_foundry:cable_d": [
+          false,
+          true
+        ],
+        "orbital_foundry:powered": [
+          false,
+          true
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": {
+        "identifier": "geometry.orbital_foundry.power_cable",
+        "bone_visibility": {
+          "arm_n": "q.block_state('orbital_foundry:cable_n') == 1",
+          "arm_nu": "q.block_state('orbital_foundry:cable_n') == 2",
+          "arm_nd": "q.block_state('orbital_foundry:cable_n') == 3",
+          "arm_e": "q.block_state('orbital_foundry:cable_e') == 1",
+          "arm_eu": "q.block_state('orbital_foundry:cable_e') == 2",
+          "arm_ed": "q.block_state('orbital_foundry:cable_e') == 3",
+          "arm_s": "q.block_state('orbital_foundry:cable_s') == 1",
+          "arm_su": "q.block_state('orbital_foundry:cable_s') == 2",
+          "arm_sd": "q.block_state('orbital_foundry:cable_s') == 3",
+          "arm_w": "q.block_state('orbital_foundry:cable_w') == 1",
+          "arm_wu": "q.block_state('orbital_foundry:cable_w') == 2",
+          "arm_wd": "q.block_state('orbital_foundry:cable_w') == 3",
+          "arm_u": "q.block_state('orbital_foundry:cable_u') == true",
+          "arm_d": "q.block_state('orbital_foundry:cable_d') == true"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_cru_iron",
+          "render_method": "opaque"
+        },
+        "iron": {
+          "texture": "of_cru_iron",
+          "render_method": "opaque"
+        },
+        "brass": {
+          "texture": "of_cru_brass",
+          "render_method": "opaque"
+        },
+        "copper": {
+          "texture": "of_cru_copper",
+          "render_method": "opaque"
+        },
+        "insulator": {
+          "texture": "of_cab_insulator",
+          "render_method": "opaque"
+        },
+        "lamp": {
+          "texture": "of_cab_lamp_off",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          10,
+          12
+        ]
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          10,
+          12
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/power_cable.json",
+      "minecraft:display_name": "送電ケーブル\n§7電力を送るケーブル",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_cru_iron",
+              "render_method": "opaque"
+            },
+            "iron": {
+              "texture": "of_cru_iron",
+              "render_method": "opaque"
+            },
+            "brass": {
+              "texture": "of_cru_brass",
+              "render_method": "opaque"
+            },
+            "copper": {
+              "texture": "of_cab_copper_lit",
+              "render_method": "opaque"
+            },
+            "insulator": {
+              "texture": "of_cab_insulator",
+              "render_method": "opaque"
+            },
+            "lamp": {
+              "texture": "of_cab_lamp_on",
+              "render_method": "opaque"
+            }
+          },
+          "minecraft:light_emission": 9
+        }
+      }
+    ]
+  }
+}

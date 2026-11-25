@@ -1,0 +1,42 @@
+{
+ "format_version": "1.21.90",
+ "minecraft:recipe_shapeless": {
+  "description": {
+   "identifier": "orbital_foundry:head_heavy"
+  },
+  "tags": [
+   "crafting_table"
+  ],
+  "ingredients": [
+   {
+    "item": "minecraft:wither_skeleton_skull",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:steel_plate",
+    "count": 2
+   },
+   {
+    "item": "orbital_foundry:heat_alloy",
+    "count": 2
+   },
+   {
+    "item": "orbital_foundry:drive_component",
+    "count": 1
+   },
+   {
+    "item": "orbital_foundry:iridium",
+    "count": 1
+   }
+  ],
+  "unlock": [
+   {
+    "item": "minecraft:wither_skeleton_skull"
+   }
+  ],
+  "result": {
+   "item": "orbital_foundry:head_heavy",
+   "count": 1
+  }
+ }
+}

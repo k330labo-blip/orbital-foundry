@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:unprocessed_coal",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.materials"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "未処理石炭\n§7未処理の石炭。洗浄機で処理する"
+      },
+      "minecraft:icon": "unprocessed_coal",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

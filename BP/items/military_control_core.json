@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:military_control_core",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "軍用制御核\n§7防衛作戦の報酬で得る軍用制御核"
+      },
+      "minecraft:icon": "military_control_core",
+      "minecraft:max_stack_size": 16
+    }
+  }
+}

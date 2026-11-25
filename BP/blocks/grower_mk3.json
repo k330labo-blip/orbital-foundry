@@ -1,0 +1,940 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:grower_mk3",
+      "menu_category": {
+        "category": "construction"
+      },
+      "states": {
+        "orbital_foundry:active": [
+          false,
+          true
+        ],
+        "orbital_foundry:grower_family": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "orbital_foundry:grower_stage": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.8
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 8
+      },
+      "minecraft:geometry": "geometry.orbital_foundry.grower",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_workshop_steel",
+          "render_method": "opaque"
+        },
+        "frame": {
+          "texture": "of_workshop_brass",
+          "render_method": "opaque"
+        },
+        "base": {
+          "texture": "of_workshop_base",
+          "render_method": "opaque"
+        },
+        "panel": {
+          "texture": "of_grower_mk3",
+          "render_method": "opaque"
+        },
+        "pipes": {
+          "texture": "of_workshop_pipes",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/grower_mk3.json",
+      "minecraft:display_name": "全自動栽培槽 Mk III\n§7自動栽培槽 (64株)",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:active')",
+        "components": {
+          "minecraft:light_emission": 4
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 0 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_0_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 0 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_0_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 0 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_0_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 0 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_0_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 1 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_1_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 1 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_1_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 1 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_1_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 1 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_1_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 2 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_2_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 2 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_2_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 2 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_2_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 2 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_2_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 3 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_3_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 3 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_3_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 3 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_3_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 3 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_3_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 4 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_4_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 4 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_4_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 4 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_4_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 4 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_4_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 5 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_5_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 5 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_5_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 5 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_5_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 5 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_5_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 6 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_6_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 6 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_6_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 6 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_6_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 6 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_6_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 7 && q.block_state('orbital_foundry:grower_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_7_1",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 7 && q.block_state('orbital_foundry:grower_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_7_2",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 7 && q.block_state('orbital_foundry:grower_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_7_3",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:grower_family') == 7 && q.block_state('orbital_foundry:grower_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_workshop_steel",
+              "render_method": "opaque"
+            },
+            "frame": {
+              "texture": "of_workshop_brass",
+              "render_method": "opaque"
+            },
+            "base": {
+              "texture": "of_workshop_base",
+              "render_method": "opaque"
+            },
+            "panel": {
+              "texture": "of_grower_mk3_7_4",
+              "render_method": "opaque"
+            },
+            "pipes": {
+              "texture": "of_workshop_pipes",
+              "render_method": "opaque"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

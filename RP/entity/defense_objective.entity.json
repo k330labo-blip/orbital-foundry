@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:defense_objective",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_enemies"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.defense_objective"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

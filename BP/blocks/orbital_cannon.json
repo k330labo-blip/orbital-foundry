@@ -1,0 +1,38 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:orbital_cannon",
+      "menu_category": {
+        "category": "construction",
+        "group": "orbital_foundry:creative.defense"
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 4
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 30
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:display_name": "軌道迎撃砲\n§7オーバーシア専用の迎撃砲。大電力を溜めて撃つ",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_orbital_cannon_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "of_orbital_cannon_top",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "of_orbital_cannon_bottom",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:light_emission": 6,
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    }
+  }
+}

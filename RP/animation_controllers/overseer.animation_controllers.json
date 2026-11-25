@@ -1,0 +1,43 @@
+{
+ "format_version": "1.10.0",
+ "animation_controllers": {
+  "controller.animation.orbital_foundry.overseer_shutter": {
+   "initial_state": "closed",
+   "states": {
+    "closed": {
+     "animations": [
+      "shutter_closed"
+     ],
+     "transitions": [
+      {
+       "open": "q.property('orbital_foundry:core_open')"
+      }
+     ]
+    },
+    "open": {
+     "animations": [
+      "shutter_open"
+     ],
+     "transitions": [
+      {
+       "closing": "!q.property('orbital_foundry:core_open')"
+      }
+     ]
+    },
+    "closing": {
+     "animations": [
+      "shutter_close"
+     ],
+     "transitions": [
+      {
+       "open": "q.property('orbital_foundry:core_open')"
+      },
+      {
+       "closed": "q.all_animations_finished"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "orbital_foundry:reactor_casing",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "orbital_foundry:heat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 12
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "of_reactor_casing_0",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/reactor_casing.json",
+      "minecraft:display_name": "原子炉外殻\n§7完成した炉構造の石レンガ。壊すと石レンガに戻る",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_casing_0",
+              "render_method": "opaque",
+              "face_dimming": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_casing_1",
+              "render_method": "opaque",
+              "face_dimming": true
+            }
+          },
+          "minecraft:light_emission": 3
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_casing_2",
+              "render_method": "opaque",
+              "face_dimming": false
+            }
+          },
+          "minecraft:light_emission": 7
+        }
+      },
+      {
+        "condition": "q.block_state('orbital_foundry:heat') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "of_reactor_casing_3",
+              "render_method": "opaque",
+              "face_dimming": false
+            }
+          },
+          "minecraft:light_emission": 11
+        }
+      }
+    ]
+  }
+}

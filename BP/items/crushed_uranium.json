@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:crushed_uranium",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.materials"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "粉砕ウラン鉱\n§7粉砕したウラン鉱。燃料の原料"
+      },
+      "minecraft:icon": "crushed_uranium",
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

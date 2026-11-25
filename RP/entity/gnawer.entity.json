@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:gnawer",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_siege"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.gnawer"
+      },
+      "animations": {
+        "run": "animation.orbital_foundry.gnawer.run",
+        "chew": "animation.orbital_foundry.gnawer.chew"
+      },
+      "scripts": {
+        "animate": [
+          "run",
+          {
+            "chew": "q.property('orbital_foundry:charging')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#704026",
+        "overlay_color": "#d22824"
+      }
+    }
+  }
+}

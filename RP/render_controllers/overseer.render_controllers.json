@@ -1,0 +1,81 @@
+{
+ "format_version": "1.8.0",
+ "render_controllers": {
+  "controller.render.orbital_foundry.overseer": {
+   "geometry": "Geometry.default",
+   "textures": [
+    "Texture.default"
+   ],
+   "materials": [
+    {
+     "*": "Material.default"
+    },
+    {
+     "glow_*": "Material.glow"
+    }
+   ],
+   "overlay_color": {
+    "r": 1,
+    "g": 0.05,
+    "b": 0.05,
+    "a": "q.property('orbital_foundry:hurt') ? 0.5 : 0"
+   },
+   "part_visibility": [
+    {
+     "*": true
+    },
+    {
+     "wing_e0": "!q.property('orbital_foundry:w_e0')"
+    },
+    {
+     "wing_e1": "!q.property('orbital_foundry:w_e1')"
+    },
+    {
+     "wing_e2": "!q.property('orbital_foundry:w_e2')"
+    },
+    {
+     "wing_w0": "!q.property('orbital_foundry:w_w0')"
+    },
+    {
+     "wing_w1": "!q.property('orbital_foundry:w_w1')"
+    },
+    {
+     "wing_w2": "!q.property('orbital_foundry:w_w2')"
+    },
+    {
+     "wing_e0_broken": "q.property('orbital_foundry:w_e0')"
+    },
+    {
+     "wing_e1_broken": "q.property('orbital_foundry:w_e1')"
+    },
+    {
+     "wing_e2_broken": "q.property('orbital_foundry:w_e2')"
+    },
+    {
+     "wing_w0_broken": "q.property('orbital_foundry:w_w0')"
+    },
+    {
+     "wing_w1_broken": "q.property('orbital_foundry:w_w1')"
+    },
+    {
+     "wing_w2_broken": "q.property('orbital_foundry:w_w2')"
+    },
+    {
+     "glow_exposed": "q.property('orbital_foundry:core_open')"
+    },
+    {
+     "glow_aura": "!q.property('orbital_foundry:core_open')"
+    },
+    {
+     "glow_aurahot": "q.property('orbital_foundry:core_open')"
+    },
+    {
+     "glow_hot_*": "q.property('orbital_foundry:heat') >= 1"
+    },
+    {
+     "glow_white_*": "q.property('orbital_foundry:heat') >= 2"
+    }
+   ]
+  }
+ }
+}

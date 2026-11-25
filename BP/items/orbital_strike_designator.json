@@ -1,0 +1,26 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "orbital_foundry:orbital_strike_designator",
+      "menu_category": {
+        "category": "items",
+        "group": "orbital_foundry:creative.tools"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "天蓋執行機構〈アストライア〉\n§7右クリック: 地上座標を受理 → もう一度で執行\n§7左クリック: 座標を破棄 · しゃがみ右クリック: 数値で指定\n§7再交信まで3分"
+      },
+      "minecraft:icon": "orbital_strike_designator",
+      "minecraft:max_stack_size": 1,
+      "orbital_foundry:strike_designator": {},
+      "minecraft:use_modifiers": {
+        "use_duration": 0.1,
+        "movement_modifier": 1.0
+      },
+      "minecraft:glint": true,
+      "minecraft:rarity": "epic"
+    }
+  }
+}

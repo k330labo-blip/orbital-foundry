@@ -1,0 +1,42 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "orbital_foundry:starforge_array"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "IRI",
+      "UCU",
+      " S "
+    ],
+    "key": {
+      "I": {
+        "item": "orbital_foundry:iridium"
+      },
+      "R": {
+        "item": "orbital_foundry:foundry_relay"
+      },
+      "U": {
+        "item": "orbital_foundry:processing_unit"
+      },
+      "S": {
+        "item": "orbital_foundry:foundry_stabilizer"
+      },
+      "C": {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    },
+    "unlock": [
+      {
+        "item": "orbital_foundry:starforge_chip"
+      }
+    ],
+    "result": {
+      "item": "orbital_foundry:starforge_array",
+      "count": 1
+    }
+  }
+}

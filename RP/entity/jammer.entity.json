@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:jammer",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_enemies"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.jammer"
+      },
+      "animations": {
+        "walk": "animation.orbital_foundry.jammer.walk",
+        "idle": "animation.orbital_foundry.jammer.idle",
+        "charge": "animation.orbital_foundry.jammer.charge"
+      },
+      "scripts": {
+        "animate": [
+          "walk",
+          {
+            "idle": "!q.property('orbital_foundry:charging')"
+          },
+          {
+            "charge": "q.property('orbital_foundry:charging')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#2c2b33",
+        "overlay_color": "#9c3ee8"
+      }
+    }
+  }
+}

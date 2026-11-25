@@ -1,0 +1,287 @@
+[
+  {
+    "flipbook_texture": "textures/blocks/coal_generator_active",
+    "atlas_tile": "orbital_foundry_coal_generator_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/fixed_drill_active",
+    "atlas_tile": "orbital_foundry_fixed_drill_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/crusher_active",
+    "atlas_tile": "orbital_foundry_crusher_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/washer_active",
+    "atlas_tile": "orbital_foundry_washer_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/electric_furnace_active",
+    "atlas_tile": "orbital_foundry_electric_furnace_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/alloy_furnace_active",
+    "atlas_tile": "orbital_foundry_alloy_furnace_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/press_active",
+    "atlas_tile": "orbital_foundry_press_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/wire_mill_active",
+    "atlas_tile": "orbital_foundry_wire_mill_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/assembler_active",
+    "atlas_tile": "orbital_foundry_assembler_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/auto_crafter_active",
+    "atlas_tile": "orbital_foundry_auto_crafter_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/research_terminal_active",
+    "atlas_tile": "orbital_foundry_research_terminal_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/battery_active",
+    "atlas_tile": "orbital_foundry_battery_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/conveyor_1_active",
+    "atlas_tile": "orbital_foundry_conveyor_1_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/launch_pad_active",
+    "atlas_tile": "orbital_foundry_launch_pad_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/landing_pad_active",
+    "atlas_tile": "orbital_foundry_landing_pad_active",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_gen_gear_running",
+    "flipbook_texture": "textures/blocks/of_gen_gear_running",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_gen_spring_running",
+    "flipbook_texture": "textures/blocks/of_gen_spring_running",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_gen_fire_running",
+    "flipbook_texture": "textures/blocks/of_gen_fire_running",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_tread_moving",
+    "flipbook_texture": "textures/blocks/of_belt_tread_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_gear_brass_moving",
+    "flipbook_texture": "textures/blocks/of_belt_gear_brass_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_gear_steel_moving",
+    "flipbook_texture": "textures/blocks/of_belt_gear_steel_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_curve_east_moving",
+    "flipbook_texture": "textures/blocks/of_belt_curve_east_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_curve_west_moving",
+    "flipbook_texture": "textures/blocks/of_belt_curve_west_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_curve_deck_east_moving",
+    "flipbook_texture": "textures/blocks/of_belt_curve_deck_east_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "atlas_tile": "of_belt_curve_deck_west_moving",
+    "flipbook_texture": "textures/blocks/of_belt_curve_deck_west_moving",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_vent_0",
+    "atlas_tile": "of_reactor_vent_0",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_vent_1",
+    "atlas_tile": "of_reactor_vent_1",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_vent_2",
+    "atlas_tile": "of_reactor_vent_2",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_vent_3",
+    "atlas_tile": "of_reactor_vent_3",
+    "ticks_per_frame": 3,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_core_0",
+    "atlas_tile": "of_reactor_core_0",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_core_1",
+    "atlas_tile": "of_reactor_core_1",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_core_2",
+    "atlas_tile": "of_reactor_core_2",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_core_3",
+    "atlas_tile": "of_reactor_core_3",
+    "ticks_per_frame": 3,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_window_0",
+    "atlas_tile": "of_reactor_window_0",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_window_1",
+    "atlas_tile": "of_reactor_window_1",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_window_2",
+    "atlas_tile": "of_reactor_window_2",
+    "ticks_per_frame": 6,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_reactor_window_3",
+    "atlas_tile": "of_reactor_window_3",
+    "ticks_per_frame": 3,
+    "blend_frames": true
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_ore_badge_x2",
+    "atlas_tile": "of_ore_badge_x2",
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_ore_badge_x3",
+    "atlas_tile": "of_ore_badge_x3",
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_ore_badge_x5",
+    "atlas_tile": "of_ore_badge_x5",
+    "ticks_per_frame": 3
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_inc_door_lit",
+    "atlas_tile": "of_inc_door_lit",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_inc_coil_lit",
+    "atlas_tile": "of_inc_coil_lit",
+    "ticks_per_frame": 2,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_inc_gauge",
+    "atlas_tile": "of_inc_gauge",
+    "ticks_per_frame": 4,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_sp_circle_lit",
+    "atlas_tile": "of_sp_circle_lit",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_sp_core",
+    "atlas_tile": "of_sp_core",
+    "ticks_per_frame": 3,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_sp_panel",
+    "atlas_tile": "of_sp_panel",
+    "ticks_per_frame": 5,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_cr_rollers_lit",
+    "atlas_tile": "of_cr_rollers_lit",
+    "ticks_per_frame": 1,
+    "blend_frames": false
+  },
+  {
+    "flipbook_texture": "textures/blocks/of_cr_lamp_lit",
+    "atlas_tile": "of_cr_lamp_lit",
+    "ticks_per_frame": 6,
+    "blend_frames": false
+  }
+]

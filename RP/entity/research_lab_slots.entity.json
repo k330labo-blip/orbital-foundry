@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:research_lab_slots",
+      "geometry": {
+        "default": "geometry.orbital_foundry.inventory_host"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_inventory_host"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

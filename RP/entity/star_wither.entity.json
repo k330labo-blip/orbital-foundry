@@ -1,0 +1,58 @@
+{
+ "format_version": "1.10.0",
+ "minecraft:client_entity": {
+  "description": {
+   "identifier": "orbital_foundry:star_wither",
+   "materials": {
+    "default": "entity_alphatest",
+    "glow": "entity_emissive_alpha"
+   },
+   "textures": {
+    "default": "textures/entity/star_wither"
+   },
+   "geometry": {
+    "default": "geometry.orbital_foundry.star_wither"
+   },
+   "animations": {
+    "idle": "animation.orbital_foundry.star_wither.idle",
+    "state": "animation.orbital_foundry.star_wither.state",
+    "charge": "animation.orbital_foundry.star_wither.charge",
+    "rage": "animation.orbital_foundry.star_wither.rage",
+    "build": "animation.orbital_foundry.star_wither.build",
+    "hits": "animation.orbital_foundry.star_wither.hits",
+    "transform": "animation.orbital_foundry.star_wither.transform",
+    "final": "animation.orbital_foundry.star_wither.final",
+    "dying": "animation.orbital_foundry.star_wither.dying"
+   },
+   "scripts": {
+    "scale": "2.6",
+    "animate": [
+     "idle",
+     "state",
+     "hits",
+     {
+      "build": "q.property('orbital_foundry:build')<9"
+     },
+     {
+      "charge": "q.property('orbital_foundry:attack')==1||q.property('orbital_foundry:attack')==2"
+     },
+     {
+      "transform": "q.property('orbital_foundry:attack')==3"
+     },
+     {
+      "rage": "q.property('orbital_foundry:heads')==3"
+     },
+     {
+      "final": "q.property('orbital_foundry:final')==1"
+     },
+     {
+      "dying": "q.property('orbital_foundry:dying')==1"
+     }
+    ]
+   },
+   "render_controllers": [
+    "controller.render.orbital_foundry.star_wither"
+   ]
+  }
+ }
+}

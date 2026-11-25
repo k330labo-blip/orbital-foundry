@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "orbital_foundry:item_holder",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/of_icon_blank"
+      },
+      "geometry": {
+        "default": "geometry.orbital_foundry.item_holder"
+      },
+      "animations": {
+        "pose": "animation.orbital_foundry.item_holder.pose"
+      },
+      "scripts": {
+        "animate": [
+          "pose"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "enable_attachables": true,
+      "held_item_ignores_lighting": true
+    }
+  }
+}
