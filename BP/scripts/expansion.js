@@ -1,5 +1,5 @@
 import { noteShort, checkShort, noteUse } from "./hud.js";
-import { ItemStack, EntityDamageCause } from "@minecraft/server";
+import { ItemStack, EntityDamageCause, EnchantmentType, MolangVariableMap } from "@minecraft/server";
 import { affordableSpeed, scheduledStart, visualStepTicks } from "./machine-speed.js";
 import { installOverseerRaid } from "./overseer_raid.js";
 import { reactorAtShell, reactorStructure, REACTOR_CASING, REACTOR_WINDOW } from "./reactor_structure.js";
@@ -12,6 +12,7 @@ import { CARGO_ICONS, CARGO_ICON_BLANK } from "./cargo_icons.js";
 function cargoLook(entity, typeId) {
   const known = CARGO_ICONS[typeId];
   if (known !== undefined) return known;
+  if (!entity) return 0;   // データ貨物は実物を持てないので小包アイコンで表示する
   try {
     if (entity.getDynamicProperty("of:held") !== typeId) {
       const r = entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${typeId}`);
@@ -650,7 +651,6 @@ export function installExpansion(core) {
     }
   }
   const cargoRuns = new Set();
-  const loadedCargo = new Set();
   let cargoRestored=false;
   const runningBelts = new Map();
   const activeRoutes = new Map();
@@ -1132,69 +1132,124 @@ export function installExpansion(core) {
       } catch {}
     }
   }
-  const cargoStorage = entity => entity.getComponent("minecraft:inventory")?.container;
-  function spawnCargo(dim,stack,position) {
-    const entity=dim.spawnEntity(id("belt_cargo"),position);
-    try {
-      const inventory=cargoStorage(entity);
-      if (!inventory) throw new Error("Cargo inventory missing");
-      entity.setProperty(id("cargo_icon"),cargoLook(entity,stack.typeId));
-      inventory.setItem(0,stack);
-      return entity;
-    } catch(error) {
-      entity.remove();
-      throw error;
-    }
+  // ===== 貨物のデータ化 (v0.8.324) =====
+  // 貨物はエンティティを持たず、便のデータだけで保持する。アイテムの完全な状態
+  // (名前・説明文・耐久・エンチャント) は直列化してデータに埋め込み、配達・
+  // ドロップ時に復元する。永続化はルートごとのチェックポイント (ワールドDP) で、
+  // 発射・配達・ドロップ等のアイテム増減と同ティックで書き、移動分は1秒ごとに
+  // まとめて書く (クラッシュ時は最大1秒ぶん位置が巻き戻るだけで、物は増減しない)。
+  function serializeItem(stack) {
+    const data={t:stack.typeId,n:stack.amount};
+    try { if (stack.nameTag) data.name=stack.nameTag; } catch {}
+    try { const lore=stack.getLore(); if (lore.length) data.lore=lore; } catch {}
+    try { const dur=stack.getComponent("minecraft:durability"); if (dur && dur.damage>0) data.dmg=dur.damage; } catch {}
+    try { const list=stack.getComponent("minecraft:enchantable")?.getEnchantments();
+      if (list?.length) data.ench=list.map(e=>[e.type.id,e.level]); } catch {}
+    return data;
   }
-  function releaseCargo(entity) {
-    const inventory=cargoStorage(entity);
-    const stack=inventory?.getItem(0);
-    if (!stack) {entity.remove();return;}
-    const dropped=entity.dimension.spawnItem(stack,entity.location);
-    try {entity.remove();} catch(error) {dropped.remove();throw error;}
+  function deserializeItem(data) {
+    const stack=new ItemStack(data.t,data.n);
+    try { if (data.name) stack.nameTag=data.name; } catch {}
+    try { if (data.lore) stack.setLore(data.lore); } catch {}
+    try { if (data.dmg) { const dur=stack.getComponent("minecraft:durability"); if (dur) dur.damage=data.dmg; } } catch {}
+    try { if (data.ench) { const ench=stack.getComponent("minecraft:enchantable");
+      if (ench) for (const [tid,lvl] of data.ench) { try { ench.addEnchantment({type:new EnchantmentType(tid),level:lvl}); } catch {} } } } catch {}
+    return stack;
+  }
+  function runStack(run) {
+    if (!run.stackCache) run.stackCache=deserializeItem(run.item);
+    return run.stackCache;
+  }
+  const cargoDirtyRoutes = new Set();
+  function saveCargoCheckpoint(routeKey) {
+    cargoDirtyRoutes.delete(routeKey);
+    const metaKey="of:cargo2n:"+routeKey;
+    let oldCount=0;
+    try { oldCount=world.getDynamicProperty(metaKey)??0; } catch {}
+    const shipments=activeRoutes.get(routeKey);
+    const list=shipments?[...shipments]:[];
+    list.forEach((run,i)=>{
+      const {dim:_d,...routeData}=run.route;
+      try { world.setDynamicProperty(`of:cargo2:${routeKey}#${i}`,JSON.stringify({
+        route:routeData,dimName:run.dim.id,originIndex:run.originIndex,lane:run.lane,
+        sourceKey:run.sourceKey,distance:run.distance,item:run.item})); } catch {}
+    });
+    for (let i=list.length;i<oldCount;i++) {
+      try { world.setDynamicProperty(`of:cargo2:${routeKey}#${i}`,undefined); } catch {}
+    }
+    try { world.setDynamicProperty(metaKey,list.length||undefined); } catch {}
+  }
+  system.runInterval(()=>{ for (const routeKey of [...cargoDirtyRoutes]) saveCargoCheckpoint(routeKey); },20);
+  function releaseCargoData(run) {
+    if (!run.item) return;
+    try { run.dim.spawnItem(deserializeItem(run.item),cargoPosition(run,run.distance)); } catch {}
   }
   function trackCargo(run) {
-    loadedCargo.add(run.entity.id);
     cargoRuns.add(run);
     let shipments=activeRoutes.get(run.routeKey);
     if (!shipments) activeRoutes.set(run.routeKey,shipments=new Set());
     shipments.add(run);
     setRunActive(run,true);
   }
-  function restoreBeltCargo() {
+  let cargoDataRestored=false;
+  function restoreCargoData() {
+    // 旧形式 (貨物エンティティ) の移行: 読み込まれている分をデータ化して消す。
+    // エンティティ定義自体は移行用に残してあり、新規に生成されることはない
     for (const name of ["overworld","nether","the_end"]) {
       try {
         const dim=world.getDimension(name);
         for (const entity of dim.getEntities({type:id("belt_cargo")})) {
-          if (loadedCargo.has(entity.id)) continue;
           try {
             const raw=entity.getDynamicProperty("of:belt_route");
-            if (!raw) { releaseCargo(entity); continue; }
-            const saved=JSON.parse(raw);
-            const stack=cargoStorage(entity)?.getItem(0);
-            if (stack) {
-              const icon=cargoLook(entity,stack.typeId);
-              if (entity.getProperty(id("cargo_icon"))!==icon) entity.setProperty(id("cargo_icon"),icon);
+            const stack=entity.getComponent("minecraft:inventory")?.container?.getItem(0);
+            if (!raw || !stack) {
+              if (stack) { try { dim.spawnItem(stack,entity.location); } catch {} }
+              entity.remove();
+              continue;
             }
-            const route=activeRoutes.get(saved.route.routeKey)?.values().next().value?.route??{...saved.route,dim};
+            const saved=JSON.parse(raw);
+            const route={...saved.route,dim};
             const segments=route.segments.slice(saved.originIndex);
-            const distance=entity.getDynamicProperty("of:belt_distance")??.5;
-            trackCargo({...route,route,segments,keys:segments.map(seg=>seg.m.key),
-              originIndex:saved.originIndex,lane:saved.lane===1?1:0,distance,entity,sourceKey:saved.sourceKey});
+            const run={...route,route,segments,keys:segments.map(seg=>seg.m.key),
+              originIndex:saved.originIndex,lane:saved.lane===1?1:0,
+              distance:entity.getDynamicProperty("of:belt_distance")??.5,
+              sourceKey:saved.sourceKey,item:serializeItem(stack),
+              icon:cargoLook(null,stack.typeId),nextVisual:0,distRate:0};
+            entity.remove();
+            trackCargo(run);
+            saveCargoCheckpoint(run.routeKey);
             if (saved.sourceKey) confirmedBeltRoutes.set(route.routeKey,{source:saved.sourceKey,target:route.targetKey,routeKeys:route.keys});
           } catch {}
         }
       } catch {}
     }
+    if (cargoDataRestored) return;
+    cargoDataRestored=true;
+    for (const dpId of world.getDynamicPropertyIds()) {
+      if (!dpId.startsWith("of:cargo2:") || dpId.startsWith("of:cargo2n:")) continue;
+      try {
+        const saved=JSON.parse(world.getDynamicProperty(dpId));
+        if (!saved?.item) continue;
+        const dim=world.getDimension(saved.dimName);
+        const route=activeRoutes.get(saved.route.routeKey)?.values().next().value?.route??{...saved.route,dim};
+        const segments=route.segments.slice(saved.originIndex);
+        trackCargo({...route,route,segments,keys:segments.map(seg=>seg.m.key),
+          originIndex:saved.originIndex,lane:saved.lane===1?1:0,distance:saved.distance??.5,
+          sourceKey:saved.sourceKey,item:saved.item,icon:cargoLook(null,saved.item.t),nextVisual:0,distRate:0});
+        if (saved.sourceKey) confirmedBeltRoutes.set(route.routeKey,{source:saved.sourceKey,target:route.targetKey,routeKeys:route.keys});
+      } catch {}
+    }
   }
-  system.runInterval(restoreBeltCargo,100);
+  system.runInterval(restoreCargoData,100);
   function finishRun(run) {
     cargoRuns.delete(run);
-    loadedCargo.delete(run.entity.id);
     const shipments=activeRoutes.get(run.routeKey);
-    shipments.delete(run);
-    if (!shipments.size) activeRoutes.delete(run.routeKey);
+    if (shipments) {
+      shipments.delete(run);
+      if (!shipments.size) activeRoutes.delete(run.routeKey);
+    }
     setRunActive(run,false);
+    saveCargoCheckpoint(run.routeKey);
   }
   function cargoSegment(run,distance) {
     const index=Math.min(Math.floor(distance),run.segments.length-1);
@@ -1328,18 +1383,41 @@ export function installExpansion(core) {
       if (target && roomFor(target,stack)>0) return target;
     }
   }
-  function finishCargo(run,stack,target) {
-    const inventory=run.invCache ?? cargoStorage(run.entity);
-    if (!inventory) throw new Error("Cargo inventory missing at delivery");
+  function finishCargo(run,target) {
+    const stack=runStack(run);
     const remainder=insertCargo(target,stack,left=>{
-      if (!left) { inventory.setItem(0,undefined); return; }
-      const rest=stack.clone();
-      rest.amount=left;
-      inventory.setItem(0,rest);
+      run.item.n=left;
+      run.stackCache=undefined;
     });
-    if (remainder) return false;
-    run.entity.remove();
+    if (remainder) { saveCargoCheckpoint(run.routeKey); return false; }
     return true;
+  }
+  // 貨物の見た目: アイコンのパーティクルをクライアント側で滑らせる。
+  // 出し直しは最大6ティック (遠方は12) に1回と、次の区間の境目に着く時刻の
+  // 早い方。速度は直近の実前進から決めるので、詰まっている便はその場に留まる
+  function spawnCargoVisual(run,pos) {
+    const now=system.currentTick;
+    if (now<(run.nextVisual??0)) return;
+    const rate=run.distRate??0;
+    const interval=run.lodFar?12:6;
+    let lifeTicks=interval;
+    if (rate>0.01) {
+      const toEnd=(Math.floor(run.distance)+1-run.distance)/(rate/20);
+      lifeTicks=Math.max(2,Math.min(interval,Math.floor(toEnd)));
+    }
+    let vx=0, vy=0, vz=0;
+    if (rate>0.01) {
+      const ahead=cargoPosition(run,Math.min(run.distance+.05,run.keys.length-.06));
+      const k=rate/.05;
+      vx=(ahead.x-pos.x)*k; vy=(ahead.y-pos.y)*k; vz=(ahead.z-pos.z)*k;
+    }
+    try {
+      const vars=new MolangVariableMap();
+      vars.setFloat("of_vx",vx); vars.setFloat("of_vy",vy); vars.setFloat("of_vz",vz);
+      vars.setFloat("of_lifetime",lifeTicks/20);
+      run.dim.spawnParticle(id(`cargo_icon_${run.icon??0}`),pos,vars);
+    } catch {}
+    run.nextVisual=now+lifeTicks;
   }
   system.runInterval(()=>{
     segFreshCache=new Map(); pickupSnap=new Map();
@@ -1354,50 +1432,50 @@ export function installExpansion(core) {
     for (const arr of sortedShipments.values()) arr.sort((a,b)=>a.pos-b.pos);
     for (const run of cargoRuns) {
       try {
-        const stack=(run.invCache ?? (run.invCache=cargoStorage(run.entity)))?.getItem(0);
-        if (!stack) {finishRun(run);continue;}
-        const point=cargoPosition(run,run.distance);
+        if (!run.item) {finishRun(run);continue;}
         const segNow=cargoSegment(run,run.distance);
         const tile=segNow.m;
-        if (!segmentStillConnected(run,run.distance)) {releaseCargo(run.entity);finishRun(run);continue;}
+        // チャンクが読み込まれていない便は凍結する (旧方式で未読込の貨物
+        // エンティティが止まっていたのと等価)。読み込まれたら自動で動き出す
+        if (!run.dim.getBlock({x:tile.x,y:tile.y,z:tile.z})) continue;
+        const stack=runStack(run);
+        const point=cargoPosition(run,run.distance);
+        if (!segmentStillConnected(run,run.distance)) {releaseCargoData(run);finishRun(run);continue;}
         const player=pickupPlayer(run.dim,point,tile);
         const inventory=player?.getComponent("minecraft:inventory")?.container;
         const pickup=inventory && {storage:inventory,slots:Array.from({length:inventory.size},(_,i)=>i)};
         if (pickup && roomFor(pickup,stack)>0) {
-          if (finishCargo(run,stack,pickup)) finishRun(run);
+          if (finishCargo(run,pickup)) finishRun(run);
           continue;
         }
         try {
           const furnace=nearbyMachine(run,tile,segNow.direction,stack);
           if (furnace) {
-            if (finishCargo(run,stack,furnace)) finishRun(run);
+            if (finishCargo(run,furnace)) finishRun(run);
             continue;
           }
         } catch {}
         if (run.distance+1e-6>=run.keys.length-.06) {
           try {
             const target=destinationFor(run.dim,run.targetKey,run.targetPos,run.dx,run.dz);
-            if (target && roomFor(target,stack)>0 && finishCargo(run,stack,target)) finishRun(run);
+            if (target && roomFor(target,stack)>0 && finishCargo(run,target)) finishRun(run);
           } catch {}
           continue;
         }
         const nextDistance=advanceCargo(run,sortedShipments.get(run.routeKey+"|"+run.lane));
-        if (nextDistance<=run.distance+1e-6) continue;
+        if (nextDistance<=run.distance+1e-6) { run.distRate=0; spawnCargoVisual(run,point); continue; }
         const nextTile=cargoSegment(run,nextDistance).m;
-        if (nextTile.key!==tile.key && !filterAllows(nextTile.key,stack)) continue;
-        const next=cargoPosition(run,nextDistance);
+        if (nextTile.key!==tile.key && !filterAllows(nextTile.key,stack)) { run.distRate=0; spawnCargoVisual(run,point); continue; }
         if (!segmentStillConnected(run,nextDistance)) {
-          releaseCargo(run.entity);finishRun(run);continue;
+          releaseCargoData(run);finishRun(run);continue;
         }
-        // 軽量モード: 遠くの貨物は位置の記録だけ進め、見た目の移動と保存は0.5秒ごとにまとめる
-        if (system.currentTick>=(run.lodCheck??0)) { run.lodFar=!isNear(run.dim.id,next.x,next.z); run.lodCheck=system.currentTick+20; }
-        if (!run.lodFar || system.currentTick%10<2) {
-          run.entity.teleport(next);
-          run.entity.setDynamicProperty("of:belt_distance",nextDistance);
-        }
+        if (system.currentTick>=(run.lodCheck??0)) { run.lodFar=!isNear(run.dim.id,point.x,point.z); run.lodCheck=system.currentTick+20; }
+        run.distRate=(nextDistance-run.distance)*10;
         run.distance=nextDistance;
+        cargoDirtyRoutes.add(run.routeKey);
+        spawnCargoVisual(run,cargoPosition(run,run.distance));
       } catch {
-        try { releaseCargo(run.entity); } catch {}
+        try { releaseCargoData(run); } catch {}
         finishRun(run);
       }
     }
@@ -1546,15 +1624,16 @@ export function installExpansion(core) {
       if (item.amount===count) source.storage.setItem(slot,undefined);
       else {rest.amount=item.amount-count;source.storage.setItem(slot,rest);}
       try {
-        run.entity=spawnCargo(dim,stack,cargoPosition(run,run.distance));
-        const {dim:_,...routeData}=run.route;
-        run.entity.setDynamicProperty("of:belt_route",JSON.stringify({route:routeData,originIndex:run.originIndex,lane:run.lane,sourceKey:run.sourceKey}));
+        run.item=serializeItem(stack);
+        run.icon=cargoLook(null,stack.typeId);
+        run.nextVisual=0;
+        run.distRate=0;
       } catch {
-        run.entity?.remove();
         source.storage.setItem(slot,item);
         return false;
       }
       trackCargo(run);
+      saveCargoCheckpoint(run.routeKey);
       return true;
     }
     return false;
