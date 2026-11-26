@@ -70,18 +70,21 @@ export function installFactoryLoader({ world, system, registry, dpGet }) {
     info = { total: order.length, loaded: use.length, rotating: order.length > LOADER.areas, byOwner: {} };
     for (const b of order) info.byOwner[b.owner] = (info.byOwner[b.owner] ?? 0) + 1;
     const sig = JSON.stringify(use.map(b => [b.dim, b.x0, b.x1, b.z0, b.z1]));
-    if (sig === lastSig) return;
-    lastSig = sig;
+    if (sig === lastSig && names.size === use.length) return;
+    if (lastSig !== sig) {
     for (const dim of ["overworld", "nether", "the_end"]) for (let i = 0; i < LOADER.areas; i++) {
       try { world.getDimension(dim).runCommand(`tickingarea remove of_factory_${i}`); } catch { }
     }
-    names.clear();
+    names.clear(); lastSig = sig;
+    }
     use.forEach((b, i) => {
+      if (names.has(i)) return;
       try {
-        world.getDimension(b.dim).runCommand(`tickingarea add ${b.x0 * 16} 0 ${b.z0 * 16} ${b.x1 * 16 + 15} 0 ${b.z1 * 16 + 15} of_factory_${i} true`);
-        names.add(`of_factory_${i}`);
+        const result = world.getDimension(b.dim).runCommand(`tickingarea add ${b.x0 * 16} 0 ${b.z0 * 16} ${b.x1 * 16 + 15} 0 ${b.z1 * 16 + 15} of_factory_${i} true`);
+        if (result.successCount > 0) names.add(i);
       } catch { }
     });
+    info.loaded = names.size;
   }
   system.runInterval(() => { try { refresh(); } catch (e) { console.warn("[Orbital Foundry] factory loader: " + e); } }, LOADER.every);
   system.runTimeout(() => { try { refresh(); } catch { } }, 40);

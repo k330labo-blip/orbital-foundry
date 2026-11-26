@@ -1002,7 +1002,7 @@ export function installExpansion(core) {
     }
     if (!["minecraft:chest","minecraft:trapped_chest","minecraft:barrel","minecraft:hopper"].includes(block?.typeId)) return;
     const storage=block.getComponent("minecraft:inventory")?.container;
-    if (storage) return {block,storage,slots:Array.from({length:storage.size},(_,i)=>i)};
+    if (storage) return {block,storage,slots:Array.from({length:storage.size},(_,i)=>i),wholeContainer:true};
   }
   function isOutputMachine(block) {
     return [id("crusher"),id("fixed_drill")].includes(block?.typeId);
@@ -1099,6 +1099,11 @@ export function installExpansion(core) {
       if (!left) return;
       const rest=item.clone();rest.amount=left;return rest;
     }
+    if (target.wholeContainer && recordRemaining && typeof target.storage.addItem==="function") {
+      const remainder=target.storage.addItem(item.clone());
+      if ((remainder?.amount??0)<item.amount) recordRemaining(remainder?.amount??0);
+      return remainder;
+    }
     let left=item.amount;
     for (const slot of (target.slotsFor ? target.slotsFor(item) : target.slots)) {
       const old=target.storage.getItem(slot);
@@ -1108,12 +1113,19 @@ export function installExpansion(core) {
       const stack=(old??item).clone();
       stack.amount=(old?.amount??0)+count;
       target.storage.setItem(slot,stack);
-      try { recordRemaining?.(left-count); }
+      let inserted=count;
+      if (recordRemaining) {
+        const actual=target.storage.getItem(slot);
+        inserted=actual?.typeId===item.typeId
+          ? Math.max(0,Math.min(count,actual.amount-(old?.amount??0))) : 0;
+      }
+      if (!inserted) continue;
+      try { recordRemaining?.(left-inserted); }
       catch (error) {
         target.storage.setItem(slot,old);
         throw error;
       }
-      left-=count;
+      left-=inserted;
       if (!left) return;
     }
     const rest=item.clone();rest.amount=left;return rest;
@@ -1144,6 +1156,12 @@ export function installExpansion(core) {
     try { const dur=stack.getComponent("minecraft:durability"); if (dur && dur.damage>0) data.dmg=dur.damage; } catch {}
     try { const list=stack.getComponent("minecraft:enchantable")?.getEnchantments();
       if (list?.length) data.ench=list.map(e=>[e.type.id,e.level]); } catch {}
+    const properties=stack.getDynamicPropertyIds?.()??[];
+    if(properties.length)data.properties=properties.map(key=>[key,stack.getDynamicProperty(key)]);
+    const canPlace=stack.getCanPlaceOn?.(),canDestroy=stack.getCanDestroy?.();
+    if(canPlace?.length)data.canPlace=canPlace;
+    if(canDestroy?.length)data.canDestroy=canDestroy;
+    if(stack.keepOnDeath)data.keepOnDeath=true;
     return data;
   }
   function deserializeItem(data) {
@@ -1153,6 +1171,10 @@ export function installExpansion(core) {
     try { if (data.dmg) { const dur=stack.getComponent("minecraft:durability"); if (dur) dur.damage=data.dmg; } } catch {}
     try { if (data.ench) { const ench=stack.getComponent("minecraft:enchantable");
       if (ench) for (const [tid,lvl] of data.ench) { try { ench.addEnchantment({type:new EnchantmentType(tid),level:lvl}); } catch {} } } } catch {}
+    for(const [key,value] of data.properties??[])stack.setDynamicProperty(key,value);
+    if(data.canPlace)stack.setCanPlaceOn(data.canPlace);
+    if(data.canDestroy)stack.setCanDestroy(data.canDestroy);
+    if(data.keepOnDeath)stack.keepOnDeath=true;
     return stack;
   }
   function runStack(run) {
@@ -1164,25 +1186,27 @@ export function installExpansion(core) {
     cargoDirtyRoutes.delete(routeKey);
     const metaKey="of:cargo2n:"+routeKey;
     let oldCount=0;
-    try { oldCount=world.getDynamicProperty(metaKey)??0; } catch {}
+    try { oldCount=world.getDynamicProperty(metaKey)??0; } catch { cargoDirtyRoutes.add(routeKey); return; }
     const shipments=activeRoutes.get(routeKey);
     const list=shipments?[...shipments]:[];
     list.forEach((run,i)=>{
       const {dim:_d,...routeData}=run.route;
       try { world.setDynamicProperty(`of:cargo2:${routeKey}#${i}`,JSON.stringify({
         route:routeData,dimName:run.dim.id,originIndex:run.originIndex,lane:run.lane,
-        sourceKey:run.sourceKey,distance:run.distance,item:run.item})); } catch {}
+        sourceKey:run.sourceKey,distance:run.distance,item:run.item})); } catch { cargoDirtyRoutes.add(routeKey); }
     });
     for (let i=list.length;i<oldCount;i++) {
-      try { world.setDynamicProperty(`of:cargo2:${routeKey}#${i}`,undefined); } catch {}
+      try { world.setDynamicProperty(`of:cargo2:${routeKey}#${i}`,undefined); } catch { cargoDirtyRoutes.add(routeKey); }
     }
-    try { world.setDynamicProperty(metaKey,list.length||undefined); } catch {}
+    if (!cargoDirtyRoutes.has(routeKey)) {
+      try { world.setDynamicProperty(metaKey,list.length||undefined); } catch { cargoDirtyRoutes.add(routeKey); }
+    }
   }
   system.runInterval(()=>{ for (const routeKey of [...cargoDirtyRoutes]) saveCargoCheckpoint(routeKey); },20);
   function releaseCargoData(run) {
     if (!run.item) return true;
     try {
-      run.dim.spawnItem(deserializeItem(run.item),cargoPosition(run,run.distance));
+      run.dim.spawnItem(runStack(run),cargoPosition(run,run.distance));
       return true;
     } catch { return false; }
   }
@@ -1197,13 +1221,16 @@ export function installExpansion(core) {
   function restoreCargoData() {
     if (!cargoDataRestored) {
       const ids=world.getDynamicPropertyIds();
+      const routes=new Map();
       for (const dpId of ids) {
         if (!dpId.startsWith("of:cargo2:") || dpId.startsWith("of:cargo2n:")) continue;
         try {
           const saved=JSON.parse(world.getDynamicProperty(dpId));
           if (!saved?.item) continue;
           const dim=world.getDimension(saved.dimName);
-          const route=activeRoutes.get(saved.route.routeKey)?.values().next().value?.route??{...saved.route,dim};
+          const routeKey=saved.dimName+"|"+JSON.stringify(saved.route);
+          if(!routes.has(routeKey))routes.set(routeKey,{...saved.route,dim});
+          const route=routes.get(routeKey);
           const segments=route.segments.slice(saved.originIndex);
           trackCargo({...route,route,segments,keys:segments.map(seg=>seg.m.key),
             originIndex:saved.originIndex,lane:saved.lane===1?1:0,distance:saved.distance??.5,
@@ -1234,7 +1261,7 @@ export function installExpansion(core) {
               originIndex:saved.originIndex,lane:saved.lane===1?1:0,
               distance:entity.getDynamicProperty("of:belt_distance")??.5,
               sourceKey:saved.sourceKey,item:serializeItem(stack),
-              icon:cargoLook(null,stack.typeId),nextVisual:0,distRate:0};
+              stackCache:stack,icon:cargoLook(null,stack.typeId),nextVisual:0,distRate:0};
             entity.remove();
             trackCargo(run);
             saveCargoCheckpoint(run.routeKey);
@@ -1392,7 +1419,11 @@ export function installExpansion(core) {
     const stack=runStack(run);
     const remainder=insertCargo(target,stack,left=>{
       run.item.n=left;
-      run.stackCache=undefined;
+      cargoDirtyRoutes.add(run.routeKey);
+      if (left) {
+        run.stackCache=stack.clone();
+        run.stackCache.amount=left;
+      } else run.stackCache=undefined;
     });
     if (remainder) { saveCargoCheckpoint(run.routeKey); return false; }
     return true;
@@ -1427,6 +1458,14 @@ export function installExpansion(core) {
   function cargoBlockLoaded(dim,tile) {
     try { return !!dim.getBlock(tile); } catch { return false; }
   }
+  function cargoNeighborsLoaded(run,segment) {
+    for (const key of [segment.previousKey,segment.nextKey]) {
+      if (!key) continue;
+      const neighbor=machineIndex.get(key);
+      if (neighbor && !cargoBlockLoaded(run.dim,neighbor)) return false;
+    }
+    return true;
+  }
   system.runInterval(()=>{
     segFreshCache=new Map(); pickupSnap=new Map();
     try {
@@ -1449,6 +1488,7 @@ export function installExpansion(core) {
         const stack=runStack(run);
         const point=cargoPosition(run,run.distance);
         if (!segmentStillConnected(run,run.distance)) {
+          if (!cargoNeighborsLoaded(run,segNow)) continue;
           if (releaseCargoData(run)) finishRun(run);
           continue;
         }
@@ -1469,8 +1509,13 @@ export function installExpansion(core) {
         if (run.distance+1e-6>=run.keys.length-.06) {
           try {
             const target=destinationFor(run.dim,run.targetKey,run.targetPos,run.dx,run.dz);
-            if (target && roomFor(target,stack)>0 && finishCargo(run,target)) finishRun(run);
+            if (target && roomFor(target,stack)>0 && finishCargo(run,target)) {
+              finishRun(run);
+              continue;
+            }
           } catch {}
+          run.distRate=0;
+          spawnCargoVisual(run,point);
           continue;
         }
         const nextDistance=advanceCargo(run,sortedShipments.get(run.routeKey+"|"+run.lane));
@@ -1479,6 +1524,7 @@ export function installExpansion(core) {
         if (nextTile.key!==tile.key && !filterAllows(nextTile.key,stack)) { run.distRate=0; spawnCargoVisual(run,point); continue; }
         if (nextTile.key!==tile.key && !cargoBlockLoaded(run.dim,nextTile)) continue;
         if (nextTile.key!==tile.key && !segmentStillConnected(run,nextDistance)) {
+          if (!cargoNeighborsLoaded(run,cargoSegment(run,nextDistance))) continue;
           if (releaseCargoData(run)) finishRun(run);
           continue;
         }
@@ -1630,17 +1676,18 @@ export function installExpansion(core) {
       if (!count) continue;
       const stack=item.clone();stack.amount=count;
       const run={...route,distance:.5};
-      const rest=item.clone();
-      if (item.amount===count) source.storage.setItem(slot,undefined);
-      else {rest.amount=item.amount-count;source.storage.setItem(slot,rest);}
       try {
         run.item=serializeItem(stack);
+        run.stackCache=stack;
         run.icon=cargoLook(null,stack.typeId);
         run.nextVisual=0;
         run.distRate=0;
-      } catch {
-        source.storage.setItem(slot,item);
-        return false;
+      } catch { return false; }
+      if (item.amount===count) source.storage.setItem(slot,undefined);
+      else {
+        const rest=item.clone();
+        rest.amount=item.amount-count;
+        source.storage.setItem(slot,rest);
       }
       trackCargo(run);
       saveCargoCheckpoint(run.routeKey);
