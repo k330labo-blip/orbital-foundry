@@ -72,6 +72,7 @@ export function installExpansion(core) {
     const fx = -Math.sin(yaw), fz = Math.cos(yaw);
     const d = Math.abs(fx) > Math.abs(fz) ? (fx > 0 ? 0 : 2) : (fz > 0 ? 1 : 3);
     const st = machineState(key); st.placedDirection = d; if (!st.directionLocked) st.direction = d; saveMachineState(key, st);
+    layoutVersion++; invalidateBeltState(key);
   }
   function orientSplitter(block, player) {
     const {x, z} = block.location;
@@ -262,17 +263,61 @@ export function installExpansion(core) {
   // updateNetwork 中のどの呼び出しからも到達しないことを確認済み) ので、パース結果を共有できる。
   let netMsCache = null, netTypeCache = null;
   const msCached = key => {
-    if (!netMsCache) return machineState(key);
+    if (!netMsCache) return msTick(key);
     if (!netMsCache.has(key)) netMsCache.set(key, machineState(key));
     return netMsCache.get(key);
   };
+  // ---- 対策1: ティック内共有キャッシュ ----
+  // ベルト貨物・ルート検証・発射判定の各ループは同じティックで同じベルトを何度も調べ直す。
+  // レイアウトと機械状態はティック内では (イベント経由の変更を除き) 変わらないので、
+  // ティックが変わるまで結果を共有する。向き変更 (rotateBelt/orientBelt) では明示的に無効化する。
+  let beltCacheTick = -1;
+  const tickFindCache = new Map(), tickPortsCache = new Map(), tickConnCache = new Map(),
+        tickStateCache = new Map(), tickContainerCache = new Map(), tickDestCache = new Map(), tickTypeCache = new Map();
+  function beltCache() {
+    if (beltCacheTick !== system.currentTick) {
+      beltCacheTick = system.currentTick;
+      for (const c of [tickFindCache, tickPortsCache, tickConnCache, tickStateCache, tickContainerCache, tickDestCache, tickTypeCache]) c.clear();
+    }
+  }
+  function msTick(key) {
+    beltCache();
+    if (!tickStateCache.has(key)) tickStateCache.set(key, machineState(key));
+    return tickStateCache.get(key);
+  }
+  function invalidateBeltState(key) {
+    tickStateCache.delete(key);
+    tickPortsCache.clear(); tickConnCache.clear(); tickContainerCache.clear(); tickDestCache.clear();
+  }
+  function tickTypeAt(dim, x, y, z) {
+    beltCache();
+    const k = dim.id + "|" + x + "," + y + "," + z;
+    if (!tickTypeCache.has(k)) { let t; try { t = dim.getBlock({x, y, z})?.typeId; } catch { t = undefined; } tickTypeCache.set(k, t); }
+    return tickTypeCache.get(k);
+  }
+  // ---- 対策2: レイアウト版数 (routeCheck の再検証をレイアウト変更時だけにする) ----
+  let layoutVersion = 0;
+  const routeValidity = new WeakMap();   // route -> {version, tick, valid}
   function updateNetwork(list) {
     netMsCache=new Map(); netTypeCache=new Map();
+    // 登録 (machineIndex) を作り直すので、レイアウト依存のティックキャッシュはここで捨てる
+    tickFindCache.clear(); tickPortsCache.clear(); tickConnCache.clear(); tickContainerCache.clear(); tickDestCache.clear(); tickTypeCache.clear();
     try {
     machineIndex=new Map(list.map(m=>[m.key,m]));
+    const prevBeltKeys=new Set(beltEntries.map(m=>m.key));
+    const prevInferred=inferredBelts, prevLoop=loopBelts;
     beltEntries=list.filter(m=>isBelt(m.type));
     if (!cargoRestored) { restoreBeltCargo(); cargoRestored=true; }
     inferBeltDirections(list);
+    // レイアウト (ベルト集合・推定向き・ループ集合) が前回から変わっていたら版数を上げる。
+    // routeCheck はこの版数を見て、変わっていないルートの全区間再検証を省く
+    {
+      let changed = prevBeltKeys.size!==beltEntries.length || beltEntries.some(m=>!prevBeltKeys.has(m.key))
+        || prevInferred.size!==inferredBelts.size || prevLoop.size!==loopBelts.size;
+      if (!changed) for (const [k,v] of inferredBelts) if (prevInferred.get(k)!==v) { changed=true; break; }
+      if (!changed) for (const k of loopBelts) if (!prevLoop.has(k)) { changed=true; break; }
+      if (changed) layoutVersion++;
+    }
     distributeFurnaceFuel();
     wired=new Map(); cableNets=new Map();
     drillWiring=new Map();
@@ -413,11 +458,19 @@ export function installExpansion(core) {
     if (n) { drawEnergy(n,sourceKeys(key),useLegacy); noteUse(key,n); }
     return true;
   }
-  function findBlock(dim,key) {
+  function findBlockFresh(dim,key) {
     const m=machineIndex.get(key);
     if (!m) return;
     const block=dim.getBlock(m);
     if (block?.typeId===m.type) return block;
+  }
+  function findBlock(dim,key) {
+    beltCache();
+    const ck=dim.id+"|"+key;
+    if (tickFindCache.has(ck)) return tickFindCache.get(ck);
+    const block=findBlockFresh(dim,key);
+    tickFindCache.set(ck,block);
+    return block;
   }
   function port(dim,key) {
     const block=findBlock(dim,key);
@@ -662,8 +715,8 @@ export function installExpansion(core) {
       if(!isBelt(next?.type)||!findBlock(dim,key))continue;
       if(dy) {
         const low=dy>0?m:next;
-        const ceiling=dim.getBlock({x:low.x,y:low.y+1,z:low.z});
-        if(ceiling&&!ceiling.isAir&&ceiling.typeId!=="minecraft:air")continue;
+        const ceilingType=tickTypeAt(dim,low.x,low.y+1,low.z);
+        if(ceilingType&&ceilingType!=="minecraft:air")continue;
       }
       return next;
     }
@@ -852,8 +905,16 @@ export function installExpansion(core) {
     return sides[mode-1]??sides[0];
   }
   function beltPorts(dim,m,direction) {
+    beltCache();
+    const ck=m.key+"|"+direction;
+    if (tickPortsCache.has(ck)) return tickPortsCache.get(ck);
+    const result=beltPortsInner(dim,m,direction);
+    tickPortsCache.set(ck,result);
+    return result;
+  }
+  function beltPortsInner(dim,m,direction) {
     const straight=opposite(direction);
-    const mode=loopBelts.has(m.key)?0:(machineState(m.key).inputMode??0);
+    const mode=loopBelts.has(m.key)?0:(msCached(m.key).inputMode??0);
     const sides=[straight,(direction+1)%4,(direction+3)%4];
     const forced=mode>0 ? sides[mode-1] : undefined;
     const options=forced===undefined ? sides : [forced];
@@ -889,6 +950,7 @@ export function installExpansion(core) {
     if (player.isSneaking) state.inputMode=((state.inputMode??0)+1)%4;
     else {state.direction=(beltDirection(key)+1)%directions.length;state.directionLocked=true;inferredBelts.delete(key);}
     saveMachineState(key,state);
+    layoutVersion++; invalidateBeltState(key);
     const direction=beltDirection(key);
     const {x,y,z}=block.location;
     const m={x,y,z,dim:block.dimension.id,key};
@@ -904,6 +966,15 @@ export function installExpansion(core) {
   const isFurnaceFuel=(typeId)=>FURNACE_FUEL_IDS.has(typeId)||typeId.endsWith("_log")||typeId.endsWith("_planks")||typeId.endsWith("_wood");
   const STORAGE_MACHINES=new Set([...RECIPE_INPUTS.keys(),...["coal_generator","fixed_drill","oil_pump","launch_pad","research_lab","nuclear_reactor"].map(id)]);
   function containerAt(dim,key,pos,output,from=null) {
+    beltCache();
+    const fromKey=from?.key ?? (from ? `p${from.x},${from.y},${from.z}` : "-");
+    const ck=`c|${dim.id}|${pos.x},${pos.y},${pos.z}|${output?1:0}|${fromKey}`;
+    if (tickContainerCache.has(ck)) { const v=tickContainerCache.get(ck); return v ? {...v} : v; }
+    const result=containerAtInner(dim,key,pos,output,from);
+    tickContainerCache.set(ck,result);
+    return result ? {...result} : result;
+  }
+  function containerAtInner(dim,key,pos,output,from=null) {
     const proxy=reactorAtShell(world,[...machineIndex.values()],dim.id,pos);
     if(proxy)return {block:dim.getBlock(proxy),storage:machineContainer(dim.getBlock(proxy),proxy.key),slots:output?outputSlots:[0]};
     const registered=findBlock(dim,key);
@@ -945,6 +1016,14 @@ export function installExpansion(core) {
     return SMOKERS.has(type) && SMOKER_INPUTS.has(item.typeId);
   }
   function destinationFor(dim,key,pos,dx,dz) {
+    beltCache();
+    const ck=`d|${dim.id}|${pos.x},${pos.y},${pos.z}|${dx},${dz}`;
+    if (tickDestCache.has(ck)) { const v=tickDestCache.get(ck); return v ? {...v} : v; }
+    const result=destinationForInner(dim,key,pos,dx,dz);
+    tickDestCache.set(ck,result);
+    return result ? {...result} : result;
+  }
+  function destinationForInner(dim,key,pos,dx,dz) {
     const target=containerAt(dim,key,pos,false,{x:pos.x-dx,y:pos.y,z:pos.z-dz});
     if (!target?.storage) {
       // バニラのかまど/溶鉱炉/燻製器へは材料スロット(0)にだけベルト投入する (燃料・完成品スロットには入れない)
@@ -1171,26 +1250,21 @@ export function installExpansion(core) {
     }
     return nextDistance;
   }
-  // 貨物ループ1反復の中だけ有効なベルト接続キャッシュ。beltPorts / downstreamBelt の
-  // 依存先 (登録・ブロック種別・推定向き・machineState の direction/inputMode) は
-  // 反復中には変わらない (permutation は読まないことを確認済み)。
-  let segCache=null;
+  // ベルト接続のティック共有キャッシュ (対策1)。beltPorts / downstreamBelt の依存先
+  // (登録・ブロック種別・推定向き・machineState の direction/inputMode) はティック内では
+  // 変わらない (permutation は読まないことを確認済み)。ただし区間の実在確認だけは
+  // 壊されたベルトを即座に検出するため、キャッシュを通さず毎回新鮮に確認する。
   function segmentStillConnected(run,distance) {
     const {m,input,direction,previousKey,nextKey}=cargoSegment(run,distance);
-    if (!isBelt(findBlock(run.dim,m.key)?.typeId) ||
+    if (!isBelt(findBlockFresh(run.dim,m.key)?.typeId) ||
         beltDirection(m.key)!==direction) return false;
-    let conn;
-    if (segCache) {
-      const ck=run.dim.id+"|"+m.key+"|"+direction;
-      conn=segCache.get(ck);
-      if (!conn) {
-        const port=beltPorts(run.dim,m,direction);
-        conn={input:port.input,previousKey:port.previous?.key,nextKey:downstreamBelt(run.dim,m,direction)?.key};
-        segCache.set(ck,conn);
-      }
-    } else {
+    beltCache();
+    const ck=run.dim.id+"|"+m.key+"|"+direction;
+    let conn=tickConnCache.get(ck);
+    if (!conn) {
       const port=beltPorts(run.dim,m,direction);
       conn={input:port.input,previousKey:port.previous?.key,nextKey:downstreamBelt(run.dim,m,direction)?.key};
+      tickConnCache.set(ck,conn);
     }
     return conn.input===input && conn.previousKey===previousKey &&
       conn.nextKey===nextKey;
@@ -1233,7 +1307,6 @@ export function installExpansion(core) {
       arr.push({run:r,pos:r.originIndex+r.distance});
     }
     for (const arr of sortedShipments.values()) arr.sort((a,b)=>a.pos-b.pos);
-    segCache=new Map();
     for (const run of cargoRuns) {
       try {
         const stack=cargoStorage(run.entity)?.getItem(0);
@@ -1284,7 +1357,6 @@ export function installExpansion(core) {
         finishRun(run);
       }
     }
-    segCache=null;
   },2);
   // お遊び要素: ベルトに乗ったプレイヤーを貨物と同じ速度で運ぶ。
   // 貨物は 2 tick ごとに 0.16 ブロック進む (1.6 ブロック/秒)。速度ベクトルを毎 tick
@@ -1356,6 +1428,7 @@ export function installExpansion(core) {
     }
     const route={dim,segments,dx,dz,keys:segments.map(segment=>segment.m.key),
       routeKey:m.key,targetKey,targetPos};
+    if (!routeHasStock(route)) return;   // 搬出元に物が無いなら、どの出口からも発射できない
     if (launchShipment(route)) return;
     // A side outlet is usable even with air in front of the last belt.
     for (let index=segments.length-1;index>=0;index--) {
@@ -1385,6 +1458,30 @@ export function installExpansion(core) {
       } catch {}
     }
   },2);
+  // 対策3: ルートの搬出元 (入口の後ろ＋各区間の側面・上下) のどこかに、搬出できる物が
+  // 1つでもあるかだけを先に調べる。launchShipment が集める搬出元の集合と同一範囲。
+  // 物が無ければ launchShipment は必ず失敗するので、呼び出し自体を省ける
+  function routeHasStock(route) {
+    const first=route.segments[0];
+    if (!first) return false;
+    const dim=route.dim;
+    const entry=neighborOn(first.m,first.input);
+    const startKey=keyOf(first.m.dim,entry);
+    const stocked=(pos,segM)=>{
+      const s=containerAt(dim,keyOf(segM.dim,pos),pos,true,segM);
+      return !!s?.storage && s.slots.some(slot=>s.storage.getItem(slot));
+    };
+    if (stocked(entry,first.m)) return true;
+    for (const seg of route.segments) {
+      const [vx,vz]=directions[seg.direction];
+      for (const [sx,sy,sz] of [[-vz,0,vx],[vz,0,-vx],[0,1,0],[0,-1,0]]) {
+        const pos={x:seg.m.x+sx,y:seg.m.y+sy,z:seg.m.z+sz};
+        if (keyOf(seg.m.dim,pos)===startKey) continue;
+        if (stocked(pos,seg.m)) return true;
+      }
+    }
+    return false;
+  }
   function shipFromSource(route,target,source) {
     const {dim,routeKey}=route;
     if (source.storage===target.storage || route.sourceKey===route.targetKey) return false;
@@ -1488,10 +1585,22 @@ export function installExpansion(core) {
     for (const shipments of activeRoutes.values()) {
       const latest=[...shipments].at(-1);
 
-      // Validate the whole route before loading more cargo after a layout change.
+      // レイアウトが変わっていないルートは全区間再検証を省く (対策2)。区間接続の結果は
+      // レイアウト (ベルト配置・向き・入力モード) だけで決まるため、版数が同じなら前回の
+      // 検証結果がそのまま成り立つ。版数の取りこぼしに備え、有効なルートは5秒ごと、
+      // 切れているルートは1秒ごとに再検証する。貨物自体は移動時に区間を確認するので、
+      // 壊れたベルトを突っ切ることはない
       try {
         const route=latest.route;
-        if (route.segments.every((_,index)=>segmentStillConnected(route,index))) launchShipment(route);
+        const rv=routeValidity.get(route);
+        const nowTick=system.currentTick;
+        let valid;
+        if (rv && rv.version===layoutVersion && nowTick-rv.tick < (rv.valid?100:20)) valid=rv.valid;
+        else {
+          valid=route.segments.every((_,index)=>segmentStillConnected(route,index));
+          routeValidity.set(route,{version:layoutVersion,tick:nowTick,valid});
+        }
+        if (valid && routeHasStock(route)) launchShipment(route);
       } catch {}
     }
   },2);
