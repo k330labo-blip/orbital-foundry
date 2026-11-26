@@ -257,7 +257,18 @@ export function installExpansion(core) {
   let drillWiring = new Map();
   let growerWiring = new Map();
   let exported = new Set();
+  // A4: updateNetwork 1回の実行内だけ有効なメモ化 (実行が終われば破棄する)。
+  // machineState の読みは実行内では書き換えられない (書き込み経路 saveMachineState は
+  // updateNetwork 中のどの呼び出しからも到達しないことを確認済み) ので、パース結果を共有できる。
+  let netMsCache = null, netTypeCache = null;
+  const msCached = key => {
+    if (!netMsCache) return machineState(key);
+    if (!netMsCache.has(key)) netMsCache.set(key, machineState(key));
+    return netMsCache.get(key);
+  };
   function updateNetwork(list) {
+    netMsCache=new Map(); netTypeCache=new Map();
+    try {
     machineIndex=new Map(list.map(m=>[m.key,m]));
     beltEntries=list.filter(m=>isBelt(m.type));
     if (!cargoRestored) { restoreBeltCargo(); cargoRestored=true; }
@@ -313,17 +324,25 @@ export function installExpansion(core) {
           drillWiring.set(key,[...(drillWiring.get(key)??[]),...nodes.map(node=>node.key)]);
         }
       }
-      applyCableVisuals(nodes, sources, getLive);
+      applyCableVisuals(nodes, sources, getLive, netTypeCache);
     }
+    } finally { netMsCache=null; netTypeCache=null; }
   }
   const CABLE_DIRS = [["n",0,-1],["e",1,0],["s",0,1],["w",-1,0]];
-  function applyCableVisuals(nodes, sources, getLive) {
+  function applyCableVisuals(nodes, sources, getLive, typeCache) {
     const powered = [...sources].some(key => canSupply(key) && (generatorRecord(key)?.stored ?? 0) > 0);
     for (const node of nodes) {
       const block = getLive(node); if (!block) continue;
       try {
         const dim = block.dimension, dimId = dim.id, {x, y, z} = block.location;
-        const typeAt = (dx, dy, dz) => { try { return dim.getBlock({x: x + dx, y: y + dy, z: z + dz})?.typeId; } catch { return undefined; } };
+        // typeId は updateNetwork 実行中に変わらない (setType を呼ぶ経路が無い) ので、座標ごとに1回だけ取得する
+        const typeAt = (dx, dy, dz) => {
+          const cx = x + dx, cy = y + dy, cz = z + dz, ck = dimId + "|" + cx + "," + cy + "," + cz;
+          if (typeCache && typeCache.has(ck)) return typeCache.get(ck);
+          let t; try { t = dim.getBlock({x: cx, y: cy, z: cz})?.typeId; } catch { t = undefined; }
+          if (typeCache) typeCache.set(ck, t);
+          return t;
+        };
         const regAt = (dx, dy, dz) => machineIndex.get(keyOf(dimId, {x: x + dx, y: y + dy, z: z + dz}))??reactorAtShell(world,[...machineIndex.values()],dimId,{x:x+dx,y:y+dy,z:z+dz});
         const perm = block.permutation;
         const want = {};
@@ -635,7 +654,7 @@ export function installExpansion(core) {
   const beltLevels=[0,1,-1];
   let inferredBelts = new Map();
   let loopBelts = new Set();
-  const beltDirection = key => inferredBelts.get(key) ?? machineState(key).direction ?? 0;
+  const beltDirection = key => inferredBelts.get(key) ?? msCached(key).direction ?? 0;
   function adjacentBelt(dim,m,side) {
     for(const dy of beltLevels) {
       const key=keyOf(m.dim,neighborOn(m,side,dy));
@@ -666,20 +685,30 @@ export function installExpansion(core) {
         const dim=world.getDimension(m.dim);
         if(!findBlock(dim,m.key))continue;
         const edges=[];
-        const pd=machineState(m.key).placedDirection;
+        const pd=msCached(m.key).placedDirection;
         const aligned=(d,side)=>d===side||d===opposite(side);
         for(let side=0;side<4;side++) {
           const next=adjacentBelt(dim,m,side);
           if(!next || adjacentBelt(dim,next,opposite(side))?.key!==m.key)continue;
           // 置いた向きが分かっている2本が、どちらもこの辺と直交していれば並走しているだけ (U字の隣の列など) → つながない
-          const npd=machineState(next.key).placedDirection;
+          const npd=msCached(next.key).placedDirection;
           if(pd!==undefined&&npd!==undefined&&!aligned(pd,side)&&!aligned(npd,side))continue;
           edges.push({side,next});
         }
         graph.set(m.key,{m,dim,edges});
       } catch {}
     }
+    // 同じ推定の中で同じ (隣接位置, sink) の終端評価が繰り返されることがあるので1回化する。
+    // 評価が読む中身 (かまど・コンテナ・分配機の状態) は推定の実行中には変わらない。
+    const endpointCache=new Map();
     function endpoint(dim,m,side,sink) {
+      const eKey=keyOf(m.dim,neighborOn(m,side))+(sink?"|sink":"|src");
+      if (endpointCache.has(eKey)) return endpointCache.get(eKey);
+      const value=endpointInner(dim,m,side,sink);
+      endpointCache.set(eKey,value);
+      return value;
+    }
+    function endpointInner(dim,m,side,sink) {
       const block=dim.getBlock(neighborOn(m,side));
       if(!block)return 0;
       if(block.typeId===id("coal_generator")){
@@ -724,7 +753,7 @@ export function installExpansion(core) {
       let score=0;
       const result=new Map();
       for(let i=0;i<path.length;i++) {
-        const curr=path[i], st=machineState(curr.m.key);
+        const curr=path[i], st=msCached(curr.m.key);
         const before=path[closed?(i+path.length-1)%path.length:i-1];
         const after=path[closed?(i+1)%path.length:i+1];
         const prev=curr.edges.find(e=>e.next.key===before?.m.key)?.side;
@@ -819,7 +848,7 @@ export function installExpansion(core) {
   function downstreamBelt(dim,m,direction) {return adjacentBelt(dim,m,direction);}
   function externalInput(key,direction) {
     const sides=[opposite(direction),(direction+1)%4,(direction+3)%4];
-    const mode=loopBelts.has(key)?0:(machineState(key).inputMode??0);
+    const mode=loopBelts.has(key)?0:(msCached(key).inputMode??0);
     return sides[mode-1]??sides[0];
   }
   function beltPorts(dim,m,direction) {
@@ -1098,12 +1127,41 @@ export function installExpansion(core) {
     const tx=-ix*cos+ox*sin, tz=-iz*cos+oz*sin;
     return {x:m.x+.5+ix*a+ox*b-tz*offset,y,z:m.z+.5+iz*a+oz*b+tx*offset};
   }
-  function advanceCargo(run,shipments) {
+  // ベルトグレードの最大値 (advanceCargo の打ち切り条件に使う安全側の上限)
+  const MAX_BELT_SPEED=Math.max(...Object.values(BELT_GRADES).map(g=>g.speed));
+  const MAX_BELT_SPACING=Math.max(...Object.values(BELT_GRADES).map(g=>g.spacing));
+  // sortedAhead: 貨物ループの反復開始時点で、同じルート+レーンの便を位置の昇順に並べた
+  // {run, pos} の配列 (pos は反復開始時点の位置)。無い場合は従来どおり全便を走査する。
+  function advanceCargo(run,sortedAhead) {
     const here=gradeOfKey(cargoSegment(run,run.distance).m.key);
     let nextDistance=Math.min(run.keys.length-.06,run.distance+here.speed);
     const position=run.originIndex+run.distance;
-    for (const other of shipments) {
-      if (other===run || other.lane!==run.lane) continue;
+    if (!sortedAhead) {
+      const shipments=activeRoutes.get(run.routeKey);
+      if (!shipments) return nextDistance;
+      for (const other of shipments) {
+        if (other===run || other.lane!==run.lane) continue;
+        const ahead=other.originIndex+other.distance;
+        if (ahead>position) {
+          // 前の荷物がいるベルトの間隔を守る (速いベルトから遅いベルトへ入ると、手前で詰まって待つ)
+          const gap=gradeOfKey(cargoSegment(other,other.distance).m.key).spacing;
+          nextDistance=Math.min(nextDistance,ahead-run.originIndex-gap);
+        }
+      }
+      return nextDistance;
+    }
+    for (const entry of sortedAhead) {
+      const other=entry.run;
+      if (other===run) continue;
+      // 打ち切り: この便以降 (開始位置の昇順) の制限値は、現在の位置から見積もっても
+      // entry.pos - originIndex - MAX_BELT_SPACING 以上にしかならない (位置は反復中に
+      // 減らず、間隔は最大で MAX_BELT_SPACING)。それが現在の候補値以上なら、以降の
+      // どの便も候補値を下げないので、最小値は確定している。
+      if (entry.pos-run.originIndex-MAX_BELT_SPACING>=nextDistance) break;
+      // 開始時点で後ろにいて、この反復中の前進 (最大 MAX_BELT_SPEED) でも追いつけない
+      // 便は、元の条件 (ahead>position) でも対象外になる。
+      if (entry.pos+MAX_BELT_SPEED<=position) continue;
+      if (!cargoRuns.has(other)) continue;   // 反復中に配達等で終わった便は元の走査にも現れない
       const ahead=other.originIndex+other.distance;
       if (ahead>position) {
         // 前の荷物がいるベルトの間隔を守る (速いベルトから遅いベルトへ入ると、手前で詰まって待つ)
@@ -1113,13 +1171,29 @@ export function installExpansion(core) {
     }
     return nextDistance;
   }
+  // 貨物ループ1反復の中だけ有効なベルト接続キャッシュ。beltPorts / downstreamBelt の
+  // 依存先 (登録・ブロック種別・推定向き・machineState の direction/inputMode) は
+  // 反復中には変わらない (permutation は読まないことを確認済み)。
+  let segCache=null;
   function segmentStillConnected(run,distance) {
     const {m,input,direction,previousKey,nextKey}=cargoSegment(run,distance);
     if (!isBelt(findBlock(run.dim,m.key)?.typeId) ||
         beltDirection(m.key)!==direction) return false;
-    const port=beltPorts(run.dim,m,direction);
-    return port.input===input && port.previous?.key===previousKey &&
-      downstreamBelt(run.dim,m,direction)?.key===nextKey;
+    let conn;
+    if (segCache) {
+      const ck=run.dim.id+"|"+m.key+"|"+direction;
+      conn=segCache.get(ck);
+      if (!conn) {
+        const port=beltPorts(run.dim,m,direction);
+        conn={input:port.input,previousKey:port.previous?.key,nextKey:downstreamBelt(run.dim,m,direction)?.key};
+        segCache.set(ck,conn);
+      }
+    } else {
+      const port=beltPorts(run.dim,m,direction);
+      conn={input:port.input,previousKey:port.previous?.key,nextKey:downstreamBelt(run.dim,m,direction)?.key};
+    }
+    return conn.input===input && conn.previousKey===previousKey &&
+      conn.nextKey===nextKey;
   }
   function filterAllows(key,item) {
     const filter=machineState(key).beltItemFilter;
@@ -1151,6 +1225,15 @@ export function installExpansion(core) {
     return true;
   }
   system.runInterval(()=>{
+    // A7: 反復開始時点の位置で、ルート+レーンごとに便を整列しておく (advanceCargo 用)
+    const sortedShipments=new Map();
+    for (const r of cargoRuns) {
+      const k=r.routeKey+"|"+r.lane;
+      let arr=sortedShipments.get(k); if (!arr) sortedShipments.set(k,arr=[]);
+      arr.push({run:r,pos:r.originIndex+r.distance});
+    }
+    for (const arr of sortedShipments.values()) arr.sort((a,b)=>a.pos-b.pos);
+    segCache=new Map();
     for (const run of cargoRuns) {
       try {
         const stack=cargoStorage(run.entity)?.getItem(0);
@@ -1181,7 +1264,7 @@ export function installExpansion(core) {
           } catch {}
           continue;
         }
-        const nextDistance=advanceCargo(run,activeRoutes.get(run.routeKey));
+        const nextDistance=advanceCargo(run,sortedShipments.get(run.routeKey+"|"+run.lane));
         if (nextDistance<=run.distance+1e-6) continue;
         const nextTile=cargoSegment(run,nextDistance).m;
         if (nextTile.key!==tile.key && !filterAllows(nextTile.key,stack)) continue;
@@ -1201,6 +1284,7 @@ export function installExpansion(core) {
         finishRun(run);
       }
     }
+    segCache=null;
   },2);
   // お遊び要素: ベルトに乗ったプレイヤーを貨物と同じ速度で運ぶ。
   // 貨物は 2 tick ごとに 0.16 ブロック進む (1.6 ブロック/秒)。速度ベクトルを毎 tick

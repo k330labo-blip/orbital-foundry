@@ -34,6 +34,9 @@ export function planAreas(groups, slots = LOADER.areas) {
 }
 export function installFactoryLoader({ world, system, registry, dpGet }) {
   let lastSig = "", turn = 0, lastTurnTick = 0;
+  // A9: クラスタリング入力 (所有者×ディメンションごとのチャンク集合) が前回と同一なら、
+  // clusterChunks の結果 (boxes) を再利用して O(C^2) の再計算を省く。入力が少しでも変われば再計算する
+  let clusterSig = null, clusterBoxes = null;
   const names = new Set();
   let info = { total: 0, loaded: 0, rotating: false, byOwner: {} };
   function refresh() {
@@ -46,8 +49,18 @@ export function installFactoryLoader({ world, system, registry, dpGet }) {
       const reg = new Map(registry().map(m => [m.key, m]));
       for (const [k, q] of Object.entries(JSON.parse(dpGet("of:quarry_claims", "{}")))) { const [dim, c] = k.split("|"); const [cx, cz] = c.split(",").map(Number); add(reg.get(q)?.owner ?? "共有", dim, cx, cz); }
     } catch { }
-    const boxes = [];
-    for (const g of groups.values()) for (const b of clusterChunks([...g.set.values()])) boxes.push({ owner: g.owner, dim: g.dim, ...b });
+    // 入力の署名: グループ (所有者|ディメンション) ごとにソート済みチャンクキー列を作り、全体もソートして安定させる
+    const inputSig = [...groups.values()]
+      .map(g => (g.owner + "|" + g.dim) + "=" + [...g.set.keys()].sort().join(";"))
+      .sort().join("\n");
+    let boxes;
+    if (clusterBoxes !== null && inputSig === clusterSig) {
+      boxes = clusterBoxes;   // 入力同一: 前回のクラスタリング結果をそのまま使う (clusterChunks は実行しない)
+    } else {
+      boxes = [];
+      for (const g of groups.values()) for (const b of clusterChunks([...g.set.values()])) boxes.push({ owner: g.owner, dim: g.dim, ...b });
+      clusterSig = inputSig; clusterBoxes = boxes;
+    }
     const order = planAreas(boxes);
     let use = order;
     if (order.length > LOADER.areas) {

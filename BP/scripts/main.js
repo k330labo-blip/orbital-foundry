@@ -127,7 +127,13 @@ function generatorRecord(key) {
   try {return JSON.parse(dpGet("of_g:"+key,'{"stored":0,"generated":0}')); }
   catch {return {stored:0,generated:0};}
 }
-function saveGeneratorRecord(key,record) {dpSet("of_g:"+key,JSON.stringify(record));}
+const lastGeneratorJson = new Map();
+function saveGeneratorRecord(key,record) {
+  const json = JSON.stringify(record);
+  if (lastGeneratorJson.get(key) === json) return;   // 自分が最後に書いた内容と同一ならDPへ書き直さない
+  lastGeneratorJson.set(key, json);
+  dpSet("of_g:"+key,json);
+}
 function energy() {
   return registry().filter(m=>GENERATOR_TYPES.has(m.type)||BATTERIES[m.type])
     .reduce((total,m)=>total+generatorRecord(m.key).stored,legacyEnergy());
@@ -148,7 +154,7 @@ function drawEnergy(amount,sources,useLegacy=true) {
   }
 }
 function generatorCapacity(key) {
-  return generatorBaseCapacity(registry().find(m=>m.key===key)?.type);
+  return generatorBaseCapacity(registryEntry(key)?.type);
 }
 const speedLimit = key => {
   const value = dpGet("of_speed:"+key,1);
@@ -162,15 +168,24 @@ function switchSpeed(key) {
 // 機械の登録簿。1つの動的プロパティは約32KBまでなので、100件ずつ複数のキーに分けて保存する
 // (以前は400件で打ち切っており、大きな工場ではパイプ・ベルト・ケーブルが登録されず動かなかった)
 const REG_PAGE = 100, REG_MAX = 100000;   // 1件 約150バイト × 100件 = 約15KB/ページ (上限32KB)
-let regCache, regCacheTick = -1;
-function registry() {
-  if (regCache && regCacheTick === system.currentTick) return regCache.slice();   // 同じtick内は読み直さない (配列だけ複製)
+let regCache, regIndex = new Map();
+function rebuildRegIndex() { regIndex = new Map((regCache ?? []).map(m => [m.key, m])); }
+function loadRegistry() {
   let list = [];
   try { list = JSON.parse(dpGet("of:machines", "[]")); } catch {}
   for (let i = 1; ; i++) { const page = dpGet("of:machines:" + i, undefined); if (page === undefined) break; try { list.push(...JSON.parse(page)); } catch {} }
-  list = list.filter(m => m.type !== `${NS}:robot_station`);   // 廃止した機械
-  regCache = list; regCacheTick = system.currentTick;
-  return list.slice();
+  regCache = list.filter(m => m.type !== `${NS}:robot_station`);   // 廃止した機械
+  rebuildRegIndex();
+}
+function registry() {
+  // 登録簿の書き換えは saveRegistry 経由だけ (全数確認済み) なので、初回ロード後はメモリを正とし、
+  // tickが変わるたびの全ページ読み直し＋JSONパースをしない。戻り値は従来どおり配列の複製
+  if (!regCache) loadRegistry();
+  return regCache.slice();
+}
+function registryEntry(key) {
+  if (!regCache) loadRegistry();
+  return regIndex.get(key);
 }
 function saveRegistry(list) {
   list = list.slice(0, REG_MAX);
@@ -179,10 +194,21 @@ function saveRegistry(list) {
   put("of:machines", list.slice(0, REG_PAGE));
   for (let i = 1; i < pages; i++) put("of:machines:" + i, list.slice(i * REG_PAGE, (i + 1) * REG_PAGE));
   for (let i = pages; dpGet("of:machines:" + i, undefined) !== undefined; i++) dpSet("of:machines:" + i, undefined);
-  regCache = undefined;
+  // 保存後の registry() が返す内容 (廃止した機械を除いた一覧) とメモリを一致させる
+  regCache = list.filter(m => m.type !== `${NS}:robot_station`);
+  rebuildRegIndex();
 }
 function machineState(key) { try { return JSON.parse(dpGet("of_m:" + key, "{}")); } catch { return {}; } }
-function saveMachineState(key, st) { dpSet("of_m:" + key, JSON.stringify(st)); }
+const lastMachineStateJson = new Map();
+function saveMachineState(key, st) {
+  const json = JSON.stringify(st);
+  if (lastMachineStateJson.get(key) === json) return;   // 内容が同じならDPへ書き直さない (保存データは同一)
+  // ただし、このキーについて一度も書いていない場合は、既存DPと同内容でも従来どおり書く
+  // (lastMachineStateJson は「自分が最後に書いた/読んだ内容」の記録として machineState 側では更新しないため、
+  //  ここでの省略は「前回自分が書いた内容と同一」の場合に限られる)
+  lastMachineStateJson.set(key, json);
+  dpSet("of_m:" + key, json);
+}
 function setBlockActive(block, typeId, key, on) {
   if (!block || block.typeId !== typeId) return;
   const perm = block.permutation;
@@ -886,10 +912,10 @@ world.afterEvents.playerBreakBlock.subscribe((ev) => { const t = ev.brokenBlockP
     if(ev.player.getGameMode()!==GameMode.Creative || generatorRecord(key).stored>0){
       ev.dimension.spawnItem(batteries.recoveryItem(t,key),anchorOf(ev.block.location));
     }
-    dpSet("of_g:"+key,undefined);
+    dpSet("of_g:"+key,undefined); lastGeneratorJson.delete(key);
   } else if (GENERATOR_TYPES.has(t)) {
     dpSet("of:energy",legacyEnergy()+generatorRecord(key).stored);
-    dpSet("of_g:"+key,undefined);
+    dpSet("of_g:"+key,undefined); lastGeneratorJson.delete(key);
   }
   saveRegistry(registry().filter(m => m.key !== key));
   dpSet("of_speed:"+key,undefined);
@@ -920,7 +946,7 @@ world.afterEvents.playerBreakBlock.subscribe((ev) => { const t = ev.brokenBlockP
   }
   system.run(() => { try { expansion.updateNetwork(registry()); } catch {} });
   fluidSystem.forget({key});
-  dpSet("of_m:" + key, undefined); });
+  dpSet("of_m:" + key, undefined); lastMachineStateJson.delete(key); });
 // 機械を開く処理は3経路 (前イベント/後イベント/レンチ使用) から同じ関数へ集約し、
 // 800ms以内の重複発火は1回にまとめる (片方の経路が環境で発火しなくても開けるように)
 const lastOpen = new Map();
@@ -1134,9 +1160,17 @@ system.runInterval(() => { for (const p of world.getPlayers()) {
 
 const SLOT_MACHINES = new Set([...PROCESSOR_IDS, `${NS}:coal_generator`, `${NS}:fixed_drill`, `${NS}:launch_pad`, `${NS}:oil_pump`, `${NS}:research_lab`, `${NS}:nuclear_reactor`]);
 const anchorOf = ({x,y,z}) => ({x:x+.5,y:y+.96,z:z+.5});
+const slotHostCache = new Map();   // key -> 在庫エンティティ (機械1台に1体で固定)
 function slotHost(dim, loc, key) {
-  return dim.getEntities({location:{x:loc.x+.5,y:loc.y-.3,z:loc.z+.5},maxDistance:2.2,families:["orbital_foundry_slots"]})
+  const cached = slotHostCache.get(key);
+  if (cached) {
+    try { if (cached.isValid) return cached; } catch {}
+    slotHostCache.delete(key);
+  }
+  const found = dim.getEntities({location:{x:loc.x+.5,y:loc.y-.3,z:loc.z+.5},maxDistance:2.2,families:["orbital_foundry_slots"]})
     .find(e=>e.getDynamicProperty("of:machine_key")===key);
+  if (found) slotHostCache.set(key, found);
+  return found;
 }
 // ---- 機械の在庫エンティティの当たり判定 ----
 // 普段は機械と同じ大きさに広げ、右クリックでかまど風の在庫画面 (RP chest_screen) を開く。
@@ -1237,6 +1271,7 @@ function ensureSlotHost(block, key) {
   let host=slotHost(block.dimension,pos,key);
   if (!host) {
     host=block.dimension.spawnEntity(`${block.typeId}_slots`,{x:pos.x+.5,y:pos.y+.02,z:pos.z+.5});
+    slotHostCache.set(key, host);
     host.setDynamicProperty("of:machine_key",key);
     host.setDynamicProperty("of:machine_type",block.typeId);
     const {x,y,z}=block.location;
@@ -1254,8 +1289,9 @@ function ensureSlotHost(block, key) {
     const inventory = host.getComponent("minecraft:inventory")?.container;
     if (inventory && isGauge(inventory.getItem(0))) inventory.setItem(0, undefined);
   }
-  host.setDynamicProperty("of:machine_type",block.typeId);
-  host.setDynamicProperty("of:block_position",JSON.stringify(block.location));
+  if (host.getDynamicProperty("of:machine_type")!==block.typeId) host.setDynamicProperty("of:machine_type",block.typeId);
+  const blockPosJson=JSON.stringify(block.location);
+  if (host.getDynamicProperty("of:block_position")!==blockPosJson) host.setDynamicProperty("of:block_position",blockPosJson);
   if (block.typeId === `${NS}:crusher`) {
     const inventory=host.getComponent("minecraft:inventory")?.container;
     if (inventory) updateGauges(inventory,{type:block.typeId,key},machineState(key));
@@ -1334,6 +1370,7 @@ function debrisKind(itemId) {
 }
 function removeSlotHost(dim,loc,key) {
   const host=slotHost(dim,loc,key);
+  slotHostCache.delete(key);
   if (!host) return;
   const cont=host.getComponent("minecraft:inventory")?.container;
   if (cont) for (let i=0;i<cont.size;i++) {
@@ -1474,7 +1511,7 @@ function updateGauges(container, m, st) {
   const charge=stored/Math.max(1,max);
   const chargeLabel = local ? `蓄電 ${stored} / ${max} SE\n累計発電 ${record.generated} SE` : `蓄電 ${stored} / ${max} SE`;
   const fluidState=fluidSystem.state(m);
-  const registered=registry().find(entry=>entry.key===m.key);
+  const registered=registryEntry(m.key);
   const fluidPorts=registered?fluidSystem.ports(registered,world.getDimension(registered.dim).getBlock(registered)):undefined;
   for(const [index,type] of Object.keys(FLUID_NAMES).entries()) {
     if(fluidPorts?.in?.includes(type)||fluidPorts?.out?.includes(type))
@@ -1576,7 +1613,7 @@ const selectedResearch = who => !!research.selected(who);
 const researchPacksUsed = who => research.selected(who)?research.progress(research.selected(who).id,who):0;
 function tickResearchLab(key,container,far=false) {
   // far: 間引いて呼ばれるので、前の作業の終了時刻から続けて、その間に終わったはずの分も進める
-  const owner=registry().find(m=>m.key===key);
+  const owner=registryEntry(key);
   for(let k=0;k<(far?LOD.catchUp:1);k++){
     const until=labActiveUntil.get(key)??0;
     if(until>system.currentTick)return;
@@ -1753,6 +1790,12 @@ function tickPort(m, block, st, previousBurnDue) {
   saveMachineState(m.key,st);
 }
 
+const RECIPES_BY_MACHINE = new Map();
+for (const r of PROCESS_RECIPES) {
+  const k = `${NS}:${r.machine}`;
+  if (!RECIPES_BY_MACHINE.has(k)) RECIPES_BY_MACHINE.set(k, []);
+  RECIPES_BY_MACHINE.get(k).push(r);
+}
 const processorPoll = new Map();
 function processAt(m,block,st,now) {
   if(m.type===ASSEMBLER && st.job?.out?.some(([id])=>id===`${NS}:orbital_blade`)){
@@ -1778,13 +1821,19 @@ function processAt(m,block,st,now) {
   }
   if(st.selectedRecipe==="orbital_blade")delete st.selectedRecipe;
   const power=expansion.availablePower(m.key);
-  const recipe=PROCESS_RECIPES.find(r=>`${NS}:${r.machine}`===m.type &&
+  // この呼び出しの中ではコンテナは変わらないので、材料スロット (0..17) を1回だけ読んで数える
+  // (従来はレシピ候補ごとに countSlots が最大18スロットを読み直していた)
+  const slotSnapshot=[];
+  for (let i=0;i<Math.min(18,container.size);i++) { const it=container.getItem(i); if (it) slotSnapshot.push([it.typeId,it.amount]); }
+  const countInSnapshot=id=>{ let n=0; for (const [t,a] of slotSnapshot) if (t===id) n+=a; return n; };
+  const candidates=RECIPES_BY_MACHINE.get(m.type)??[];
+  const recipe=candidates.find(r=>
     (!st.selectedRecipe||r.id===st.selectedRecipe||r.variantOf===st.selectedRecipe) && r.energy<=power &&
-    research.allowsRecipe(r,m) && r.in.every(([id,n])=>countSlots(container,id)>=n) && fluidSystem.availableRecipe(m,r));
+    research.allowsRecipe(r,m) && r.in.every(([id,n])=>countInSnapshot(id)>=n) && fluidSystem.availableRecipe(m,r));
   if(!recipe){
     // 材料はそろっているのに電力だけ足りない場合は、電力パネルの「不足」に計上する
-    const want=PROCESS_RECIPES.find(r=>`${NS}:${r.machine}`===m.type&&(!st.selectedRecipe||r.id===st.selectedRecipe||r.variantOf===st.selectedRecipe)&&r.energy>power&&
-      research.allowsRecipe(r,m)&&r.in.every(([id,n])=>countSlots(container,id)>=n));
+    const want=candidates.find(r=>(!st.selectedRecipe||r.id===st.selectedRecipe||r.variantOf===st.selectedRecipe)&&r.energy>power&&
+      research.allowsRecipe(r,m)&&r.in.every(([id,n])=>countInSnapshot(id)>=n));
     if(want)noteShort(m.key,want.energy-power);
     return now+500;
   }
@@ -2099,8 +2148,8 @@ system.runInterval(()=>{
     try{if(GROWER_TIERS[m.type])growing.forget(key);}catch{}
     try{fluidSystem.forget({key});}catch{}
     try{if(QUARRY_TYPES.has(m.type))quarry.forget(key,b.dimension);}catch{}
-    if(BATTERIES[m.type])dpSet("of_g:"+key,undefined);
-    if(GENERATOR_TYPES.has(m.type)){dpSet("of:energy",legacyEnergy()+generatorRecord(key).stored);dpSet("of_g:"+key,undefined);}
+    if(BATTERIES[m.type])dpSet("of_g:"+key,undefined); lastGeneratorJson.delete(key);
+    if(GENERATOR_TYPES.has(m.type)){dpSet("of:energy",legacyEnergy()+generatorRecord(key).stored);dpSet("of_g:"+key,undefined); lastGeneratorJson.delete(key);}
     dpSet("of_speed:"+key,undefined); processorPoll.delete(key);
   }
   const keys=new Set(gone.map(g=>g.m.key));
@@ -2214,10 +2263,10 @@ system.runInterval(() => {
       if (b.typeId !== m.type) {
         if (GROWER_TIERS[m.type]) { growing.forget(key); fluidSystem.forget({key}); }
         removeSlotHost(b.dimension,b.location,key);
-        if (BATTERIES[m.type]) dpSet("of_g:"+key,undefined);
+        if (BATTERIES[m.type]) dpSet("of_g:"+key,undefined); lastGeneratorJson.delete(key);
         if (GENERATOR_TYPES.has(m.type)) {
           dpSet("of:energy",legacyEnergy()+generatorRecord(key).stored);
-          dpSet("of_g:"+key,undefined);
+          dpSet("of_g:"+key,undefined); lastGeneratorJson.delete(key);
         }
         dpSet("of_speed:"+key,undefined);
         dpSet("of_mod:"+key,undefined);

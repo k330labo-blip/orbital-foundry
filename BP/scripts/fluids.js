@@ -36,8 +36,36 @@ export function installFluids(core) {
  const read=(key,fallback)=>{try{return JSON.parse(get(key,JSON.stringify(fallback)));}catch{return fallback;}};
  const kind=m=>m.type.split(":").pop();
  const capacity=m=>kind(m)==="fluid_tank"||m.type===CREATIVE_FLUID_SOURCE?64000:Math.max(8000,(GROWER_TIERS[m.type]?.plants??0)*500);
- const state=m=>({water:0,crude_oil:0,refined_fuel:0,temperature:20,running:true,fuelSeconds:0,...read("of_f:"+m.key,{})});
- const save=(m,s)=>set("of_f:"+m.key,JSON.stringify(s));
+ // tick() 実行中だけ有効な状態キャッシュ: key -> {obj, initial, dirty}
+ // tick 内では state は最初にパースした同じオブジェクトを返し、save は即書込せず dirty を立てるだけにする。
+ // tick の出口で、開始時点の文字列から変化した機器だけをまとめて書き戻す (変わったときだけ書く)。
+ // tick の外 (UI・イベント経路) では従来どおり毎回読み書きする。
+ let tickStates=null;
+ const freshState=m=>({water:0,crude_oil:0,refined_fuel:0,temperature:20,running:true,fuelSeconds:0,...read("of_f:"+m.key,{})});
+ const state=m=>{
+  if(!tickStates)return freshState(m);
+  let e=tickStates.get(m.key);
+  if(!e){
+   const initial=get("of_f:"+m.key,"{}");
+   let parsed; try{parsed=JSON.parse(initial);}catch{parsed={};}
+   e={obj:{water:0,crude_oil:0,refined_fuel:0,temperature:20,running:true,fuelSeconds:0,...parsed},initial,dirty:false};
+   tickStates.set(m.key,e);
+  }
+  return e.obj;
+ };
+ const save=(m,s)=>{
+  if(!tickStates){set("of_f:"+m.key,JSON.stringify(s));return;}
+  let e=tickStates.get(m.key);
+  if(!e){e={obj:s,initial:get("of_f:"+m.key,"{}"),dirty:true};tickStates.set(m.key,e);}
+  else{e.obj=s;e.dirty=true;}
+ };
+ function flushTickStates(){
+  for(const [key,e] of tickStates){
+   if(!e.dirty)continue;
+   const str=JSON.stringify(e.obj);
+   if(str!==e.initial)set("of_f:"+key,str);
+  }
+ }
  const pipeKind=(block)=>FLUID_KINDS[block.permutation.getState(NS+":fluid_kind")??0];
  function ports(m,block){
   if(kind(m)==="fluid_pipe")return {in:[pipeKind(block)],out:[],pipe:true};
@@ -267,6 +295,11 @@ export function installFluids(core) {
   }
  }
  function tick(){
+  tickStates=new Map();
+  try{ tickBody(); }
+  finally{ try{ flushTickStates(); } finally{ tickStates=null; } }
+ }
+ function tickBody(){
   const clock=Number(get("of:fluid_clock",0))+1;set("of:fluid_clock",clock);
   const live=[];
   for(const m of registry()){
