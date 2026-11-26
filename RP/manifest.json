@@ -2,12 +2,12 @@
   "format_version": 2,
   "header": {
     "name": "軌道工廠 / RP",
-    "description": "OrbitalFoundry_v0.8.323 / Astral Overcoming",
+    "description": "OrbitalFoundry_v0.8.324 / Astral Overcoming",
     "uuid": "e10fa2e7-f8eb-4775-907e-89c147c1d623",
     "version": [
       0,
       8,
-      323
+      324
     ],
     "min_engine_version": [
       1,
@@ -22,7 +22,7 @@
       "version": [
         0,
         8,
-        323
+        324
       ]
     }
   ],
@@ -32,7 +32,7 @@
       "version": [
         0,
         8,
-        323
+        324
       ]
     }
   ]

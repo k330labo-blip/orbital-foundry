@@ -2,7 +2,7 @@ import { noteShort, checkShort, noteUse } from "./hud.js";
 import { ItemStack, EntityDamageCause } from "@minecraft/server";
 import { affordableSpeed, scheduledStart, visualStepTicks } from "./machine-speed.js";
 import { installOverseerRaid } from "./overseer_raid.js";
-import { reactorAtShell, reactorStructure } from "./reactor_structure.js";
+import { reactorAtShell, reactorStructure, REACTOR_CASING, REACTOR_WINDOW } from "./reactor_structure.js";
 import { WORLD_NEIGHBORS } from "./connections.js";
 import { GENERATOR_TYPES } from "./fluids.js";
 import { BATTERIES } from "./battery.js";
@@ -44,6 +44,15 @@ export function installExpansion(core) {
   const directions = [[1,0,"東"],[0,1,"南"],[-1,0,"西"],[0,-1,"北"]];
   const neighbors = WORLD_NEIGHBORS;
   let machineIndex = new Map();
+  // reactorAtShell へ渡すためだけに [...machineIndex.values()] を毎回作ると、
+  // 貨物ループのような頻繁な経路で効くので配列を使い回す。machineIndex は
+  // updateNetwork で丸ごと作り直される (中身の追加・削除は無い) ので、
+  // 参照が変わったときだけ作り直せば中身は常に一致する。
+  let machineListSrc = null, machineListCache = [];
+  function machineList() {
+    if (machineListSrc !== machineIndex) { machineListSrc = machineIndex; machineListCache = [...machineIndex.values()]; }
+    return machineListCache;
+  }
   const isPowerSource = type => GENERATOR_TYPES.has(type) || !!BATTERIES[type];
   const canSupply = key => !BATTERIES[machineIndex.get(key)?.type] || generatorRecord(key).mode!=="charge";
   // Draw power from running generators before using stored backup power.
@@ -388,7 +397,7 @@ export function installExpansion(core) {
           if (typeCache) typeCache.set(ck, t);
           return t;
         };
-        const regAt = (dx, dy, dz) => machineIndex.get(keyOf(dimId, {x: x + dx, y: y + dy, z: z + dz}))??reactorAtShell(world,[...machineIndex.values()],dimId,{x:x+dx,y:y+dy,z:z+dz});
+        const regAt = (dx, dy, dz) => machineIndex.get(keyOf(dimId, {x: x + dx, y: y + dy, z: z + dz}))??reactorAtShell(world,machineList(),dimId,{x:x+dx,y:y+dy,z:z+dz});
         const perm = block.permutation;
         const want = {};
         for (const [name, dx, dz] of CABLE_DIRS) {
@@ -775,7 +784,7 @@ export function installExpansion(core) {
         const inv=block.getComponent("minecraft:inventory")?.container;
         return inv&&inv.getItem(2) ? 6 : 1;
       }
-      const proxy=reactorAtShell(world,[...machineIndex.values()],m.dim,neighborOn(m,side));
+      const proxy=reactorAtShell(world,machineList(),m.dim,neighborOn(m,side));
       if(proxy){const storage=machineContainer(dim.getBlock(proxy),proxy.key);const stocked=storage&&outputSlots.some(slot=>!!storage.getItem(slot));return sink?(stocked?-10:2):(stocked?6:1);}
       const regKey=keyOf(m.dim,neighborOn(m,side));
       if(machineIndex.has(regKey)&&SPLITTERS[block.typeId]) {
@@ -975,7 +984,7 @@ export function installExpansion(core) {
     return result ? {...result} : result;
   }
   function containerAtInner(dim,key,pos,output,from=null) {
-    const proxy=reactorAtShell(world,[...machineIndex.values()],dim.id,pos);
+    const proxy=reactorAtShell(world,machineList(),dim.id,pos);
     if(proxy)return {block:dim.getBlock(proxy),storage:machineContainer(dim.getBlock(proxy),proxy.key),slots:output?outputSlots:[0]};
     const registered=findBlock(dim,key);
     if (registered && SPLITTERS[registered.typeId]) return splitterView(registered,key,output,from)??undefined;
@@ -1254,9 +1263,40 @@ export function installExpansion(core) {
   // (登録・ブロック種別・推定向き・machineState の direction/inputMode) はティック内では
   // 変わらない (permutation は読まないことを確認済み)。ただし区間の実在確認だけは
   // 壊されたベルトを即座に検出するため、キャッシュを通さず毎回新鮮に確認する。
+  // 対策4: 1回の貨物ループ / ルート検証の実行内だけ有効な共有キャッシュ。
+  // スクリプト実行は同期的で、その間にベルトのブロックもプレイヤーの位置も
+  // 外からは変わらず、貨物処理自体もベルトのブロックを書き換えない。したがって
+  // 実行内では「区間のベルトがまだ在るか」の新鮮確認と「拾い上げ候補プレイヤー」の
+  // 取得は、区間・次元ごとに1回だけ行えば結果は従来と一致する。実行が終わる
+  // たびに捨てる (null のときは従来どおり毎回新鮮に確認する)。
+  let segFreshCache = null, pickupSnap = null;
+  function beltStillThere(dim,key) {
+    if (!segFreshCache) return isBelt(findBlockFresh(dim,key)?.typeId);
+    const ck=dim.id+"|"+key;
+    let v=segFreshCache.get(ck);
+    if (v===undefined) { v=isBelt(findBlockFresh(dim,key)?.typeId); segFreshCache.set(ck,v); }
+    return v;
+  }
+  // しゃがんでベルト上に立つプレイヤー (貨物の拾い上げ判定)。従来は貨物ごとに
+  // getPlayers の範囲検索を呼んでいた。候補 (しゃがみ+接地) を次元ごとに1回集め、
+  // 従来と同じ条件 (対象地点から1.25以内・同じマス・高さ差0.42未満) で最初に
+  // 一致したプレイヤーを返す。列挙順は次元のプレイヤー一覧の順序そのまま。
+  function pickupPlayer(dim,point,tile) {
+    let list=pickupSnap?.get(dim.id);
+    if (!list) {
+      list=[];
+      try { for (const p of dim.getPlayers()) { try { if (p.isOnGround && p.isSneaking) { const l=p.location; list.push({p,x:l.x,y:l.y,z:l.z}); } } catch {} } } catch {}
+      if (pickupSnap) pickupSnap.set(dim.id,list);
+    }
+    for (const c of list) {
+      const ddx=c.x-point.x, ddy=c.y-point.y, ddz=c.z-point.z;
+      if (ddx*ddx+ddy*ddy+ddz*ddz>1.25*1.25) continue;
+      if (Math.floor(c.x)===tile.x && Math.floor(c.z)===tile.z && Math.abs(c.y-point.y)<.42) return c.p;
+    }
+  }
   function segmentStillConnected(run,distance) {
     const {m,input,direction,previousKey,nextKey}=cargoSegment(run,distance);
-    if (!isBelt(findBlockFresh(run.dim,m.key)?.typeId) ||
+    if (!beltStillThere(run.dim,m.key) ||
         beltDirection(m.key)!==direction) return false;
     beltCache();
     const ck=run.dim.id+"|"+m.key+"|"+direction;
@@ -1273,6 +1313,8 @@ export function installExpansion(core) {
     const filter=machineState(key).beltItemFilter;
     return !filter || filter===item.typeId;
   }
+  // reactorAtShell が対象にするブロック種別 (reactor_structure.js の冒頭と同一)
+  const REACTOR_SHELL_TYPES=new Set(["minecraft:stone_bricks","minecraft:stonebrick","minecraft:glass",REACTOR_CASING,REACTOR_WINDOW]);
   function nearbyMachine(run,tile,direction,stack) {
     const [dx,dz]=directions[direction];
     for (const [sx,sy,sz] of [[-dz,0,dx],[dz,0,-dx],[0,1,0],[0,-1,0]]) {
@@ -1280,13 +1322,14 @@ export function installExpansion(core) {
       const key=keyOf(tile.dim,pos);
       if (key===run.sourceKey || key===run.targetKey) continue;
       const type=run.dim.getBlock(pos)?.typeId;
-      if (!FURNACE_TYPES.has(type) && !STORAGE_MACHINES.has(type) && !virtualTypes.has(type) && !reactorAtShell(world,[...machineIndex.values()],tile.dim,pos)) continue;
+      if (!FURNACE_TYPES.has(type) && !STORAGE_MACHINES.has(type) && !virtualTypes.has(type) &&
+          !(REACTOR_SHELL_TYPES.has(type) && reactorAtShell(world,machineList(),tile.dim,pos))) continue;
       const target=destinationFor(run.dim,key,pos,sx,sz);
       if (target && roomFor(target,stack)>0) return target;
     }
   }
   function finishCargo(run,stack,target) {
-    const inventory=cargoStorage(run.entity);
+    const inventory=run.invCache ?? cargoStorage(run.entity);
     if (!inventory) throw new Error("Cargo inventory missing at delivery");
     const remainder=insertCargo(target,stack,left=>{
       if (!left) { inventory.setItem(0,undefined); return; }
@@ -1299,6 +1342,8 @@ export function installExpansion(core) {
     return true;
   }
   system.runInterval(()=>{
+    segFreshCache=new Map(); pickupSnap=new Map();
+    try {
     // A7: 反復開始時点の位置で、ルート+レーンごとに便を整列しておく (advanceCargo 用)
     const sortedShipments=new Map();
     for (const r of cargoRuns) {
@@ -1309,14 +1354,13 @@ export function installExpansion(core) {
     for (const arr of sortedShipments.values()) arr.sort((a,b)=>a.pos-b.pos);
     for (const run of cargoRuns) {
       try {
-        const stack=cargoStorage(run.entity)?.getItem(0);
+        const stack=(run.invCache ?? (run.invCache=cargoStorage(run.entity)))?.getItem(0);
         if (!stack) {finishRun(run);continue;}
         const point=cargoPosition(run,run.distance);
-        const tile=cargoSegment(run,run.distance).m;
+        const segNow=cargoSegment(run,run.distance);
+        const tile=segNow.m;
         if (!segmentStillConnected(run,run.distance)) {releaseCargo(run.entity);finishRun(run);continue;}
-        const player=run.dim.getPlayers({location:point,maxDistance:1.25}).find(p=>
-          Math.floor(p.location.x)===tile.x && Math.floor(p.location.z)===tile.z &&
-          p.isOnGround && p.isSneaking && Math.abs(p.location.y-point.y)<.42);
+        const player=pickupPlayer(run.dim,point,tile);
         const inventory=player?.getComponent("minecraft:inventory")?.container;
         const pickup=inventory && {storage:inventory,slots:Array.from({length:inventory.size},(_,i)=>i)};
         if (pickup && roomFor(pickup,stack)>0) {
@@ -1324,7 +1368,7 @@ export function installExpansion(core) {
           continue;
         }
         try {
-          const furnace=nearbyMachine(run,tile,cargoSegment(run,run.distance).direction,stack);
+          const furnace=nearbyMachine(run,tile,segNow.direction,stack);
           if (furnace) {
             if (finishCargo(run,stack,furnace)) finishRun(run);
             continue;
@@ -1357,6 +1401,7 @@ export function installExpansion(core) {
         finishRun(run);
       }
     }
+    } finally { segFreshCache=null; pickupSnap=null; }
   },2);
   // お遊び要素: ベルトに乗ったプレイヤーを貨物と同じ速度で運ぶ。
   // 貨物は 2 tick ごとに 0.16 ブロック進む (1.6 ブロック/秒)。速度ベクトルを毎 tick
@@ -1582,6 +1627,8 @@ export function installExpansion(core) {
     return launched;
   }
   system.runInterval(()=>{
+    segFreshCache=new Map();
+    try {
     for (const shipments of activeRoutes.values()) {
       const latest=[...shipments].at(-1);
 
@@ -1603,6 +1650,7 @@ export function installExpansion(core) {
         if (valid && routeHasStock(route)) launchShipment(route);
       } catch {}
     }
+    } finally { segFreshCache=null; }
   },2);
 
   const read=(key,fallback=null)=>{try{return JSON.parse(dpGet(key,JSON.stringify(fallback)));}catch{return fallback;}};
