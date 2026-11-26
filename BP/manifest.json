@@ -2,12 +2,12 @@
   "format_version": 2,
   "header": {
     "name": "\u8ecc\u9053\u5de5\u5ee0 / BP",
-    "description": "OrbitalFoundry_v0.8.325 / Astral Overcoming",
+    "description": "OrbitalFoundry_v0.8.326 / Astral Overcoming",
     "uuid": "5c22c429-55af-4ce8-bd33-5698b4cf388a",
     "version": [
       0,
       8,
-      325
+      326
     ],
     "min_engine_version": [
       1,
@@ -22,7 +22,7 @@
       "version": [
         0,
         8,
-        325
+        326
       ]
     },
     {
@@ -33,7 +33,7 @@
       "version": [
         0,
         8,
-        325
+        326
       ]
     }
   ],
@@ -43,7 +43,7 @@
       "version": [
         0,
         8,
-        325
+        326
       ]
     },
     {

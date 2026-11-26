@@ -317,7 +317,6 @@ export function installExpansion(core) {
     const prevBeltKeys=new Set(beltEntries.map(m=>m.key));
     const prevInferred=inferredBelts, prevLoop=loopBelts;
     beltEntries=list.filter(m=>isBelt(m.type));
-    if (!cargoRestored) { restoreBeltCargo(); cargoRestored=true; }
     inferBeltDirections(list);
     // レイアウト (ベルト集合・推定向き・ループ集合) が前回から変わっていたら版数を上げる。
     // routeCheck はこの版数を見て、変わっていないルートの全区間再検証を省く
@@ -381,6 +380,7 @@ export function installExpansion(core) {
       }
       applyCableVisuals(nodes, sources, getLive, netTypeCache);
     }
+    if (!cargoDataRestored) restoreCargoData();
     } finally { netMsCache=null; netTypeCache=null; }
   }
   const CABLE_DIRS = [["n",0,-1],["e",1,0],["s",0,1],["w",-1,0]];
@@ -651,7 +651,6 @@ export function installExpansion(core) {
     }
   }
   const cargoRuns = new Set();
-  let cargoRestored=false;
   const runningBelts = new Map();
   const activeRoutes = new Map();
   const confirmedBeltRoutes = new Map();
@@ -764,7 +763,7 @@ export function installExpansion(core) {
     // 評価が読む中身 (かまど・コンテナ・分配機の状態) は推定の実行中には変わらない。
     const endpointCache=new Map();
     function endpoint(dim,m,side,sink) {
-      const eKey=keyOf(m.dim,neighborOn(m,side))+(sink?"|sink":"|src");
+      const eKey=keyOf(m.dim,neighborOn(m,side))+"|"+side+(sink?"|sink":"|src");
       if (endpointCache.has(eKey)) return endpointCache.get(eKey);
       const value=endpointInner(dim,m,side,sink);
       endpointCache.set(eKey,value);
@@ -1181,8 +1180,11 @@ export function installExpansion(core) {
   }
   system.runInterval(()=>{ for (const routeKey of [...cargoDirtyRoutes]) saveCargoCheckpoint(routeKey); },20);
   function releaseCargoData(run) {
-    if (!run.item) return;
-    try { run.dim.spawnItem(deserializeItem(run.item),cargoPosition(run,run.distance)); } catch {}
+    if (!run.item) return true;
+    try {
+      run.dim.spawnItem(deserializeItem(run.item),cargoPosition(run,run.distance));
+      return true;
+    } catch { return false; }
   }
   function trackCargo(run) {
     cargoRuns.add(run);
@@ -1193,6 +1195,24 @@ export function installExpansion(core) {
   }
   let cargoDataRestored=false;
   function restoreCargoData() {
+    if (!cargoDataRestored) {
+      const ids=world.getDynamicPropertyIds();
+      for (const dpId of ids) {
+        if (!dpId.startsWith("of:cargo2:") || dpId.startsWith("of:cargo2n:")) continue;
+        try {
+          const saved=JSON.parse(world.getDynamicProperty(dpId));
+          if (!saved?.item) continue;
+          const dim=world.getDimension(saved.dimName);
+          const route=activeRoutes.get(saved.route.routeKey)?.values().next().value?.route??{...saved.route,dim};
+          const segments=route.segments.slice(saved.originIndex);
+          trackCargo({...route,route,segments,keys:segments.map(seg=>seg.m.key),
+            originIndex:saved.originIndex,lane:saved.lane===1?1:0,distance:saved.distance??.5,
+            sourceKey:saved.sourceKey,item:saved.item,icon:cargoLook(null,saved.item.t),nextVisual:0,distRate:0});
+          if (saved.sourceKey) confirmedBeltRoutes.set(route.routeKey,{source:saved.sourceKey,target:route.targetKey,routeKeys:route.keys});
+        } catch {}
+      }
+      cargoDataRestored=true;
+    }
     // 旧形式 (貨物エンティティ) の移行: 読み込まれている分をデータ化して消す。
     // エンティティ定義自体は移行用に残してあり、新規に生成されることはない
     for (const name of ["overworld","nether","the_end"]) {
@@ -1223,22 +1243,7 @@ export function installExpansion(core) {
         }
       } catch {}
     }
-    if (cargoDataRestored) return;
-    cargoDataRestored=true;
-    for (const dpId of world.getDynamicPropertyIds()) {
-      if (!dpId.startsWith("of:cargo2:") || dpId.startsWith("of:cargo2n:")) continue;
-      try {
-        const saved=JSON.parse(world.getDynamicProperty(dpId));
-        if (!saved?.item) continue;
-        const dim=world.getDimension(saved.dimName);
-        const route=activeRoutes.get(saved.route.routeKey)?.values().next().value?.route??{...saved.route,dim};
-        const segments=route.segments.slice(saved.originIndex);
-        trackCargo({...route,route,segments,keys:segments.map(seg=>seg.m.key),
-          originIndex:saved.originIndex,lane:saved.lane===1?1:0,distance:saved.distance??.5,
-          sourceKey:saved.sourceKey,item:saved.item,icon:cargoLook(null,saved.item.t),nextVisual:0,distRate:0});
-        if (saved.sourceKey) confirmedBeltRoutes.set(route.routeKey,{source:saved.sourceKey,target:route.targetKey,routeKeys:route.keys});
-      } catch {}
-    }
+
   }
   system.runInterval(restoreCargoData,100);
   function finishRun(run) {
@@ -1419,6 +1424,9 @@ export function installExpansion(core) {
     } catch {}
     run.nextVisual=now+lifeTicks;
   }
+  function cargoBlockLoaded(dim,tile) {
+    try { return !!dim.getBlock(tile); } catch { return false; }
+  }
   system.runInterval(()=>{
     segFreshCache=new Map(); pickupSnap=new Map();
     try {
@@ -1437,10 +1445,13 @@ export function installExpansion(core) {
         const tile=segNow.m;
         // チャンクが読み込まれていない便は凍結する (旧方式で未読込の貨物
         // エンティティが止まっていたのと等価)。読み込まれたら自動で動き出す
-        if (!run.dim.getBlock({x:tile.x,y:tile.y,z:tile.z})) continue;
+        if (!cargoBlockLoaded(run.dim,tile)) continue;
         const stack=runStack(run);
         const point=cargoPosition(run,run.distance);
-        if (!segmentStillConnected(run,run.distance)) {releaseCargoData(run);finishRun(run);continue;}
+        if (!segmentStillConnected(run,run.distance)) {
+          if (releaseCargoData(run)) finishRun(run);
+          continue;
+        }
         const player=pickupPlayer(run.dim,point,tile);
         const inventory=player?.getComponent("minecraft:inventory")?.container;
         const pickup=inventory && {storage:inventory,slots:Array.from({length:inventory.size},(_,i)=>i)};
@@ -1466,18 +1477,17 @@ export function installExpansion(core) {
         if (nextDistance<=run.distance+1e-6) { run.distRate=0; spawnCargoVisual(run,point); continue; }
         const nextTile=cargoSegment(run,nextDistance).m;
         if (nextTile.key!==tile.key && !filterAllows(nextTile.key,stack)) { run.distRate=0; spawnCargoVisual(run,point); continue; }
-        if (!segmentStillConnected(run,nextDistance)) {
-          releaseCargoData(run);finishRun(run);continue;
+        if (nextTile.key!==tile.key && !cargoBlockLoaded(run.dim,nextTile)) continue;
+        if (nextTile.key!==tile.key && !segmentStillConnected(run,nextDistance)) {
+          if (releaseCargoData(run)) finishRun(run);
+          continue;
         }
         if (system.currentTick>=(run.lodCheck??0)) { run.lodFar=!isNear(run.dim.id,point.x,point.z); run.lodCheck=system.currentTick+20; }
         run.distRate=(nextDistance-run.distance)*10;
         run.distance=nextDistance;
         cargoDirtyRoutes.add(run.routeKey);
         spawnCargoVisual(run,cargoPosition(run,run.distance));
-      } catch {
-        try { releaseCargoData(run); } catch {}
-        finishRun(run);
-      }
+      } catch { /* Keep the checkpoint when an adjacent chunk becomes unavailable. */ }
     }
     } finally { segFreshCache=null; pickupSnap=null; }
   },2);
